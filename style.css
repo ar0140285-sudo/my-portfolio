@@ -1,0 +1,558 @@
+/* ==========================================================
+   1. GOOGLE FONTS IMPORT
+   - Outfit: Headings & Titles ke liye
+   - Inter: Body & Paragraphs ke liye (Clean readability)
+   - JetBrains Mono: Badges, handles & stats ke liye
+   ========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap');
+
+/* ==========================================================
+   2. GLOBAL THEME VARIABLES (Modern SaaS Tech Palette)
+   ========================================================== */
+:root {
+    --bg-main: #0f172a;             /* Deep Slate Canvas */
+    --bg-card: #1e293b;             /* Sleek Card Surface */
+    --bg-card-hover: #24344d;       /* Card Hover State */
+    --text-primary: #f8fafc;        /* Soft Off-White */
+    --text-muted: #94a3b8;          /* Slate Gray */
+    --accent-sky: #38bdf8;          /* Sky Blue (Primary) */
+    --accent-teal: #14b8a6;         /* Teal / Cyan (Secondary) */
+    --accent-purple: #a78bfa;       /* Purple (Timeline & Accents) */
+    --accent-red: #f43f5e;          /* Red / Rose (Highlights & Youtube) */
+    --border-subtle: rgba(255, 255, 255, 0.08); /* 1px Clean Border */
+    --border-hover: rgba(56, 189, 248, 0.35);   /* Blue Glow Border */
+    --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 12px 30px -5px rgba(56, 189, 248, 0.18);
+}
+
+/* ==========================================================
+   3. BASE RESET & BODY STYLES
+   ========================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Soft ambient background lights */
+    background-image: 
+        radial-gradient(circle at 12% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 88% 85%, rgba(167, 139, 250, 0.07) 0%, transparent 45%);
+}
+
+h1, h2, h3, h4, .logo {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+/* ==========================================================
+   4. NAVIGATION BAR (Glassmorphism + Active Pill)
+   ========================================================== */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 45px;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+.logo span {
+    color: var(--accent-sky);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+    border: 1px solid transparent;
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-links a.active {
+    color: var(--accent-sky);
+    background: rgba(56, 189, 248, 0.1);
+    border-color: rgba(56, 189, 248, 0.25);
+}
+
+/* ==========================================================
+   5. COMMON CONTAINER & CARDS
+   ========================================================== */
+.container {
+    max-width: 880px;
+    margin: 40px auto;
+    padding: 0 20px;
+    flex: 1;
+    animation: fadeInPage 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Gradient Page Title */
+.page-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-sky) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.page-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 35px;
+    font-size: 15px;
+}
+
+/* Base Card Style */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+
+.card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+}
+
+/* ==========================================================
+   6. PROFILE CARD (index.html)
+   ========================================================== */
+.profile-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.profile-banner {
+    height: 165px;
+    background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #0e7490 100%);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.profile-body {
+    padding: 0 32px 32px;
+    text-align: center;
+}
+
+.avatar-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-top: -65px;
+    margin-bottom: 16px;
+}
+
+.avatar-wrapper img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--bg-card);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    transition: transform 0.3s ease;
+}
+
+.avatar-wrapper img:hover {
+    transform: scale(1.03);
+}
+
+.user-name {
+    font-size: 28px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #ffffff 40%, var(--accent-sky) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.badge {
+    color: var(--accent-sky);
+    font-size: 19px;
+    -webkit-text-fill-color: var(--accent-sky);
+}
+
+.user-handle {
+    color: var(--accent-teal);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    margin-bottom: 14px;
+    font-weight: 500;
+}
+
+.user-bio {
+    max-width: 540px;
+    margin: 0 auto 24px;
+    color: #cbd5e1;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+    padding: 18px 0;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 26px;
+}
+
+.stat-box h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    color: var(--accent-sky);
+    font-weight: 600;
+}
+
+.stat-box span {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* ==========================================================
+   7. BUTTONS & MICRO-INTERACTIONS
+   ========================================================== */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 11px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--accent-sky);
+    color: #0c4a6e;
+}
+
+.btn-primary:hover {
+    background: #7dd3fc;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    color: var(--accent-sky);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #f43f5e, #e11d48);
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(225, 29, 72, 0.3);
+}
+
+/* ==========================================================
+   8. TAGS & PROJECTS GRID (projects.html, about.html, modpack.html)
+   ========================================================== */
+.tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--accent-sky);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* ==========================================================
+   9. ROADMAP & CONNECTING TIMELINE (future.html)
+   ========================================================== */
+.timeline-track {
+    position: relative;
+    padding-left: 45px;
+    margin-top: 20px;
+}
+
+/* Vertical Continuous Line */
+.timeline-track::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 24px;
+    bottom: 40px;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        var(--accent-sky) 0%,
+        var(--accent-teal) 50%,
+        var(--accent-purple) 85%,
+        transparent 100%
+    );
+    opacity: 0.5;
+}
+
+.timeline-step {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+/* Node Icons on Timeline Line */
+.timeline-node {
+    position: absolute;
+    left: -45px;
+    top: 24px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #0f172a;
+    border: 2px solid var(--accent-sky);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--accent-sky);
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.mca-node {
+    border-color: var(--accent-teal);
+    color: var(--accent-teal);
+    box-shadow: 0 0 14px rgba(20, 184, 166, 0.4);
+}
+
+.dream-node {
+    border-color: var(--accent-red);
+    color: var(--accent-red);
+    box-shadow: 0 0 14px rgba(244, 63, 94, 0.4);
+}
+
+.timeline-step:hover .timeline-node {
+    transform: scale(1.15);
+}
+
+/* Milestone Metadata */
+.card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+.card-meta .tag {
+    margin-bottom: 0;
+}
+
+.teal-tag {
+    background: rgba(20, 184, 166, 0.1) !important;
+    color: var(--accent-teal) !important;
+    border-color: rgba(20, 184, 166, 0.3) !important;
+}
+
+.red-tag {
+    background: rgba(244, 63, 94, 0.1) !important;
+    color: var(--accent-red) !important;
+    border-color: rgba(244, 63, 94, 0.3) !important;
+}
+
+/* Year Badge */
+.year-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: #cbd5e1;
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 3px 10px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dream-badge {
+    border-color: rgba(244, 63, 94, 0.3);
+    color: #fda4af;
+}
+
+/* Milestone Titles & Highlights */
+.milestone-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.highlight-icon {
+    font-size: 18px;
+}
+
+.highlight-icon.sky { color: var(--accent-sky); }
+.highlight-icon.teal { color: var(--accent-teal); }
+.highlight-icon.red { color: var(--accent-red); }
+
+.milestone-desc {
+    color: #94a3b8;
+    font-size: 14.5px;
+    line-height: 1.7;
+}
+
+.timeline-card {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.timeline-card:hover {
+    border-color: var(--accent-sky);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.22);
+    transform: translateY(-4px);
+}
+
+/* ==========================================================
+   10. FOOTER (Balanced & Center-Aligned)
+   ========================================================== */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 28px 20px;
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: 13.5px;
+    margin-top: auto;
+    text-align: center;
+    background: rgba(15, 23, 42, 0.4);
+}
+
+/* ==========================================================
+   11. MOBILE RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .stats-container {
+        gap: 20px;
+    }
+    .card {
+        padding: 22px;
+    }
+}
+
+@media (max-width: 600px) {
+    .timeline-track {
+        padding-left: 36px;
+    }
+    .timeline-track::before {
+        left: 13px;
+    }
+    .timeline-node {
+        left: -36px;
+        width: 28px;
+        height: 28px;
+        font-size: 10px;
+    }
+    .milestone-title {
+        font-size: 18px;
+    }
+}
