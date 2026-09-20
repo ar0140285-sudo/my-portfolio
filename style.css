@@ -17,8 +17,8 @@
     /* Vibrant Text & Accents */
     --text-primary: #ffffff;
     --text-muted: #cbd5e1;
-    --accent-sky: #38bdf8;
-    --accent-teal: #2dd4bf;
+    --accent-sky: #0094f7;
+    --accent-teal: #21bebe;
     --accent-purple: #c084fc;
     --accent-red: #fb7185;
     
@@ -55,7 +55,7 @@ body {
     background-color: #080e1a;
 }
 
-/* Fixed wallpaper pseudo-element (Lag-free mobile scroll) */
+/* PC / Laptop Desktop Wallpaper */
 body::before {
     content: '';
     position: fixed;
@@ -80,7 +80,7 @@ h1, h2, h3, h4, .logo {
 /* ==========================================================
    4. NAVIGATION BAR (Liquid Frosted Glass)
    ========================================================== */
-nav {
+nav, .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -105,7 +105,24 @@ nav {
 
 .logo span {
     color: var(--accent-sky);
-    text-shadow: 0 0 16px rgba(56, 189, 248, 0.6);
+    text-shadow: 0 0 16px rgba(224, 1, 1, 0.6);
+}
+
+/* Desktop Menu Toggle Button (PC par chhipa rahega) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    padding: 5px;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
 }
 
 .nav-links {
@@ -135,7 +152,7 @@ nav {
     color: #ffffff;
     background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(192, 132, 252, 0.2));
     border: 1px solid rgba(56, 189, 248, 0.45);
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+    box-shadow: 0 0 15px rgba(6, 167, 207, 0.25);
 }
 
 /* ==========================================================
@@ -149,8 +166,8 @@ nav {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertical Center */
-    align-items: center;    /* Horizontal Center */
+    justify-content: center;
+    align-items: center;
     animation: fadeInPage 0.5s ease-out forwards;
 }
 
@@ -165,7 +182,6 @@ nav {
     }
 }
 
-/* Page Titles (For other pages) */
 .page-title {
     text-align: center;
     font-size: 38px;
@@ -185,7 +201,6 @@ nav {
     font-weight: 500;
 }
 
-/* Base Card Style */
 .card {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
@@ -203,7 +218,7 @@ nav {
 
 .card:hover {
     background: var(--glass-bg-hover);
-    border-color: rgba(56, 189, 248, 0.5);
+    border-color: rgba(233, 13, 13, 0.5);
     border-top-color: rgba(255, 255, 255, 0.5);
     transform: translateY(-4px);
     box-shadow: var(--shadow-glow), var(--shadow-liquid);
@@ -223,7 +238,7 @@ nav {
     box-shadow: var(--shadow-liquid);
     width: 100%;
     max-width: 650px;
-    margin: auto 0; /* Ensures exact center placement vertically */
+    margin: auto 0;
 }
 
 .profile-banner {
@@ -569,29 +584,94 @@ footer {
 }
 
 /* ==========================================================
-   11. MOBILE VIEW & CENTER ADJUSTMENTS
+   11. MOBILE VIEW & CENTER ADJUSTMENTS (Updated for Wallpaper)
    ========================================================== */
 @media (max-width: 768px) {
+    /* Mobile ke liye alag background wallpaper */
+    body::before {
+        background: 
+            linear-gradient(135deg, rgba(8, 14, 26, 0.6) 0%, rgba(15, 23, 42, 0.7) 100%),
+            url('https://res.cloudinary.com/defb0pgcs/image/upload/v1789906994/1009170_oi3k9m.png') no-repeat center center;
+        background-size: cover;
+    }
+
     :root {
         --glass-blur: blur(10px);
         --glass-bg: rgba(15, 23, 42, 0.65);
     }
 
-    nav {
-        flex-direction: column;
-        gap: 12px;
-        padding: 14px 16px;
+    /* Mobile Navbar Header */
+    nav, .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 20px;
+        position: sticky;
+        top: 0;
     }
 
+    /* 3 Lines Button Mobile me display hoga */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* 3 Lines to 'X' smooth transformation */
+    .menu-toggle.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Nav links mobile me chhupe rahenge jab tak click na ho */
     .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 6px;
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 15, 29, 0.96);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--glass-border);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        padding: 20px 0;
+        gap: 10px;
+        text-align: center;
+    }
+
+    /* Click karne par menu smooth dropdown khulega */
+    .nav-links.open,
+    .nav-links.active {
+        display: flex;
+        animation: dropMenu 0.3s ease-out forwards;
+    }
+
+    @keyframes dropMenu {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .nav-links li {
+        width: 100%;
     }
 
     .nav-links a {
-        padding: 6px 12px;
-        font-size: 13px;
+        display: block;
+        width: 85%;
+        margin: 0 auto;
+        padding: 10px 16px;
+        font-size: 14px;
     }
 
     .container {
@@ -600,7 +680,7 @@ footer {
 
     .profile-card {
         border-radius: 20px;
-        margin: 15px auto; /* Clean spacing from nav */
+        margin: 15px auto;
     }
 
     .profile-banner {
