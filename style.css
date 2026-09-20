@@ -12,7 +12,7 @@
     --glass-bg-hover: rgba(30, 41, 59, 0.55);     /* Glass Hover State */
     --glass-border: rgba(255, 255, 255, 0.16);    /* Crisp Glass Rim */
     --glass-border-light: rgba(255, 255, 255, 0.3);/* Glass Refraction Specular */
-    --glass-blur: blur(22px) saturate(180%);
+    --glass-blur: blur(20px) saturate(160%);
 
     /* Vibrant Text & Accents */
     --text-primary: #ffffff;                      /* Pure Sharp White */
@@ -36,6 +36,11 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
 body {
     color: var(--text-primary);
     font-family: 'Inter', sans-serif;
@@ -44,12 +49,31 @@ body {
     flex-direction: column;
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
 
-    /* Light tint taaki wallpaper clearly visible ho aur text padhne me aasan ho */
+    /* Smooth touch physics */
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+
+    /* Base dark background */
+    background-color: #080e1a;
+}
+
+/* Fixed wallpaper pseudo-element (Mobile scroll lag & stiffness killer fix) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
     background: 
-        linear-gradient(135deg, rgba(8, 14, 26, 0.45) 0%, rgba(15, 23, 42, 0.55) 100%),
-        url('https://res.cloudinary.com/defb0pgcs/image/upload/v1789891587/akaza-intense-demon-3840x2160-26029_vdotqz.jpg') no-repeat center center fixed;
+        linear-gradient(135deg, rgba(8, 14, 26, 0.5) 0%, rgba(15, 23, 42, 0.6) 100%),
+        url('https://res.cloudinary.com/defb0pgcs/image/upload/v1789891587/akaza-intense-demon-3840x2160-26029_vdotqz.jpg') no-repeat center center;
     background-size: cover;
+    pointer-events: none;
+    transform: translate3d(0, 0, 0); /* Dedicated GPU layer */
 }
 
 h1, h2, h3, h4, .logo {
@@ -65,7 +89,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 18px 45px;
-    background: rgba(10, 15, 29, 0.35);
+    background: rgba(10, 15, 29, 0.6);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     position: sticky;
@@ -101,7 +125,7 @@ nav {
     font-weight: 500;
     padding: 9px 18px;
     border-radius: 12px;
-    transition: all 0.25s ease;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     border: 1px solid transparent;
 }
 
@@ -109,7 +133,6 @@ nav {
     color: var(--text-primary);
     background: rgba(255, 255, 255, 0.12);
     border-color: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(8px);
 }
 
 .nav-links a.active {
@@ -127,13 +150,13 @@ nav {
     margin: 40px auto;
     padding: 0 20px;
     flex: 1;
-    animation: fadeInPage 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fadeInPage 0.5s ease-out forwards;
 }
 
 @keyframes fadeInPage {
     from {
         opacity: 0;
-        transform: translateY(16px);
+        transform: translateY(12px);
     }
     to {
         opacity: 1;
@@ -172,10 +195,8 @@ nav {
     padding: 28px;
     margin-bottom: 24px;
     box-shadow: var(--shadow-liquid);
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-                border-color 0.3s ease, 
-                box-shadow 0.3s ease,
-                background 0.3s ease;
+    transform: translateZ(0); /* Hardware accelerated */
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
@@ -187,7 +208,7 @@ nav {
 }
 
 /* ==========================================================
-   6. PROFILE CARD (Liquid Glass Redesign)
+   6. PROFILE CARD
    ========================================================== */
 .profile-card {
     background: var(--glass-bg);
@@ -202,14 +223,12 @@ nav {
 
 .profile-banner {
     height: 175px;
-    /* Translucent Liquid Glass Shimmer */
     background: linear-gradient(135deg, 
         rgba(56, 189, 248, 0.28) 0%, 
         rgba(192, 132, 252, 0.22) 50%, 
         rgba(45, 212, 191, 0.28) 100%
     );
     border-bottom: 1px solid var(--glass-border);
-    backdrop-filter: blur(12px);
     position: relative;
 }
 
@@ -277,18 +296,16 @@ nav {
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
-/* Glass Island for Stats */
 .stats-container {
     display: flex;
     justify-content: center;
     gap: 45px;
     padding: 16px 24px;
     border-radius: 16px;
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.09);
     margin: 0 auto 28px;
     max-width: 580px;
-    backdrop-filter: blur(10px);
 }
 
 .stat-box h3 {
@@ -309,7 +326,7 @@ nav {
 
 /* ==========================================================
    7. BUTTONS & MICRO-INTERACTIONS
-   ========================================================= */
+   ========================================================== */
 .btn-group {
     display: flex;
     justify-content: center;
@@ -324,7 +341,7 @@ nav {
     font-weight: 600;
     font-size: 14px;
     cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -348,7 +365,6 @@ nav {
     background: rgba(255, 255, 255, 0.07);
     color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
@@ -385,7 +401,6 @@ nav {
     border-radius: 8px;
     margin-bottom: 12px;
     letter-spacing: 0.05em;
-    backdrop-filter: blur(6px);
 }
 
 .grid {
@@ -432,8 +447,7 @@ nav {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(10px);
+    background: rgba(15, 23, 42, 0.85);
     border: 2px solid var(--accent-sky);
     display: flex;
     align-items: center;
@@ -442,7 +456,7 @@ nav {
     color: var(--accent-sky);
     box-shadow: 0 0 16px rgba(56, 189, 248, 0.5);
     z-index: 2;
-    transition: all 0.3s ease;
+    transition: transform 0.25s ease;
 }
 
 .mca-node {
@@ -458,7 +472,7 @@ nav {
 }
 
 .timeline-step:hover .timeline-node {
-    transform: scale(1.18);
+    transform: scale(1.15);
 }
 
 .card-meta {
@@ -497,7 +511,6 @@ nav {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    backdrop-filter: blur(6px);
 }
 
 .dream-badge {
@@ -527,9 +540,7 @@ nav {
 }
 
 .timeline-card {
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .timeline-card:hover {
@@ -551,29 +562,44 @@ footer {
     font-size: 13.5px;
     margin-top: auto;
     text-align: center;
-    background: rgba(10, 15, 29, 0.3);
+    background: rgba(10, 15, 29, 0.6);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
 }
 
 /* ==========================================================
-   11. MOBILE RESPONSIVE
+   11. MOBILE OPTIMIZATION & SMOOTH TOUCH
    ========================================================== */
 @media (max-width: 768px) {
+    /* Lighter blur for high touch-rate mobile scrolling */
+    :root {
+        --glass-blur: blur(10px);
+        --glass-bg: rgba(15, 23, 42, 0.65);
+    }
+
     nav {
         flex-direction: column;
         gap: 14px;
         padding: 16px;
     }
+
     .nav-links {
         flex-wrap: wrap;
         justify-content: center;
     }
+
     .stats-container {
         gap: 20px;
     }
+
     .card {
         padding: 22px;
+        /* Mobile touch par transform hover cancel taaki scroll glitch na ho */
+        transform: none !important;
+    }
+
+    .timeline-card:hover {
+        transform: none !important;
     }
 }
 
