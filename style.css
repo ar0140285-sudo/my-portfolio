@@ -8,19 +8,19 @@
    ========================================================== */
 :root {
     /* Liquid Glass Surfaces */
-    --glass-bg: rgba(15, 23, 42, 0.38);           /* Translucent Liquid Glass */
-    --glass-bg-hover: rgba(30, 41, 59, 0.55);     /* Glass Hover State */
-    --glass-border: rgba(255, 255, 255, 0.16);    /* Crisp Glass Rim */
-    --glass-border-light: rgba(255, 255, 255, 0.3);/* Glass Refraction Specular */
+    --glass-bg: rgba(15, 23, 42, 0.38);
+    --glass-bg-hover: rgba(30, 41, 59, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.16);
+    --glass-border-light: rgba(255, 255, 255, 0.3);
     --glass-blur: blur(20px) saturate(160%);
 
     /* Vibrant Text & Accents */
-    --text-primary: #ffffff;                      /* Pure Sharp White */
-    --text-muted: #cbd5e1;                        /* Clean Silver-Gray */
-    --accent-sky: #38bdf8;                        /* Electric Cyan / Sky */
-    --accent-teal: #2dd4bf;                       /* Neon Mint Teal */
-    --accent-purple: #c084fc;                     /* Soft Neon Violet */
-    --accent-red: #fb7185;                        /* Rose Pink Accent */
+    --text-primary: #ffffff;
+    --text-muted: #cbd5e1;
+    --accent-sky: #38bdf8;
+    --accent-teal: #2dd4bf;
+    --accent-purple: #c084fc;
+    --accent-red: #fb7185;
     
     /* Liquid Shadows & Highlights */
     --shadow-liquid: 0 20px 50px -10px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
@@ -50,16 +50,12 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
-
-    /* Smooth touch physics */
     -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
-
-    /* Base dark background */
     background-color: #080e1a;
 }
 
-/* Fixed wallpaper pseudo-element (Mobile scroll lag & stiffness killer fix) */
+/* Fixed wallpaper pseudo-element (Lag-free mobile scroll) */
 body::before {
     content: '';
     position: fixed;
@@ -73,7 +69,7 @@ body::before {
         url('https://res.cloudinary.com/defb0pgcs/image/upload/v1789891587/akaza-intense-demon-3840x2160-26029_vdotqz.jpg') no-repeat center center;
     background-size: cover;
     pointer-events: none;
-    transform: translate3d(0, 0, 0); /* Dedicated GPU layer */
+    transform: translate3d(0, 0, 0);
 }
 
 h1, h2, h3, h4, .logo {
@@ -88,7 +84,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 45px;
+    padding: 16px 45px;
     background: rgba(10, 15, 29, 0.6);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
@@ -115,7 +111,7 @@ nav {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 10px;
+    gap: 8px;
 }
 
 .nav-links a {
@@ -123,9 +119,9 @@ nav {
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
-    padding: 9px 18px;
+    padding: 8px 16px;
     border-radius: 12px;
-    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease;
     border: 1px solid transparent;
 }
 
@@ -143,13 +139,18 @@ nav {
 }
 
 /* ==========================================================
-   5. COMMON CONTAINER & CARDS (Glass Containers)
+   5. COMMON CONTAINER & CENTER ALIGNMENT
    ========================================================== */
 .container {
     max-width: 880px;
-    margin: 40px auto;
-    padding: 0 20px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 20px;
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertical Center */
+    align-items: center;    /* Horizontal Center */
     animation: fadeInPage 0.5s ease-out forwards;
 }
 
@@ -164,7 +165,7 @@ nav {
     }
 }
 
-/* Page Titles */
+/* Page Titles (For other pages) */
 .page-title {
     text-align: center;
     font-size: 38px;
@@ -194,8 +195,9 @@ nav {
     border-radius: 20px;
     padding: 28px;
     margin-bottom: 24px;
+    width: 100%;
     box-shadow: var(--shadow-liquid);
-    transform: translateZ(0); /* Hardware accelerated */
+    transform: translateZ(0);
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -208,7 +210,7 @@ nav {
 }
 
 /* ==========================================================
-   6. PROFILE CARD
+   6. PROFILE CARD (Centered Hero Island)
    ========================================================== */
 .profile-card {
     background: var(--glass-bg);
@@ -219,10 +221,13 @@ nav {
     border-radius: 26px;
     overflow: hidden;
     box-shadow: var(--shadow-liquid);
+    width: 100%;
+    max-width: 650px;
+    margin: auto 0; /* Ensures exact center placement vertically */
 }
 
 .profile-banner {
-    height: 175px;
+    height: 170px;
     background: linear-gradient(135deg, 
         rgba(56, 189, 248, 0.28) 0%, 
         rgba(192, 132, 252, 0.22) 50%, 
@@ -235,63 +240,65 @@ nav {
 .profile-body {
     padding: 0 32px 34px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .avatar-wrapper {
     position: relative;
     display: inline-block;
-    margin-top: -70px;
-    margin-bottom: 18px;
+    margin-top: -65px;
+    margin-bottom: 16px;
 }
 
 .avatar-wrapper img {
-    width: 135px;
-    height: 135px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.35);
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .avatar-wrapper img:hover {
     transform: scale(1.04);
-    border-color: rgba(255, 255, 255, 0.6);
 }
 
 .user-name {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 800;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     color: #ffffff;
     text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
 }
 
 .badge {
     color: var(--accent-sky);
-    font-size: 21px;
+    font-size: 20px;
     filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.7));
 }
 
 .user-handle {
     color: var(--accent-teal);
     font-family: 'JetBrains Mono', monospace;
-    font-size: 14.5px;
-    margin-bottom: 16px;
+    font-size: 14px;
+    margin-bottom: 14px;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-shadow: 0 0 12px rgba(45, 212, 191, 0.4);
 }
 
 .user-bio {
-    max-width: 560px;
-    margin: 0 auto 26px;
+    max-width: 520px;
+    margin: 0 auto 24px;
     color: #f1f5f9;
-    font-size: 15.5px;
-    line-height: 1.75;
+    font-size: 15px;
+    line-height: 1.7;
     font-weight: 400;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
@@ -299,25 +306,26 @@ nav {
 .stats-container {
     display: flex;
     justify-content: center;
-    gap: 45px;
-    padding: 16px 24px;
+    gap: 40px;
+    padding: 14px 24px;
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.09);
-    margin: 0 auto 28px;
-    max-width: 580px;
+    margin: 0 auto 26px;
+    width: 100%;
+    max-width: 500px;
 }
 
 .stat-box h3 {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 22px;
+    font-size: 20px;
     color: #ffffff;
     font-weight: 700;
     text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
 }
 
 .stat-box span {
-    font-size: 11.5px;
+    font-size: 11px;
     color: var(--accent-sky);
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -330,16 +338,17 @@ nav {
 .btn-group {
     display: flex;
     justify-content: center;
-    gap: 14px;
+    gap: 12px;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .btn {
     text-decoration: none;
-    padding: 12px 24px;
+    padding: 11px 22px;
     border-radius: 12px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13.5px;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: inline-flex;
@@ -407,15 +416,17 @@ nav {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 22px;
+    width: 100%;
 }
 
 /* ==========================================================
-   9. ROADMAP & CONNECTING TIMELINE (future.html)
+   9. ROADMAP & CONNECTING TIMELINE
    ========================================================== */
 .timeline-track {
     position: relative;
     padding-left: 45px;
     margin-top: 20px;
+    width: 100%;
 }
 
 .timeline-track::before {
@@ -469,10 +480,6 @@ nav {
     border-color: var(--accent-red);
     color: var(--accent-red);
     box-shadow: 0 0 16px rgba(251, 113, 133, 0.5);
-}
-
-.timeline-step:hover .timeline-node {
-    transform: scale(1.15);
 }
 
 .card-meta {
@@ -543,20 +550,14 @@ nav {
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.timeline-card:hover {
-    border-color: var(--accent-sky);
-    box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
-    transform: translateY(-4px);
-}
-
 /* ==========================================================
-   10. FOOTER (Balanced Glassmorphism)
+   10. FOOTER
    ========================================================== */
 footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 26px 20px;
+    padding: 22px 20px;
     border-top: 1px solid var(--glass-border);
     color: var(--text-muted);
     font-size: 13.5px;
@@ -568,10 +569,9 @@ footer {
 }
 
 /* ==========================================================
-   11. MOBILE OPTIMIZATION & SMOOTH TOUCH
+   11. MOBILE VIEW & CENTER ADJUSTMENTS
    ========================================================== */
 @media (max-width: 768px) {
-    /* Lighter blur for high touch-rate mobile scrolling */
     :root {
         --glass-blur: blur(10px);
         --glass-bg: rgba(15, 23, 42, 0.65);
@@ -579,44 +579,94 @@ footer {
 
     nav {
         flex-direction: column;
-        gap: 14px;
-        padding: 16px;
+        gap: 12px;
+        padding: 14px 16px;
     }
 
     .nav-links {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 6px;
+    }
+
+    .nav-links a {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .container {
+        padding: 20px 14px;
+    }
+
+    .profile-card {
+        border-radius: 20px;
+        margin: 15px auto; /* Clean spacing from nav */
+    }
+
+    .profile-banner {
+        height: 125px;
+    }
+
+    .avatar-wrapper {
+        margin-top: -55px;
+        margin-bottom: 12px;
+    }
+
+    .avatar-wrapper img {
+        width: 105px;
+        height: 105px;
+    }
+
+    .profile-body {
+        padding: 0 16px 24px;
+    }
+
+    .user-name {
+        font-size: 24px;
+    }
+
+    .user-bio {
+        font-size: 14px;
+        margin-bottom: 18px;
     }
 
     .stats-container {
-        gap: 20px;
+        gap: 18px;
+        padding: 10px 14px;
+        margin-bottom: 20px;
+    }
+
+    .stat-box h3 {
+        font-size: 18px;
+    }
+
+    .btn-group {
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 10px 18px;
+        font-size: 13px;
+        flex: 1 1 120px;
+        justify-content: center;
     }
 
     .card {
-        padding: 22px;
-        /* Mobile touch par transform hover cancel taaki scroll glitch na ho */
-        transform: none !important;
-    }
-
-    .timeline-card:hover {
+        padding: 20px;
         transform: none !important;
     }
 }
 
-@media (max-width: 600px) {
-    .timeline-track {
-        padding-left: 36px;
+@media (max-width: 480px) {
+    .stats-container {
+        gap: 12px;
     }
-    .timeline-track::before {
-        left: 13px;
+    
+    .stat-box h3 {
+        font-size: 16px;
     }
-    .timeline-node {
-        left: -36px;
-        width: 28px;
-        height: 28px;
-        font-size: 10px;
-    }
-    .milestone-title {
-        font-size: 18px;
+
+    .stat-box span {
+        font-size: 9.5px;
     }
 }
