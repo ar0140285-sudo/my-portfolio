@@ -38,11 +38,17 @@
     <div class="container">
         <div class="profile-card">
             
-            <!-- Banner Background -->
-            <div class="profile-banner"></div>
+            <!-- Banner Background (Looping Video) -->
+            <div class="profile-banner">
+                <video class="banner-video" autoplay loop muted playsinline>
+                    <!-- Yahan apni video file ka path ya Cloudinary URL daal dena -->
+                    <source src="https://res.cloudinary.com/defb0pgcs/video/upload/v1789975893/vidssave.com_Tengen_Vs_Gyutaro_Full_Fight____Demon_Slayer_4K_720P_h7ywk2.mp4" type="video/mp4">
+                </video>
+                <div class="banner-overlay"></div>
+            </div>
 
             <div class="profile-body">
-                <!-- Profile Photo (Aap yaha apni photo ka link ya naam daal sakte ho) -->
+                <!-- Profile Photo -->
                 <div class="avatar-wrapper">
                     <img src="https://res.cloudinary.com/defb0pgcs/image/upload/v1789816678/images_oqcmkn.jpg" alt="Profile Picture">
                 </div>

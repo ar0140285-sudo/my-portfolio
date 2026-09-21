@@ -250,6 +250,31 @@ nav, .navbar {
     );
     border-bottom: 1px solid var(--glass-border);
     position: relative;
+    overflow: hidden; /* Video ko corners ke andar rakhne ke liye */
+}
+
+/* Banner background looping video */
+.banner-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Video ke upar subtle dark overlay */
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: 2;
+    pointer-events: none;
 }
 
 .profile-body {
@@ -265,6 +290,7 @@ nav, .navbar {
     display: inline-block;
     margin-top: -65px;
     margin-bottom: 16px;
+    z-index: 10; /* Video aur overlay ke upar profile picture float karegi */
 }
 
 .avatar-wrapper img {
@@ -690,6 +716,7 @@ footer {
     .avatar-wrapper {
         margin-top: -55px;
         margin-bottom: 12px;
+        z-index: 10;
     }
 
     .avatar-wrapper img {
