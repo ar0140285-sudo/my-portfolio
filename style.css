@@ -1,34 +1,40 @@
 /* ==========================================================
    1. GOOGLE FONTS IMPORT
    ========================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap');
 
 /* ==========================================================
-   2. GLOBAL THEME VARIABLES (Liquid Glass & Neon Aero)
+   2. GLOBAL THEME VARIABLES (Liquid Glass & Cyber Neon)
    ========================================================== */
 :root {
     /* Liquid Glass Surfaces */
-    --glass-bg: rgba(15, 23, 42, 0.38);
-    --glass-bg-hover: rgba(30, 41, 59, 0.55);
+    --glass-bg: rgba(15, 23, 42, 0.42);
+    --glass-bg-hover: rgba(30, 41, 59, 0.65);
     --glass-border: rgba(255, 255, 255, 0.16);
-    --glass-border-light: rgba(255, 255, 255, 0.3);
-    --glass-blur: blur(20px) saturate(160%);
+    --glass-border-light: rgba(255, 255, 255, 0.32);
+    --glass-blur: blur(24px) saturate(170%);
 
-    /* Vibrant Text & Accents */
+    /* Neon Accents */
     --text-primary: #ffffff;
     --text-muted: #cbd5e1;
     --accent-sky: #0094f7;
     --accent-teal: #21bebe;
     --accent-purple: #c084fc;
     --accent-red: #fb7185;
+
+    /* Platform Signatures */
+    --yt-glow: rgba(239, 68, 68, 0.4);
+    --gh-glow: rgba(255, 255, 255, 0.25);
+    --ig-glow: rgba(220, 39, 67, 0.45);
+    --tg-glow: rgba(56, 189, 248, 0.45);
     
-    /* Liquid Shadows & Highlights */
-    --shadow-liquid: 0 20px 50px -10px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-    --shadow-glow: 0 0 30px rgba(56, 189, 248, 0.35);
+    /* Shadows */
+    --shadow-liquid: 0 20px 50px -10px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.22);
+    --shadow-glow: 0 0 35px rgba(56, 189, 248, 0.35);
 }
 
 /* ==========================================================
-   3. BASE RESET & BODY (Wallpaper Canvas)
+   3. BASE RESET & BODY CANVAS
    ========================================================== */
 * {
     margin: 0;
@@ -55,7 +61,7 @@ body {
     background-color: #080e1a;
 }
 
-/* PC / Laptop Desktop Wallpaper */
+/* PC Desktop Wallpaper (Akaza Demon Loop Canvas) */
 body::before {
     content: '';
     position: fixed;
@@ -78,21 +84,21 @@ h1, h2, h3, h4, .logo {
 }
 
 /* ==========================================================
-   4. NAVIGATION BAR (Liquid Frosted Glass)
+   4. NAVIGATION BAR (Liquid Frosted Island)
    ========================================================== */
 nav, .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 45px;
-    background: rgba(10, 15, 29, 0.6);
+    padding: 14px 38px;
+    background: rgba(10, 15, 29, 0.65);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     position: sticky;
     top: 0;
     z-index: 1000;
     border-bottom: 1px solid var(--glass-border);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
@@ -105,16 +111,15 @@ nav, .navbar {
 
 .logo span {
     color: var(--accent-sky);
-    text-shadow: 0 0 16px rgba(224, 1, 1, 0.6);
+    text-shadow: 0 0 16px rgba(0, 148, 247, 0.7);
 }
 
-/* Desktop Menu Toggle Button (PC par chhipa rahega) */
 .menu-toggle {
     display: none;
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
-    padding: 5px;
+    padding: 6px;
 }
 
 .menu-toggle .bar {
@@ -128,35 +133,37 @@ nav, .navbar {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 6px;
 }
 
 .nav-links a {
     color: #e2e8f0;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 500;
-    padding: 8px 16px;
+    padding: 7px 14px;
     border-radius: 12px;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     border: 1px solid transparent;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
     color: var(--text-primary);
     background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .nav-links a.active {
     color: #ffffff;
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(192, 132, 252, 0.2));
-    border: 1px solid rgba(56, 189, 248, 0.45);
-    box-shadow: 0 0 15px rgba(6, 167, 207, 0.25);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(192, 132, 252, 0.22));
+    border: 1px solid rgba(56, 189, 248, 0.5);
+    box-shadow: 0 0 16px rgba(0, 148, 247, 0.3);
 }
 
 /* ==========================================================
-   5. COMMON CONTAINER & CENTER ALIGNMENT
+   5. COMMON CONTAINER & CARDS
    ========================================================== */
 .container {
     max-width: 880px;
@@ -174,7 +181,7 @@ nav, .navbar {
 @keyframes fadeInPage {
     from {
         opacity: 0;
-        transform: translateY(12px);
+        transform: translateY(14px);
     }
     to {
         opacity: 1;
@@ -190,7 +197,7 @@ nav, .navbar {
     background: linear-gradient(135deg, #ffffff 30%, var(--accent-sky) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
 }
 
 .page-subtitle {
@@ -207,7 +214,7 @@ nav, .navbar {
     -webkit-backdrop-filter: var(--glass-blur);
     border: 1px solid var(--glass-border);
     border-top: 1px solid var(--glass-border-light);
-    border-radius: 20px;
+    border-radius: 22px;
     padding: 28px;
     margin-bottom: 24px;
     width: 100%;
@@ -218,14 +225,14 @@ nav, .navbar {
 
 .card:hover {
     background: var(--glass-bg-hover);
-    border-color: rgba(233, 13, 13, 0.5);
-    border-top-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(56, 189, 248, 0.45);
+    border-top-color: rgba(255, 255, 255, 0.6);
     transform: translateY(-4px);
     box-shadow: var(--shadow-glow), var(--shadow-liquid);
 }
 
 /* ==========================================================
-   6. PROFILE CARD (Centered Hero Island)
+   6. PROFILE CARD (Hero Island)
    ========================================================== */
 .profile-card {
     background: var(--glass-bg);
@@ -250,10 +257,9 @@ nav, .navbar {
     );
     border-bottom: 1px solid var(--glass-border);
     position: relative;
-    overflow: hidden; /* Video ko corners ke andar rakhne ke liye */
+    overflow: hidden;
 }
 
-/* Banner background looping video */
 .banner-video {
     position: absolute;
     top: 0;
@@ -265,7 +271,6 @@ nav, .navbar {
     z-index: 1;
 }
 
-/* Video ke upar subtle dark overlay */
 .banner-overlay {
     position: absolute;
     top: 0;
@@ -290,7 +295,7 @@ nav, .navbar {
     display: inline-block;
     margin-top: -65px;
     margin-bottom: 16px;
-    z-index: 10; /* Video aur overlay ke upar profile picture float karegi */
+    z-index: 10;
 }
 
 .avatar-wrapper img {
@@ -298,8 +303,8 @@ nav, .navbar {
     height: 130px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.35);
+    border: 4px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.4);
     transition: transform 0.3s ease;
 }
 
@@ -374,7 +379,7 @@ nav, .navbar {
 }
 
 /* ==========================================================
-   7. BUTTONS & MICRO-INTERACTIONS
+   7. STANDARD BUTTONS
    ========================================================== */
 .btn-group {
     display: flex;
@@ -412,17 +417,17 @@ nav, .navbar {
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.08);
     color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.22);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.16);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.45);
     transform: translateY(-2px);
     color: var(--accent-sky);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .btn-danger {
@@ -433,7 +438,221 @@ nav, .navbar {
 
 .btn-danger:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(244, 63, 94, 0.4);
+    box-shadow: 0 10px 25px rgba(244, 63, 94, 0.45);
+}
+
+/* ==========================================================
+   7.5 SOCIAL LINKS & CONNECT HUB (Symmetrical & High Tech)
+   ========================================================== */
+.social-container {
+    max-width: 660px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Card Wrapper - Always Clean Single Row */
+.social-card,
+.card:has(.social-left) {
+    background: var(--glass-bg) !important;
+    backdrop-filter: var(--glass-blur) !important;
+    -webkit-backdrop-filter: var(--glass-blur) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-top: 1px solid var(--glass-border-light) !important;
+    border-radius: 20px !important;
+    padding: 16px 22px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important; /* Button ko neeche wrap hone se rokega */
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 14px !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
+    box-shadow: var(--shadow-liquid) !important;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+/* Shimmer Light Sweep on Hover */
+.social-card::after,
+.card:has(.social-left)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    transform: skewX(-25deg);
+    pointer-events: none;
+    transition: 0.6s ease;
+}
+
+.social-card:hover::after,
+.card:has(.social-left):hover::after {
+    left: 140%;
+}
+
+.social-card:hover,
+.card:has(.social-left):hover {
+    transform: translateY(-3px) scale(1.01) !important;
+    background: var(--glass-bg-hover) !important;
+}
+
+/* Left Content: Icon + Details */
+.social-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important; /* Text overflow safe */
+}
+
+.social-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0 !important;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.social-card:hover .social-icon {
+    transform: scale(1.12) rotate(-5deg);
+}
+
+.social-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.social-info h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.social-info p {
+    font-size: 13px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Social Buttons - Symmetrical Pill Shape */
+.social-btn,
+.social-card .btn,
+.social-card a[class*="btn-"] {
+    flex: 0 0 auto !important; /* Stretch nahi hoga */
+    width: auto !important;
+    min-width: 108px !important;
+    padding: 9px 20px !important;
+    border-radius: 25px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.social-btn:hover,
+.social-card .btn:hover {
+    transform: scale(1.05) !important;
+    filter: brightness(1.12);
+}
+
+/* Individual Platform Styling */
+
+/* 1. YouTube */
+.social-card:has(.fa-youtube):hover,
+.social-card.youtube:hover {
+    border-color: rgba(239, 68, 68, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px var(--yt-glow) !important;
+}
+.social-card:has(.fa-youtube) .social-icon {
+    color: #ef4444;
+    text-shadow: 0 0 14px rgba(239, 68, 68, 0.6);
+}
+.btn-youtube {
+    background: linear-gradient(135deg, #e11d48, #f43f5e) !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 16px var(--yt-glow) !important;
+}
+
+/* 2. GitHub */
+.social-card:has(.fa-github):hover,
+.social-card.github:hover {
+    border-color: rgba(255, 255, 255, 0.45) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px var(--gh-glow) !important;
+}
+.social-card:has(.fa-github) .social-icon {
+    color: #ffffff;
+    text-shadow: 0 0 14px rgba(255, 255, 255, 0.6);
+}
+.btn-github {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* 3. Instagram */
+.social-card:has(.fa-instagram):hover,
+.social-card.instagram:hover {
+    border-color: rgba(220, 39, 67, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px var(--ig-glow) !important;
+}
+.social-card:has(.fa-instagram) .social-icon {
+    color: #f43f5e;
+    text-shadow: 0 0 14px rgba(244, 63, 94, 0.6);
+}
+.btn-instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 16px var(--ig-glow) !important;
+}
+
+/* 4. Telegram */
+.social-card:has(.fa-telegram):hover,
+.social-card:has(.fa-telegram-plane):hover,
+.social-card.telegram:hover {
+    border-color: rgba(56, 189, 248, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px var(--tg-glow) !important;
+}
+.social-card:has(.fa-telegram) .social-icon,
+.social-card:has(.fa-telegram-plane) .social-icon {
+    color: #38bdf8;
+    text-shadow: 0 0 14px rgba(56, 189, 248, 0.6);
+}
+.btn-telegram {
+    background: linear-gradient(135deg, #0284c7, #38bdf8) !important;
+    color: #031e33 !important;
+    font-weight: 800 !important;
+    border: none !important;
+    box-shadow: 0 4px 16px var(--tg-glow) !important;
 }
 
 /* ==========================================================
@@ -604,44 +823,34 @@ footer {
     font-size: 13.5px;
     margin-top: auto;
     text-align: center;
-    background: rgba(10, 15, 29, 0.6);
+    background: rgba(10, 15, 29, 0.65);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
 }
 
 /* ==========================================================
-   11. MOBILE VIEW & CENTER ADJUSTMENTS (Updated for Wallpaper)
+   11. RESPONSIVE MOBILE VIEW (768px & Down)
    ========================================================== */
 @media (max-width: 768px) {
-    /* Mobile ke liye alag background wallpaper */
+    /* Mobile Rengoku Wallpaper Clean Tint */
     body::before {
         background: 
-            linear-gradient(135deg, rgba(8, 14, 26, 0.6) 0%, rgba(15, 23, 42, 0.7) 100%),
+            linear-gradient(135deg, rgba(8, 14, 26, 0.45) 0%, rgba(15, 23, 42, 0.55) 100%),
             url('https://res.cloudinary.com/defb0pgcs/image/upload/v1789906994/1009170_oi3k9m.png') no-repeat center center;
         background-size: cover;
     }
 
-    :root {
-        --glass-blur: blur(10px);
-        --glass-bg: rgba(15, 23, 42, 0.65);
-    }
-
-    /* Mobile Navbar Header */
     nav, .navbar {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         padding: 14px 20px;
-        position: sticky;
-        top: 0;
     }
 
-    /* 3 Lines Button Mobile me display hoga */
     .menu-toggle {
         display: flex;
     }
 
-    /* 3 Lines to 'X' smooth transformation */
     .menu-toggle.is-active .bar:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
@@ -652,7 +861,6 @@ footer {
         transform: translateY(-8px) rotate(-45deg);
     }
 
-    /* Nav links mobile me chhupe rahenge jab tak click na ho */
     .nav-links {
         display: none;
         flex-direction: column;
@@ -660,9 +868,9 @@ footer {
         top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(10, 15, 29, 0.96);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        background: rgba(10, 15, 29, 0.95);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
         border-bottom: 1px solid var(--glass-border);
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
         padding: 20px 0;
@@ -670,7 +878,6 @@ footer {
         text-align: center;
     }
 
-    /* Click karne par menu smooth dropdown khulega */
     .nav-links.open,
     .nav-links.active {
         display: flex;
@@ -678,20 +885,11 @@ footer {
     }
 
     @keyframes dropMenu {
-        from {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
-    .nav-links li {
-        width: 100%;
-    }
-
+    .nav-links li { width: 100%; }
     .nav-links a {
         display: block;
         width: 85%;
@@ -710,32 +908,26 @@ footer {
     }
 
     .profile-banner {
-        height: 125px;
+        height: 140px;
     }
 
     .avatar-wrapper {
-        margin-top: -55px;
+        margin-top: -60px;
         margin-bottom: 12px;
         z-index: 10;
     }
 
     .avatar-wrapper img {
-        width: 105px;
-        height: 105px;
+        width: 110px;
+        height: 110px;
     }
 
     .profile-body {
         padding: 0 16px 24px;
     }
 
-    .user-name {
-        font-size: 24px;
-    }
-
-    .user-bio {
-        font-size: 14px;
-        margin-bottom: 18px;
-    }
+    .user-name { font-size: 24px; }
+    .user-bio { font-size: 14px; margin-bottom: 18px; }
 
     .stats-container {
         gap: 18px;
@@ -743,15 +935,11 @@ footer {
         margin-bottom: 20px;
     }
 
-    .stat-box h3 {
-        font-size: 18px;
-    }
+    .stat-box h3 { font-size: 18px; }
 
-    .btn-group {
-        gap: 10px;
-    }
-
-    .btn {
+    /* Normal Page Buttons */
+    .btn-group { gap: 10px; }
+    .btn-group .btn {
         padding: 10px 18px;
         font-size: 13px;
         flex: 1 1 120px;
@@ -762,18 +950,48 @@ footer {
         padding: 20px;
         transform: none !important;
     }
+
+    /* Social Card Mobile Protection */
+    .social-card,
+    .card:has(.social-left) {
+        padding: 14px 16px !important;
+        gap: 12px !important;
+    }
+
+    .social-left {
+        gap: 12px !important;
+    }
+
+    .social-icon {
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 20px !important;
+        border-radius: 12px !important;
+    }
+
+    .social-info h2 {
+        font-size: 15px !important;
+    }
+
+    .social-info p {
+        font-size: 12px !important;
+    }
+
+    .social-btn,
+    .social-card .btn,
+    .social-card a[class*="btn-"] {
+        min-width: 90px !important;
+        padding: 8px 16px !important;
+        font-size: 12.5px !important;
+    }
 }
 
 @media (max-width: 480px) {
-    .stats-container {
-        gap: 12px;
-    }
-    
-    .stat-box h3 {
-        font-size: 16px;
-    }
+    .stats-container { gap: 12px; }
+    .stat-box h3 { font-size: 16px; }
+    .stat-box span { font-size: 9.5px; }
 
-    .stat-box span {
-        font-size: 9.5px;
+    .social-info p {
+        max-width: 140px; /* Small screen par clean ellipsis */
     }
 }
