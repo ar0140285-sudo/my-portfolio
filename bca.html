@@ -8,6 +8,57 @@
     <link rel="stylesheet" href="style.css">
     <!-- Font Awesome Icons Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Supabase JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Supabase Auth Guard Script -->
+    <script>
+        const SUPABASE_URL = 'https://ozqoncrmxselxjpfbrov.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_9COp0M-Qbznr4Ew680mYrA_xmuaWIc9';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function checkAuthAndProtect() {
+            // 1. Check karein user login hai ya nahi
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            
+            if (!session) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // 2. Database me check karein user approved hai ya nahi
+            const { data: profile, error } = await supabaseClient
+                .from('profiles')
+                .select('is_approved, username')
+                .eq('id', session.user.id)
+                .single();
+
+            if (error || !profile || !profile.is_approved) {
+                await supabaseClient.auth.signOut();
+                alert('Aapka account abhi approve nahi hua hai. Admin approval ka wait karein.');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Page load hone par username display update karein
+            window.addEventListener('DOMContentLoaded', () => {
+                const userDisplay = document.getElementById('userDisplay');
+                if (userDisplay) {
+                    userDisplay.innerText = profile.username;
+                }
+            });
+        }
+
+        // Page khulte hi run hoga
+        checkAuthAndProtect();
+
+        // Logout function
+        async function handleLogout() {
+            await supabaseClient.auth.signOut();
+            window.location.href = 'login.html';
+        }
+    </script>
 </head>
 <body>
 
@@ -29,6 +80,16 @@
             <li><a href="modpack.html">Mod Pack</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="future.html">Future Plans</a></li>
+            
+            <!-- Logged-in User Badge & Logout Button -->
+            <li style="display: flex; align-items: center; gap: 8px; margin-left: 10px;">
+                <span style="font-size: 13px; color: #38bdf8; background: rgba(56, 189, 248, 0.12); padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.25);">
+                    <i class="fas fa-user-circle"></i> <strong id="userDisplay">Loading...</strong>
+                </span>
+                <button onclick="handleLogout()" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #f87171; padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.2s ease;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </li>
         </ul>
     </nav>
 

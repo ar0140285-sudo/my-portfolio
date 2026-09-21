@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login / Register | BCA Hub</title>
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
+  <style>
+    /* ==========================================================================
+       1. WALLPAPER SETTING: Yahan apni photo ka link dalein
+       ========================================================================== */
+    :root {
+      --custom-wallpaper: url('https://res.cloudinary.com/defb0pgcs/image/upload/v1789816678/images_oqcmkn.jpg');
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, rgba(8, 14, 26, 0.7), rgba(13, 20, 36, 0.75)), 
+                  var(--custom-wallpaper) center/cover no-repeat fixed;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 25px 15px;
+    }
+
+    /* High Transparency Glassmorphism Card */
+    .auth-card {
+      background: rgba(13, 20, 36, 0.45); /* High transparency */
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 430px;
+      padding: 30px 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(56, 189, 248, 0.15);
+      position: relative;
+      z-index: 1;
+    }
+
+    .auth-header {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .auth-header .logo-badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .auth-header h2 {
+      font-size: 1.65rem;
+      color: #f8fafc;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .auth-header p {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    /* Translucent Tabs */
+    .tabs {
+      display: flex;
+      background: rgba(11, 17, 30, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 5px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      color: #94a3b8;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: 7px;
+      transition: all 0.25s ease;
+    }
+
+    .tab-btn.active {
+      background: #38bdf8;
+      color: #0b111e;
+      box-shadow: 0 2px 12px rgba(56, 189, 248, 0.4);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      margin-bottom: 6px;
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(11, 17, 30, 0.4); /* Glass Input */
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .form-group input:focus {
+      border-color: #38bdf8;
+      background: rgba(11, 17, 30, 0.6);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0b111e;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.35);
+    }
+
+    .submit-btn:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .status-msg {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      text-align: center;
+      line-height: 1.45;
+      padding: 10px;
+      border-radius: 6px;
+      display: none;
+    }
+
+    .status-msg.error {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #f87171;
+      display: block;
+    }
+
+    .status-msg.success {
+      background: rgba(34, 197, 94, 0.2);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #4ade80;
+      display: block;
+    }
+
+    .status-msg.pending {
+      background: rgba(234, 179, 8, 0.2);
+      border: 1px solid rgba(234, 179, 8, 0.4);
+      color: #facc15;
+      display: block;
+    }
+
+    /* Terms Box - Login par hidden rahega */
+    .terms-box {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      display: none; /* By default hidden on Login */
+    }
+
+    .terms-title {
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: #38bdf8;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .terms-list {
+      list-style: none;
+    }
+
+    .terms-list li {
+      font-size: 0.77rem;
+      color: #cbd5e1;
+      line-height: 1.45;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .terms-list li::before {
+      content: "•";
+      color: #38bdf8;
+      font-weight: bold;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .terms-list strong {
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       WRONG PASSWORD VIDEO POPUP / OVERLAY
+       ========================================================================== */
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      flex-direction: column;
+      padding: 15px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      max-width: 500px;
+      width: 100%;
+      background: #0b111e;
+      border: 2px solid #ef4444;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 35px rgba(239, 68, 68, 0.5);
+      text-align: center;
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .video-title {
+      padding: 10px;
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    .close-video-btn {
+      margin-top: 15px;
+      padding: 10px 24px;
+      background: #ef4444;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .close-video-btn:hover {
+      background: #dc2626;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Galat Password par aane wala Video Overlay -->
+  <div id="videoOverlay" class="video-overlay">
+    <div class="video-wrapper">
+      <div class="video-title">⚠️ Galat Password / Access Denied!</div>
+      <!-- Video Player -->
+      <video id="wrongPasswordVideo" playsinline controls>
+        <!-- Niche src me apna koi bhi video (.mp4) link daal sakte ho -->
+        <source src="https://res.cloudinary.com/defb0pgcs/video/upload/v1789992595/vidssave.com_Cat_Laughing_Meme_template_memes_1080P_utgdwn.mp4" type="video/mp4">
+        Aapka browser video tag support nahi karta.
+      </video>
+    </div>
+    <button class="close-video-btn" onclick="closeWrongPasswordVideo()">✕ Close & Dobara Try Karein</button>
+  </div>
+
+  <div class="auth-card">
+    <div class="auth-header">
+      <div class="logo-badge">KIPS • BCA PORTAL</div>
+      <h2>Study Hub Access</h2>
+      <p>Semester notes aur resources ke liye sign in karein</p>
+    </div>
+
+    <!-- Switcher -->
+    <div class="tabs">
+      <button class="tab-btn active" id="loginTabBtn" onclick="switchMode('login')">Login</button>
+      <button class="tab-btn" id="signupTabBtn" onclick="switchMode('signup')">New Account</button>
+    </div>
+
+    <form id="authForm" onsubmit="handleFormSubmit(event)">
+      <div class="form-group" id="usernameGroup" style="display: none;">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Apna username choose karein" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="example@gmail.com" required />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" required />
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">Sign In</button>
+      <div id="statusBox" class="status-msg"></div>
+    </form>
+
+    <!-- Terms: Sirf New Account par dikhengi -->
+    <div class="terms-box" id="termsBox">
+      <div class="terms-title">
+        <span>📜</span> Niyam & Shartein (Access Guidelines)
+      </div>
+      <ul class="terms-list">
+        <li><strong>Manual Approval:</strong> Naye registration ke baad admin verification me <strong>24 ghante</strong> ka samay lagega.</li>
+        <li><strong>Valid Email:</strong> Kripya genuine email ID dalein taaki future me account recovery ho sake.</li>
+        <li><strong>Student Access:</strong> Saare notes sirf personal study aur semester preparation ke liye hain.</li>
+        <li><strong>Admin Rights:</strong> Kisi bhi suspicious activity par access revoke karne ka adhikar admin ke paas hai.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://ozqoncrmxselxjpfbrov.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_9COp0M-Qbznr4Ew680mYrA_xmuaWIc9';
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    let currentMode = 'login';
+
+    // Tab Switcher (Terms ko Login par hide aur Signup par show karta hai)
+    function switchMode(mode) {
+      currentMode = mode;
+      const loginTab = document.getElementById('loginTabBtn');
+      const signupTab = document.getElementById('signupTabBtn');
+      const usernameGroup = document.getElementById('usernameGroup');
+      const submitBtn = document.getElementById('submitBtn');
+      const statusBox = document.getElementById('statusBox');
+      const termsBox = document.getElementById('termsBox');
+
+      statusBox.className = 'status-msg';
+      statusBox.innerText = '';
+      statusBox.style.display = 'none';
+
+      if (mode === 'signup') {
+        loginTab.classList.remove('active');
+        signupTab.classList.add('active');
+        usernameGroup.style.display = 'block';
+        termsBox.style.display = 'block'; // Signup par terms show hongi
+        document.getElementById('username').required = true;
+        submitBtn.innerText = 'Request Approval';
+      } else {
+        signupTab.classList.remove('active');
+        loginTab.classList.add('active');
+        usernameGroup.style.display = 'none';
+        termsBox.style.display = 'none'; // Login par terms hide rahengi
+        document.getElementById('username').required = false;
+        submitBtn.innerText = 'Sign In';
+      }
+    }
+
+    // Video play karne ka function (Sound ke sath)
+    function triggerWrongPasswordVideo() {
+      const overlay = document.getElementById('videoOverlay');
+      const video = document.getElementById('wrongPasswordVideo');
+
+      overlay.style.display = 'flex';
+      video.currentTime = 0;
+      video.muted = false; // Sound chalu rahega
+      video.volume = 1.0;
+      video.play().catch(e => {
+        console.log("Autoplay error: ", e);
+      });
+    }
+
+    // Video popup band karne ka function
+    function closeWrongPasswordVideo() {
+      const overlay = document.getElementById('videoOverlay');
+      const video = document.getElementById('wrongPasswordVideo');
+      video.pause();
+      overlay.style.display = 'none';
+    }
+
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const statusBox = document.getElementById('statusBox');
+
+      statusBox.className = 'status-msg';
+      statusBox.innerText = 'Processing request...';
+      statusBox.style.display = 'block';
+
+      if (currentMode === 'signup') {
+        const username = document.getElementById('username').value.trim();
+
+        const { data, error } = await supabaseClient.auth.signUp({
+          email: email,
+          password: password,
+          options: {
+            data: { username: username }
+          }
+        });
+
+        if (error) {
+          statusBox.className = 'status-msg error';
+          statusBox.innerText = error.message;
+          return;
+        }
+
+        await supabaseClient.auth.signOut();
+
+        statusBox.className = 'status-msg pending';
+        statusBox.innerText = 'Request submit ho gayi hai! Admin verification me 24 ghante tak ka samay lagega. Approve hone ke baad hi login hoga.';
+      } else {
+        // Login Attempt
+        const { data: authData, error: authError } = await supabaseClient.auth.signInWithPassword({
+          email: email,
+          password: password
+        });
+
+        // Agar password ya email galat ho to Video Play hogi!
+        if (authError) {
+          statusBox.className = 'status-msg error';
+          statusBox.innerText = 'Galat email ya password!';
+          triggerWrongPasswordVideo(); // Yahan video chalu hogi
+          return;
+        }
+
+        // Profile me approval check
+        const { data: profile, error: profileError } = await supabaseClient
+          .from('profiles')
+          .select('is_approved, username')
+          .eq('id', authData.user.id)
+          .single();
+
+        if (profileError || !profile || !profile.is_approved) {
+          await supabaseClient.auth.signOut();
+          statusBox.className = 'status-msg pending';
+          statusBox.innerText = 'Aapka account pending hai. Kripya admin approval ka intezar karein (24 ghante).';
+          return;
+        }
+
+        statusBox.className = 'status-msg success';
+        statusBox.innerText = `Login ho gaya! Welcome ${profile.username}. Redirecting...`;
+
+        setTimeout(() => {
+          window.location.href = 'bca.html';
+        }, 1200);
+      }
+    }
+  </script>
+</body>
+</html>
