@@ -298,7 +298,10 @@ nav, .navbar {
     z-index: 10;
 }
 
-.avatar-wrapper img {
+/* Image aur Video dono ke liye circular glowing styles */
+.avatar-wrapper img,
+.avatar-wrapper video,
+.avatar-video {
     width: 130px;
     height: 130px;
     border-radius: 50%;
@@ -306,9 +309,12 @@ nav, .navbar {
     border: 4px solid rgba(255, 255, 255, 0.35);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.4);
     transition: transform 0.3s ease;
+    display: block;
 }
 
-.avatar-wrapper img:hover {
+.avatar-wrapper img:hover,
+.avatar-wrapper video:hover,
+.avatar-video:hover {
     transform: scale(1.04);
 }
 
@@ -453,7 +459,6 @@ nav, .navbar {
     gap: 16px;
 }
 
-/* Card Wrapper - Always Clean Single Row */
 .social-card,
 .card:has(.social-left) {
     background: var(--glass-bg) !important;
@@ -465,7 +470,7 @@ nav, .navbar {
     padding: 16px 22px !important;
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: nowrap !important; /* Button ko neeche wrap hone se rokega */
+    flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: space-between !important;
     gap: 14px !important;
@@ -477,7 +482,6 @@ nav, .navbar {
     transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease !important;
 }
 
-/* Shimmer Light Sweep on Hover */
 .social-card::after,
 .card:has(.social-left)::after {
     content: '';
@@ -503,13 +507,12 @@ nav, .navbar {
     background: var(--glass-bg-hover) !important;
 }
 
-/* Left Content: Icon + Details */
 .social-left {
     display: flex !important;
     align-items: center !important;
     gap: 16px !important;
     flex: 1 1 auto !important;
-    min-width: 0 !important; /* Text overflow safe */
+    min-width: 0 !important;
 }
 
 .social-icon {
@@ -556,11 +559,10 @@ nav, .navbar {
     text-overflow: ellipsis;
 }
 
-/* Social Buttons - Symmetrical Pill Shape */
 .social-btn,
 .social-card .btn,
 .social-card a[class*="btn-"] {
-    flex: 0 0 auto !important; /* Stretch nahi hoga */
+    flex: 0 0 auto !important;
     width: auto !important;
     min-width: 108px !important;
     padding: 9px 20px !important;
@@ -581,8 +583,6 @@ nav, .navbar {
     transform: scale(1.05) !important;
     filter: brightness(1.12);
 }
-
-/* Individual Platform Styling */
 
 /* 1. YouTube */
 .social-card:has(.fa-youtube):hover,
@@ -832,7 +832,6 @@ footer {
    11. RESPONSIVE MOBILE VIEW (768px & Down)
    ========================================================== */
 @media (max-width: 768px) {
-    /* Mobile Rengoku Wallpaper Clean Tint */
     body::before {
         background: 
             linear-gradient(135deg, rgba(8, 14, 26, 0.45) 0%, rgba(15, 23, 42, 0.55) 100%),
@@ -917,7 +916,10 @@ footer {
         z-index: 10;
     }
 
-    .avatar-wrapper img {
+    /* Mobile view me video aur image dono ke liye size adjust */
+    .avatar-wrapper img,
+    .avatar-wrapper video,
+    .avatar-video {
         width: 110px;
         height: 110px;
     }
@@ -937,7 +939,6 @@ footer {
 
     .stat-box h3 { font-size: 18px; }
 
-    /* Normal Page Buttons */
     .btn-group { gap: 10px; }
     .btn-group .btn {
         padding: 10px 18px;
@@ -951,7 +952,6 @@ footer {
         transform: none !important;
     }
 
-    /* Social Card Mobile Protection */
     .social-card,
     .card:has(.social-left) {
         padding: 14px 16px !important;
@@ -992,6 +992,6 @@ footer {
     .stat-box span { font-size: 9.5px; }
 
     .social-info p {
-        max-width: 140px; /* Small screen par clean ellipsis */
+        max-width: 140px;
     }
 }
