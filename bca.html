@@ -1,172 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akash Rathod | BCA Notes</title>
-    <!-- CSS File Link -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome Icons Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Supabase JS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BCA Study Hub — Akash Rathod</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- Supabase Auth Guard Script -->
-    <script>
-        const SUPABASE_URL = 'https://ozqoncrmxselxjpfbrov.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_9COp0M-Qbznr4Ew680mYrA_xmuaWIc9';
-        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  <!-- Auth Guard Logic -->
+  <script>
+    const SUPABASE_URL = 'https://ozqoncrmxselxjpfbrov.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_9COp0M-Qbznr4Ew680mYrA_xmuaWIc9';
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        async function checkAuthAndProtect() {
-            // 1. Check karein user login hai ya nahi
-            const { data: { session } } = await supabaseClient.auth.getSession();
-            
-            if (!session) {
-                window.location.href = 'login.html';
-                return;
-            }
+    async function checkAuthAndProtect() {
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      if (!session) {
+        window.location.href = 'login.html';
+        return;
+      }
 
-            // 2. Database me check karein user approved hai ya nahi
-            const { data: profile, error } = await supabaseClient
-                .from('profiles')
-                .select('is_approved, username')
-                .eq('id', session.user.id)
-                .single();
+      const { data: profile, error } = await supabaseClient
+        .from('profiles')
+        .select('is_approved, username')
+        .eq('id', session.user.id)
+        .single();
 
-            if (error || !profile || !profile.is_approved) {
-                await supabaseClient.auth.signOut();
-                alert('Aapka account abhi approve nahi hua hai. Admin approval ka wait karein.');
-                window.location.href = 'login.html';
-                return;
-            }
+      if (error || !profile || !profile.is_approved) {
+        await supabaseClient.auth.signOut();
+        alert('Aapka account abhi approve nahi hua hai. Admin approval ka wait karein.');
+        window.location.href = 'login.html';
+        return;
+      }
 
-            // Page load hone par username display update karein
-            window.addEventListener('DOMContentLoaded', () => {
-                const userDisplay = document.getElementById('userDisplay');
-                if (userDisplay) {
-                    userDisplay.innerText = profile.username;
-                }
-            });
+      window.addEventListener('DOMContentLoaded', () => {
+        const userDisplay = document.getElementById('userDisplay');
+        if (userDisplay) {
+          userDisplay.innerText = profile.username;
         }
+      });
+    }
 
-        // Page khulte hi run hoga
-        checkAuthAndProtect();
+    checkAuthAndProtect();
 
-        // Logout function
-        async function handleLogout() {
-            await supabaseClient.auth.signOut();
-            window.location.href = 'login.html';
-        }
-    </script>
+    async function handleLogout() {
+      await supabaseClient.auth.signOut();
+      window.location.href = 'login.html';
+    }
+  </script>
 </head>
 <body>
 
-    <!-- ================= NAVBAR ================= -->
-    <nav class="navbar">
-        <a href="index.html" class="logo">Akash<span>.</span></a>
+  <!-- Minimal Nav -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">← Portfolio</a>
+    <div class="user-pill">
+      <span class="user-badge" id="userDisplay">Verifying...</span>
+      <button class="logout-btn" onclick="handleLogout()">Logout</button>
+    </div>
+  </nav>
 
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="bca.html" class="active">BCA Notes</a></li>
-            <li><a href="socials.html">Socials</a></li>
-            <li><a href="modpack.html">Mod Pack</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="future.html">Future Plans</a></li>
-            
-            <!-- Logged-in User Badge & Logout Button -->
-            <li style="display: flex; align-items: center; gap: 8px; margin-left: 10px;">
-                <span style="font-size: 13px; color: #38bdf8; background: rgba(56, 189, 248, 0.12); padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.25);">
-                    <i class="fas fa-user-circle"></i> <strong id="userDisplay">Loading...</strong>
-                </span>
-                <button onclick="handleLogout()" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #f87171; padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.2s ease;">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </button>
-            </li>
-        </ul>
-    </nav>
-
-    <!-- ================= MAIN NOTES SECTION ================= -->
-    <div class="container">
-        
-        <h1 class="page-title">BCA Study Hub</h1>
-        <p class="page-subtitle">Semester study notes, programming cheat sheets, and PDF resources.</p>
-
-        <!-- Subjects Grid -->
-        <div class="grid">
-            
-            <!-- Card 1: C Programming -->
-            <div class="card">
-                <span class="tag">Semester 1</span>
-                <h2 style="font-size: 20px; margin-bottom: 8px; color: #fff;">
-                    <i class="fas fa-code" style="color: var(--accent-sky); margin-right: 6px;"></i> C Language & Basics
-                </h2>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
-                    Variables, loops, pointers, memory allocation aur basic programs ke handwritten notes.
-                </p>
-                <div class="btn-group" style="justify-content: flex-start;">
-                    <a href="https://drive.google.com/file/d/1BH3SI3Xab1vJuqnS-xyVXEanTaHx4DF2/view?usp=drivesdk" class="btn btn-primary" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
-                </div>
-            </div>
-
-            <!-- Card 2: Web Dev -->
-            <div class="card">
-                <span class="tag" style="color: var(--accent-teal); border-color: rgba(45, 212, 191, 0.4); background: rgba(45, 212, 191, 0.16);">Web Dev</span>
-                <h2 style="font-size: 20px; margin-bottom: 8px; color: #fff;">
-                    <i class="fab fa-html5" style="color: var(--accent-teal); margin-right: 6px;"></i> HTML, CSS & JS Cheatsheet
-                </h2>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
-                    Flexbox, Grid, DOM manipulation aur responsive design ke important quick revision notes.
-                </p>
-                <div class="btn-group" style="justify-content: flex-start;">
-                    <a href="https://drive.google.com/drive/u/0/folders/1obUVSQAlbbP6VGYbO2UWqlUghPO55a8I" class="btn btn-primary" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
-                </div>
-            </div>
-
-            <!-- Card 3: Computer Fundamentals -->
-            <div class="card">
-                <span class="tag">Semester 1</span>
-                <h2 style="font-size: 20px; margin-bottom: 8px; color: #fff;">
-                    <i class="fas fa-microchip" style="color: var(--accent-purple); margin-right: 6px;"></i> Computer Fundamentals
-                </h2>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
-                    Binary system, CPU architecture, memory types aur I/O devices ki complete theory guide.
-                </p>
-                <div class="btn-group" style="justify-content: flex-start;">
-                    <a href="https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/YouTube/The%20Ultimate%20C%20Handbook.pdf" class="btn btn-primary" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
-                </div>
-            </div>
-
-            <!-- Card 4: Operating System & Linux -->
-            <div class="card">
-                <span class="tag" style="color: var(--accent-red); border-color: rgba(251, 113, 133, 0.4); background: rgba(251, 113, 133, 0.16);">OS / Linux</span>
-                <h2 style="font-size: 20px; margin-bottom: 8px; color: #fff;">
-                    <i class="fab fa-linux" style="color: var(--accent-red); margin-right: 6px;"></i> OS & Linux Commands
-                </h2>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
-                    Processes, deadlocks, file systems aur essential Linux terminal commands ki list.
-                </p>
-                <div class="btn-group" style="justify-content: flex-start;">
-                    <a href="https://drive.google.com/drive/folders/1SEfL7Yw3nJfVLToz9MAuAm2_NoCCk1qD" class="btn btn-primary" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
-                </div>
-            </div>
-
-        </div>
+  <main class="container">
+    <div class="header-box">
+      <h1>BCA Study Hub</h1>
+      <p>Semester notes, programming cheat sheets aur verified reference materials.</p>
     </div>
 
-    <!-- ================= FOOTER ================= -->
-    <footer>
-        <p>© 2026 Akash Rathod •</p>
-    </footer>
+    <div class="resource-list">
+      <!-- C Language -->
+      <div class="resource-card">
+        <div class="resource-info">
+          <h3>C Language & Basics <span class="sem-tag">Semester 1</span></h3>
+          <p>Variables, control flow, functions, pointers aur memory allocation ke handwritten notes.</p>
+        </div>
+        <a href="https://drive.google.com/file/d/1BH3SI3Xab1vJuqnS-xyVXEanTaHx4DF2/view?usp=drivesdk" target="_blank" class="download-btn">
+          <i class="fas fa-arrow-down"></i> PDF
+        </a>
+      </div>
 
-    <!-- JavaScript File Link -->
-    <script src="script.js"></script>
+      <!-- Web Dev -->
+      <div class="resource-card">
+        <div class="resource-info">
+          <h3>HTML, CSS & JS Quick Cheatsheet <span class="sem-tag">Web Dev</span></h3>
+          <p>Flexbox, Grid layout aur DOM manipulation ke practical revision points.</p>
+        </div>
+        <a href="https://drive.google.com/drive/u/0/folders/1obUVSQAlbbP6VGYbO2UWqlUghPO55a8I" target="_blank" class="download-btn">
+          <i class="fas fa-arrow-down"></i> PDF
+        </a>
+      </div>
+
+      <!-- Computer Fundamentals -->
+      <div class="resource-card">
+        <div class="resource-info">
+          <h3>Computer Architecture & Fundamentals <span class="sem-tag">Semester 1</span></h3>
+          <p>Number systems, Boolean logic, CPU components aur I/O devices ki structured theory.</p>
+        </div>
+        <a href="https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/YouTube/The%20Ultimate%20C%20Handbook.pdf" target="_blank" class="download-btn">
+          <i class="fas fa-arrow-down"></i> PDF
+        </a>
+      </div>
+
+      <!-- OS & Linux -->
+      <div class="resource-card">
+        <div class="resource-info">
+          <h3>OS Concepts & Linux Terminal Commands <span class="sem-tag">OS / Linux</span></h3>
+          <p>Process management, threads, permissions aur essential command line guide.</p>
+        </div>
+        <a href="https://drive.google.com/drive/folders/1SEfL7Yw3nJfVLToz9MAuAm2_NoCCk1qD" target="_blank" class="download-btn">
+          <i class="fas fa-arrow-down"></i> PDF
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Akash Rathod • Student Resource Hub</p>
+  </footer>
+
 </body>
 </html>

@@ -1,107 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akash Rathod | Home</title>
-    <!-- CSS File Link -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome Icons Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akash Rathod — Developer & BCA Student</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- ================= NAVBAR ================= -->
-    <nav class="navbar">
-        <!-- Logo Text -->
-        <a href="index.html" class="logo">Akash<span>.</span></a>
-
-        <!-- Mobile Hamburger Menu Button -->
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-
-        <!-- Links to other pages -->
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="socials.html">Socials</a></li>
-            <li><a href="modpack.html">Mod Pack</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="future.html">Future Plans</a></li>
-            <li><a href="bca.html">Notes for clg</a></li>
-        </ul>
-    </nav>
-
-    <!-- ================= MAIN PROFILE CARD ================= -->
-    <div class="container">
-        <div class="profile-card">
-            
-            <!-- Banner Background (Looping Video) -->
-            <div class="profile-banner">
-                <video class="banner-video" autoplay loop muted playsinline>
-                    <source src="https://res.cloudinary.com/defb0pgcs/video/upload/v1789975893/vidssave.com_Tengen_Vs_Gyutaro_Full_Fight____Demon_Slayer_4K_720P_h7ywk2.mp4" type="video/mp4">
-                </video>
-                <div class="banner-overlay"></div>
-            </div>
-
-            <div class="profile-body">
-                <!-- Profile Photo / Video -->
-                <div class="avatar-wrapper">
-                    <video class="avatar-video" autoplay loop muted playsinline>
-                        <!-- Yahan apni profile video ka URL ya local path daalna -->
-                        <source src="https://res.cloudinary.com/defb0pgcs/video/upload/v1790257100/Big_3_Edit_But_It_Took_Me_10_Hours_To_Make_FREE_pf_tj604p.mp4" type="video/mp4">
-                    </video>
-                </div>
-
-                <!-- Name & Verified Icon -->
-                <h1 class="user-name">
-                    Akash Rathod 
-                    <i class="fas fa-check-circle badge" title="Verified"></i>
-                </h1>
-                
-                <!-- Tagline/Handle -->
-                <p class="user-handle">mincraft • Khandwa, MP</p>
-
-                <!-- Profile Bio -->
-                <p class="user-bio">
-                    BCA Student at KIPS Institute. Passionate about Web Development, C/C++, Minecraft PvP,! Welcome to my personal space.
-                </p>
-
-                <!-- Stats Section (Social Media Vibe) -->
-                <div class="stats-container">
-                    <div class="stat-box">
-                        <h3>BCA</h3>
-                        <span>Degree</span>
-                    </div>
-                    <div class="stat-box">
-                        <h3>3+</h3>
-                        <span>Projects</span>
-                    </div>
-                    <div class="stat-box">
-                        <h3>Gaming</h3>
-                        <span>Zenvroplayz YT</span>
-                    </div>
-                </div>
-
-                <!-- Quick Action Buttons -->
-                <div class="btn-group">
-                    <a href="projects.html" class="btn btn-primary"><i class="fas fa-code"></i> View Projects</a>
-                    <a href="modpack.html" class="btn btn-danger"><i class="fas fa-gamepad"></i> Get Modpack</a>
-                    <a href="socials.html" class="btn btn-secondary"><i class="fas fa-share-alt"></i> Connect</a>
-                </div>
-            </div>
-        </div>
+  <!-- Navbar -->
+  <nav class="nav">
+    <a href="#" class="nav-logo">Akash Rathod<span>.</span></a>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#connect">Connect</a>
+      <a href="bca.html" class="hub-btn"><i class="fas fa-book-open"></i> BCA Notes</a>
     </div>
+  </nav>
 
-    <!-- ================= FOOTER ================= -->
-    <footer>
-        <p>© 2026 Akash Rathod • </p>
-    </footer>
+  <main class="container">
+    
+    <!-- Hero / Intro -->
+    <header class="hero">
+      <div class="badge">BCA Student & Developer</div>
+      <h1>Building lightweight systems, clean web tools & game servers.</h1>
+      <p>
+        Mai KIPS Institute, Khandwa se BCA kar raha hu. Mera focus C, C++, frontend web development aur Linux systems par hai. Saath hi high-FPS gaming optimization aur video edits me active interest hai.
+      </p>
+    </header>
 
-    <!-- JavaScript File Link -->
-    <script src="script.js"></script>
+    <!-- Skills -->
+    <section>
+      <h2 class="section-title"><span>01.</span> Tech & Tools</h2>
+      <div class="skills-wrap">
+        <span class="skill-pill">C / C++</span>
+        <span class="skill-pill">HTML5 & CSS3</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">Linux & Kali</span>
+        <span class="skill-pill">Git & GitHub</span>
+        <span class="skill-pill">Supabase</span>
+        <span class="skill-pill">VirtualBox</span>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2 class="section-title"><span>02.</span> Projects & Work</h2>
+      <div class="grid">
+        <a href="bca.html" class="card">
+          <div class="card-content">
+            <span class="card-tag">WEB APP • SUPABASE</span>
+            <h3>BCA Study Portal</h3>
+            <p>Semester notes, C handbooks aur OS resources ka secure student hub jisme approval-based auth laga hai.</p>
+          </div>
+          <span style="color: var(--muted);">↗</span>
+        </a>
+
+        <a href="https://www.curseforge.com/minecraft" target="_blank" class="card">
+          <div class="card-content">
+            <span class="card-tag">GAMING • OPTIMIZATION</span>
+            <h3>Zenvro FPS & PvP Modpack</h3>
+            <p>Low-end aur mid-range hardware ke liye high-FPS zero-latency custom pack (Sodium/Lithium based).</p>
+          </div>
+          <span style="color: var(--muted);">↗</span>
+        </a>
+
+        <a href="https://www.youtube.com/@zenvroplayz" target="_blank" class="card">
+          <div class="card-content">
+            <span class="card-tag">CONTENT CREATION</span>
+            <h3>Zenvro Gaming & Video Edits</h3>
+            <p>Minecraft Bedwars, custom challenges aur high-sync anime AMV edits (CapCut / Premiere workflow).</p>
+          </div>
+          <span style="color: var(--muted);">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Career Roadmap -->
+    <section id="roadmap">
+      <h2 class="section-title"><span>03.</span> Future Roadmap</h2>
+      <div class="roadmap">
+        <div class="roadmap-item">
+          <span class="roadmap-year">2024 — 2027</span>
+          <div class="roadmap-detail">
+            <h4>BCA Degree (KIPS Institute)</h4>
+            <p>Core fundamentals, Data Structures, OOPs aur modern web architecture master karna.</p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <span class="roadmap-year">2027 — 2029</span>
+          <div class="roadmap-detail">
+            <h4>MCA in Indore</h4>
+            <p>Advanced software engineering, distributed systems aur backend design me specialization.</p>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <span class="roadmap-year">2029+</span>
+          <div class="roadmap-detail">
+            <h4>Master's in Germany</h4>
+            <p>Higher computer science education aur global software development engineering role.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Socials / Connect -->
+    <section id="connect">
+      <h2 class="section-title"><span>04.</span> Connect</h2>
+      <div class="social-grid">
+        <a href="https://github.com/ar0140285-sudo" target="_blank" class="social-btn">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="https://www.youtube.com/@zenvroplayz" target="_blank" class="social-btn">
+          <i class="fab fa-youtube"></i> YouTube
+        </a>
+        <a href="https://www.instagram.com/painxvibe_?utm_source=qr&stkn=MWhsMjBsdjE0dWszNQ==" target="_blank" class="social-btn">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="https://t.me/ZenvroPlayz" target="_blank" class="social-btn">
+          <i class="fab fa-telegram"></i> Telegram
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Akash Rathod. Built with simplicity & clean code.</p>
+  </footer>
+
 </body>
 </html>
