@@ -1,23 +1,25 @@
 /* ==========================================================
-   1. GOOGLE FONTS & AKATSUKI THEME COLORS
-   Orbitron = Gaming Headings ke liye
-   Plus Jakarta Sans = Clean Body Text ke liye
-   JetBrains Mono = Tech/Tags ke liye
+   1. GOOGLE FONTS & ULTRA-TRANSPARENT AKATSUKI VARIABLES
+   Sirf yaha ke rgba() numbers badal kar tum transparency 
+   kam ya zyada kar sakte ho!
    ========================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
 
 :root {
-  --bg-dark: #070709;                        /* Deep pitch black background */
-  --card-bg: rgba(14, 14, 18, 0.80);         /* Glassmorphism dark card */
-  --card-hover: rgba(24, 18, 28, 0.92);      /* Card hover color */
-  --crimson: #e11d48;                        /* Main Akatsuki Red */
-  --crimson-bright: #ff1e42;                 /* Neon Red Highlight */
-  --crimson-glow: rgba(225, 29, 72, 0.35);   /* Red Glow Shadow */
-  --crimson-soft: rgba(225, 29, 72, 0.12);   /* Light Red Tint */
-  --border: rgba(255, 255, 255, 0.08);       /* Subtle Grey Border */
-  --border-crimson: rgba(225, 29, 72, 0.45); /* Red Border */
-  --text: #f8fafc;                           /* White Text */
-  --muted: #94a3b8;                          /* Grey Subtext */
+  --bg-dark: #050507;
+  /* 0.22 ka matlab hai 78% Transparent Glass! */
+  --card-bg: rgba(12, 12, 18, 0.22);         
+  --card-hover: rgba(225, 29, 72, 0.12);     /* Hover karne par halka red glass */
+  --glass-blur: blur(16px);                  /* Piche ki image ko softly blur karega */
+  --crimson: #e11d48;                        
+  --crimson-bright: #ff1e42;                 
+  --crimson-glow: rgba(225, 29, 72, 0.45);   
+  --crimson-soft: rgba(225, 29, 72, 0.15);   
+  /* Glass ki chamakti hui patli border */
+  --border: rgba(255, 255, 255, 0.15);       
+  --border-crimson: rgba(225, 29, 72, 0.55); 
+  --text: #ffffff;                           
+  --muted: #cbd5e1;                          /* Subtext ko thoda bright kiya taaki transparent par saaf dikhe */
   --font-display: 'Orbitron', sans-serif;
   --font-sans: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -43,7 +45,7 @@ body {
 }
 
 /* ==========================================================
-   2. FULLSCREEN AKATSUKI BACKGROUND & MEMBER HUD
+   2. FULLSCREEN AKATSUKI BACKGROUND (EXTRA CLEAR & BRIGHT)
    ========================================================== */
 .bg-stage {
   position: fixed;
@@ -56,7 +58,6 @@ body {
   background: #050507;
 }
 
-/* Har member ki image slide jo fade aur zoom hoti hai */
 .bg-slide {
   position: absolute;
   inset: 0;
@@ -66,41 +67,42 @@ body {
   opacity: 0;
   transform: scale(1.08);
   transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 1.4s ease-out;
-  filter: contrast(1.1) saturate(1.15);
+  filter: contrast(1.12) saturate(1.2);
 }
 
-/* Jis slide par 'active' class hogi wahi dikhegi */
+/* Opacity 0.42 se badha kar 0.75 kar di taaki Akatsuki member saaf dikhe */
 .bg-slide.active {
-  opacity: 0.42;
+  opacity: 0.75;
   transform: scale(1);
 }
 
-/* Dark Vignette taaki background ke upar text bilkul clear padhne me aaye */
+/* Overlay ko kaafi halka (transparent) kar diya gaya hai */
 .bg-overlay {
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(circle at 80% 20%, rgba(225, 29, 72, 0.18), transparent 45%),
-    linear-gradient(to right, rgba(7, 7, 9, 0.95) 0%, rgba(7, 7, 9, 0.72) 55%, rgba(7, 7, 9, 0.92) 100%),
-    linear-gradient(to bottom, rgba(7, 7, 9, 0.35) 0%, rgba(7, 7, 9, 0.95) 100%);
+    radial-gradient(circle at 80% 20%, rgba(225, 29, 72, 0.22), transparent 50%),
+    linear-gradient(to right, rgba(5, 5, 7, 0.70) 0%, rgba(5, 5, 7, 0.35) 55%, rgba(5, 5, 7, 0.65) 100%),
+    linear-gradient(to bottom, rgba(5, 5, 7, 0.20) 0%, rgba(5, 5, 7, 0.80) 100%);
 }
 
-/* Bottom-Right Corner Box jo Akatsuki Member ka Naam aur Quote dikhata hai */
+/* Bottom-Right Corner Transparent Glass HUD */
 .akatsuki-hud {
   position: fixed;
   bottom: 28px;
   right: 32px;
   z-index: 20;
   max-width: 330px;
-  background: rgba(10, 10, 14, 0.88);
+  background: rgba(10, 10, 14, 0.30);
   border-left: 3px solid var(--crimson);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
   border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   padding: 14px 18px;
-  border-radius: 6px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 
 .hud-label {
@@ -117,6 +119,7 @@ body {
   letter-spacing: 0.04em;
   margin: 2px 0 4px;
   color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .akatsuki-hud p {
@@ -127,7 +130,7 @@ body {
 }
 
 /* ==========================================================
-   3. TOP NAVIGATION BAR
+   3. TRANSPARENT GLASS NAVIGATION BAR
    ========================================================== */
 .nav {
   position: fixed;
@@ -135,8 +138,9 @@ body {
   left: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(7, 7, 9, 0.85);
-  backdrop-filter: blur(14px);
+  background: rgba(8, 8, 12, 0.25); /* Ultra transparent navbar */
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   border-bottom: 1px solid var(--border);
 }
 
@@ -159,6 +163,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .cloud-icon {
@@ -178,19 +183,21 @@ body {
 }
 
 .nav-links a {
-  color: var(--muted);
+  color: var(--text);
+  opacity: 0.85;
   text-decoration: none;
   font-family: var(--font-mono);
   font-size: 0.82rem;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
 }
 
 .nav-links a:hover,
 .nav-links a.active {
+  opacity: 1;
   color: var(--crimson-bright);
 }
 
-/* Join Clan Special Button in Navbar */
 .nav-links a.cta-nav {
   background: var(--crimson-soft);
   border: 1px solid var(--border-crimson);
@@ -201,6 +208,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  backdrop-filter: blur(8px);
 }
 
 .nav-links a.cta-nav:hover,
@@ -209,7 +217,6 @@ body {
   box-shadow: 0 0 18px var(--crimson-glow);
 }
 
-/* Mobile Menu Button */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -246,22 +253,24 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--muted);
+  color: var(--text);
   text-decoration: none;
   font-family: var(--font-mono);
   font-size: 0.82rem;
   margin-bottom: 24px;
   width: fit-content;
-  padding: 6px 12px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.04);
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: var(--card-bg);
   border: 1px solid var(--border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   transition: all 0.2s;
 }
 
 .back-pill:hover {
-  color: #fff;
   border-color: var(--crimson);
+  background: var(--card-hover);
 }
 
 .akatsuki-badge {
@@ -270,13 +279,14 @@ body {
   gap: 8px;
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  color: var(--crimson-bright);
-  background: var(--crimson-soft);
+  color: #fff;
+  background: rgba(225, 29, 72, 0.22);
   border: 1px solid var(--border-crimson);
   padding: 6px 14px;
   border-radius: 999px;
   margin-bottom: 20px;
   width: fit-content;
+  backdrop-filter: blur(10px);
 }
 
 .pulse-dot {
@@ -301,18 +311,20 @@ body {
   letter-spacing: -0.02em;
   margin-bottom: 20px;
   text-transform: uppercase;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
 }
 
 .glitch-title span {
-  color: var(--crimson);
+  color: var(--crimson-bright);
   text-shadow: 0 0 25px var(--crimson-glow);
 }
 
 .hero-desc {
   max-width: 640px;
   font-size: 1.06rem;
-  color: #cbd5e1;
+  color: #f1f5f9;
   margin-bottom: 32px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 .hero-actions {
@@ -323,16 +335,18 @@ body {
 }
 
 .btn-primary {
-  background: var(--crimson);
+  background: rgba(225, 29, 72, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   color: #fff;
   text-decoration: none;
   padding: 14px 26px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 700;
   font-size: 0.95rem;
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  backdrop-filter: blur(10px);
   box-shadow: 0 8px 25px var(--crimson-glow);
   transition: all 0.25s ease;
 }
@@ -348,12 +362,14 @@ body {
   color: var(--text);
   text-decoration: none;
   padding: 14px 26px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
   font-size: 0.95rem;
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   transition: all 0.25s ease;
 }
 
@@ -373,8 +389,10 @@ body {
   border: 1px solid var(--border);
   border-left: 3px solid var(--crimson);
   padding: 14px 18px;
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 .stat-num {
@@ -392,7 +410,7 @@ body {
 }
 
 /* ==========================================================
-   5. EDITION SELECTOR (JAVA VS BEDROCK PORTAL CARDS)
+   5. EDITION SELECTOR (CRYSTAL GLASS PORTAL CARDS)
    ========================================================== */
 .edition-grid {
   display: grid;
@@ -403,29 +421,31 @@ body {
 .edition-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
+  border-top: 1px solid rgba(255, 255, 255, 0.28); /* Glass Top Shine */
   border-radius: 16px;
   padding: 36px 30px;
   text-decoration: none;
   color: var(--text);
-  backdrop-filter: blur(14px);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .edition-card:hover {
   transform: translateY(-6px);
+  background: var(--card-hover);
   border-color: var(--crimson);
-  box-shadow: 0 15px 40px rgba(225, 29, 72, 0.22);
+  box-shadow: 0 15px 40px rgba(225, 29, 72, 0.28);
 }
 
 .edition-badge {
   font-family: var(--font-mono);
   font-size: 0.74rem;
-  color: var(--crimson-bright);
+  color: #fff;
   background: var(--crimson-soft);
   border: 1px solid var(--border-crimson);
   padding: 4px 12px;
@@ -436,8 +456,9 @@ body {
 
 .edition-icon {
   font-size: 2.8rem;
-  color: var(--crimson);
+  color: var(--crimson-bright);
   margin-bottom: 18px;
+  filter: drop-shadow(0 0 12px var(--crimson-glow));
 }
 
 .edition-card h2 {
@@ -457,7 +478,7 @@ body {
 }
 
 /* ==========================================================
-   6. MODPACK CARDS & GRIDS
+   6. MODPACK GLASS CARDS & GRIDS
    ========================================================== */
 .section-header {
   margin-bottom: 40px;
@@ -470,6 +491,7 @@ body {
   letter-spacing: 0.08em;
   display: block;
   margin-bottom: 6px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .section-header h2 {
@@ -478,11 +500,13 @@ body {
   font-weight: 800;
   letter-spacing: 0.02em;
   margin-bottom: 8px;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
 }
 
 .section-header p {
   color: var(--muted);
   max-width: 620px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .cards-grid {
@@ -494,24 +518,28 @@ body {
 .game-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25); /* Top Glass Highlight */
+  border-radius: 14px;
   padding: 26px;
-  backdrop-filter: blur(12px);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: all 0.25s ease;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
 }
 
 .game-card:hover {
   transform: translateY(-5px);
+  background: var(--card-hover);
   border-color: var(--border-crimson);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 12px 35px rgba(225, 29, 72, 0.22);
 }
 
 .featured-card {
   border-color: var(--border-crimson);
-  box-shadow: inset 0 0 25px rgba(225, 29, 72, 0.08);
+  background: rgba(225, 29, 72, 0.10);
 }
 
 .card-top {
@@ -525,20 +553,22 @@ body {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   padding: 4px 10px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #cbd5e1;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
 }
 
 .tag-pill.crimson {
   background: var(--crimson-soft);
-  color: var(--crimson-bright);
+  color: #fff;
   border: 1px solid var(--border-crimson);
 }
 
 .card-icon {
   font-size: 1.3rem;
-  color: var(--crimson);
+  color: var(--crimson-bright);
+  filter: drop-shadow(0 0 8px var(--crimson-glow));
 }
 
 .game-card h3 {
@@ -560,7 +590,7 @@ body {
 
 .spec-list li {
   font-size: 0.84rem;
-  color: #e2e8f0;
+  color: #f1f5f9;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -580,8 +610,8 @@ body {
 
 .btn-card {
   flex: 1;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
   padding: 11px 16px;
   border-radius: 8px;
@@ -599,10 +629,11 @@ body {
 .btn-card:hover {
   background: var(--crimson);
   border-color: var(--crimson);
+  box-shadow: 0 0 15px var(--crimson-glow);
 }
 
 /* ==========================================================
-   7. MONTAGES, ARSENAL & TIMELINE
+   7. MONTAGES, ARSENAL & TIMELINE (TRANSPARENT GLASS)
    ========================================================== */
 .video-grid {
   display: grid;
@@ -613,15 +644,18 @@ body {
 .video-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   transition: all 0.25s ease;
 }
 
 .video-card:hover {
   transform: translateY(-4px);
+  background: var(--card-hover);
   border-color: var(--border-crimson);
 }
 
@@ -639,7 +673,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.30);
 }
 
 .play-btn {
@@ -648,7 +682,9 @@ body {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--crimson);
+  background: rgba(225, 29, 72, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
   color: #fff;
   display: flex;
   align-items: center;
@@ -662,7 +698,8 @@ body {
   bottom: 12px;
   right: 12px;
   z-index: 2;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
   padding: 3px 8px;
   border-radius: 4px;
   font-family: var(--font-mono);
@@ -690,20 +727,29 @@ body {
 .arsenal-item {
   background: var(--card-bg);
   border: 1px solid var(--border);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
   padding: 22px;
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
   gap: 16px;
   align-items: flex-start;
-  backdrop-filter: blur(10px);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: all 0.25s ease;
+}
+
+.arsenal-item:hover {
+  background: var(--card-hover);
+  border-color: var(--border-crimson);
 }
 
 .arsenal-item i {
   font-size: 1.5rem;
-  color: var(--crimson);
+  color: var(--crimson-bright);
   background: var(--crimson-soft);
+  border: 1px solid var(--border-crimson);
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .arsenal-item span {
@@ -722,32 +768,38 @@ body {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-left: 3px solid var(--crimson);
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 22px;
   display: flex;
   gap: 24px;
   align-items: flex-start;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
 }
 
 .time-badge {
   font-family: var(--font-display);
   font-size: 0.82rem;
-  color: var(--crimson-bright);
+  color: #fff;
   background: var(--crimson-soft);
+  border: 1px solid var(--border-crimson);
   padding: 6px 12px;
   border-radius: 6px;
   white-space: nowrap;
 }
 
 /* ==========================================================
-   8. JOIN CLAN & SOCIAL MEDIA PAGE STYLES
+   8. JOIN CLAN & SOCIAL MEDIA (GLASS BANNER)
    ========================================================== */
 .connect-banner {
   background: var(--card-bg);
   border: 1px solid var(--border-crimson);
-  border-radius: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 18px;
   padding: 42px;
-  backdrop-filter: blur(14px);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
 }
 
 .connect-text {
@@ -767,7 +819,7 @@ body {
 }
 
 .soc-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border);
   padding: 22px;
   border-radius: 12px;
@@ -776,12 +828,14 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
+  backdrop-filter: blur(10px);
   transition: all 0.25s ease;
 }
 
 .soc-card i {
   font-size: 2rem;
-  color: var(--crimson);
+  color: var(--crimson-bright);
+  filter: drop-shadow(0 0 8px var(--crimson-glow));
 }
 
 .soc-card strong {
@@ -828,7 +882,7 @@ body {
 
 .tag-copy-row code {
   font-family: var(--font-mono);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.35);
   border: 1px solid var(--border);
   padding: 10px 16px;
   border-radius: 8px;
@@ -836,13 +890,15 @@ body {
 }
 
 /* ==========================================================
-   9. FOOTER & MOBILE RESPONSIVE
+   9. TRANSPARENT FOOTER & MOBILE RESPONSIVE
    ========================================================== */
 .footer {
   border-top: 1px solid var(--border);
   padding: 32px 24px;
   text-align: center;
-  background: rgba(7, 7, 9, 0.92);
+  background: rgba(5, 5, 7, 0.35);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
 }
 
 .footer-sub {
@@ -861,7 +917,8 @@ body {
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(7, 7, 9, 0.98);
+    background: rgba(8, 8, 12, 0.88);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     flex-direction: column;
     padding: 20px;
