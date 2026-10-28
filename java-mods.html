@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JAVA EDITION MODS // ZenvroPlayz</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Background Stage (Sasori & Itachi Theme) -->
+  <div class="bg-stage" id="bgStage">
+    <div class="bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1920&auto=format&fit=crop');"></div>
+    <div class="bg-overlay"></div>
+    
+    <div class="akatsuki-hud">
+      <div class="member-indicator">
+        <span class="hud-label">JAVA ARCHITECT //</span>
+        <h3 id="activeMemberName">SASORI OF THE RED SAND</h3>
+        <p id="activeMemberQuote">"True art is eternal performance — zero lag, infinite frames."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="cloud-icon">☁</span> ZENVRO<span>PLAYZ</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="mods.html">Mods Vault</a>
+        <a href="java-mods.html" class="active">Java Mods</a>
+        <a href="bedrock-mods.html">Bedrock Mods</a>
+        <a href="clan.html" class="cta-nav"><i class="fas fa-dragon"></i> Join Clan</a>
+      </div>
+      <button class="hamburger" id="mobileMenu" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content: Java Mods List -->
+  <main class="main-wrapper">
+    <section class="scroll-section" data-index="0" data-name="SASORI" data-quote="True art is eternal performance — zero lag, infinite frames.">
+      
+      <!-- Back Button -->
+      <a href="mods.html" class="back-pill"><i class="fas fa-arrow-left"></i> Back to Mods Vault</a>
+
+      <div class="section-header">
+        <span class="sec-code">// MINECRAFT JAVA EDITION (PC)</span>
+        <h2>JAVA MODPACKS & PVP CLIENTS</h2>
+        <p>Fabric aur Forge ke liye tuned modpacks. Apni pasand ka pack download karo aur CurseForge, Modrinth ya Prism Launcher me import karo.</p>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Java Pack 1 -->
+        <div class="game-card featured-card">
+          <div class="card-top">
+            <span class="tag-pill crimson">FABRIC 1.20.4 / 1.21</span>
+            <i class="fas fa-fire card-icon"></i>
+          </div>
+          <h3>Zenvro Ultra-FPS Modpack v3.4</h3>
+          <p>Sodium, Lithium, EntityCulling, FerriteCore aur ImmediatelyFast ka deadly combo. Low-end PC par bhi 250+ stable FPS.</p>
+          <ul class="spec-list">
+            <li><i class="fas fa-check"></i> RAM Usage Reduced by 45%</li>
+            <li><i class="fas fa-check"></i> Built-in Zoom, Freelook & Keystrokes</li>
+            <li><i class="fas fa-check"></i> Zero Stutter Chunk Loading</li>
+          </ul>
+          <div class="card-footer">
+            <button onclick="downloadModpack('Zenvro Java Ultra-FPS v3.4 (.mrpack)')" class="btn-card">
+              <i class="fas fa-download"></i> Download (.mrpack)
+            </button>
+          </div>
+        </div>
+
+        <!-- Java Pack 2 -->
+        <div class="game-card">
+          <div class="card-top">
+            <span class="tag-pill">1.8.9 & 1.20 PVP TEXTURE</span>
+            <i class="fas fa-eye card-icon"></i>
+          </div>
+          <h3>Akatsuki Sharingan 16x Pack</h3>
+          <p>Bedwars aur Skywars ke liye custom 16x resource pack. Short swords, low fire, custom red glint aur dark transparent GUI.</p>
+          <ul class="spec-list">
+            <li><i class="fas fa-check"></i> Sharingan Enderpearls & Crosshair</li>
+            <li><i class="fas fa-check"></i> Clear Water & No-Lag Particles</li>
+            <li><i class="fas fa-check"></i> Boosts FPS on Integrated GPUs</li>
+          </ul>
+          <div class="card-footer">
+            <button onclick="downloadModpack('Akatsuki Sharingan 16x (.zip)')" class="btn-card">
+              <i class="fas fa-download"></i> Download (.zip)
+            </button>
+          </div>
+        </div>
+
+        <!-- Java Pack 3 -->
+        <div class="game-card">
+          <div class="card-top">
+            <span class="tag-pill">ANARCHY & SURVIVAL • 1.20+</span>
+            <i class="fas fa-skull card-icon"></i>
+          </div>
+          <h3>2b2t & Survival Utility Pack</h3>
+          <p>Long survival sessions aur anarchy servers ke liye HUD utilities, MiniMap, ArmorStatus, Shulker Tooltip aur Auto-Reconnect.</p>
+          <ul class="spec-list">
+            <li><i class="fas fa-check"></i> AppleSkin, Jade & ShulkerBoxTooltip</li>
+            <li><i class="fas fa-check"></i> Fullbright & Custom Fog Remover</li>
+            <li><i class="fas fa-check"></i> 100% Server Safe & Allowed</li>
+          </ul>
+          <div class="card-footer">
+            <button onclick="downloadModpack('Zenvro Survival Utility Pack (.zip)')" class="btn-card">
+              <i class="fas fa-download"></i> Download (.zip)
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>☁ <strong>ZENVROPLAYZ</strong> // Java Edition Vault</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

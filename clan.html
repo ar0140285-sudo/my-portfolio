@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JOIN THE CLAN // Socials & Community — ZenvroPlayz</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Background Stage (Konan & Pain Clan Theme) -->
+  <div class="bg-stage" id="bgStage">
+    <div class="bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop');"></div>
+    <div class="bg-overlay"></div>
+    
+    <div class="akatsuki-hud">
+      <div class="member-indicator">
+        <span class="hud-label">CLAN MESSENGER //</span>
+        <h3 id="activeMemberName">KONAN</h3>
+        <p id="activeMemberQuote">"This clan will be the bridge to a new era of competitive gaming."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="cloud-icon">☁</span> ZENVRO<span>PLAYZ</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="mods.html">Mods Vault</a>
+        <a href="java-mods.html">Java Mods</a>
+        <a href="bedrock-mods.html">Bedrock Mods</a>
+        <a href="clan.html" class="cta-nav active"><i class="fas fa-dragon"></i> Join Clan</a>
+      </div>
+      <button class="hamburger" id="mobileMenu" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content: Social Links & Clan Rules -->
+  <main class="main-wrapper">
+    <section class="scroll-section" data-index="0" data-name="KONAN" data-quote="This clan will be the bridge to a new era of competitive gaming.">
+      
+      <div class="connect-banner">
+        <div class="connect-text">
+          <span class="sec-code">// SUMMONING JUTSU • OFFICIAL NETWORK</span>
+          <h1 class="glitch-title" style="font-size: clamp(2rem, 4vw, 3rem);">JOIN THE <span>ZENVRO CLAN</span></h1>
+          <p>1v1 Bedwars Duels, Modpack requests, AMV editing collabs, ya squad me shamil hone ke liye niche diye gaye official social media hubs par connect karo.</p>
+        </div>
+
+        <!-- Big Social Media Cards Grid -->
+        <div class="social-cards">
+          
+          <!-- YouTube Channel -->
+          <a href="https://www.youtube.com/@zenvroplayz" target="_blank" class="soc-card">
+            <i class="fab fa-youtube"></i>
+            <div>
+              <strong>YouTube Channel</strong>
+              <span>@zenvroplayz • Subscribe for Montages & Mods</span>
+            </div>
+          </a>
+
+          <!-- Telegram Group/Channel -->
+          <a href="https://t.me/ZenvroPlayz" target="_blank" class="soc-card">
+            <i class="fab fa-telegram"></i>
+            <div>
+              <strong>Telegram Community</strong>
+              <span>@ZenvroPlayz • Direct Modpack Files & Chat</span>
+            </div>
+          </a>
+
+          <!-- Instagram Profile -->
+          <a href="https://www.instagram.com/painxvibe_?utm_source=qr&stkn=MWhsMjBsdjE0dWszNQ==" target="_blank" class="soc-card">
+            <i class="fab fa-instagram"></i>
+            <div>
+              <strong>Instagram Edits</strong>
+              <span>@painxvibe_ • Anime Reels & Behind The Scenes</span>
+            </div>
+          </a>
+
+          <!-- GitHub Profile -->
+          <a href="https://github.com/ar0140285-sudo" target="_blank" class="soc-card">
+            <i class="fab fa-github"></i>
+            <div>
+              <strong>GitHub Repositories</strong>
+              <span>ar0140285-sudo • Open Source Code & Configs</span>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Copy GamerTag / Server IP Box -->
+        <div class="clan-perks">
+          <h3><i class="fas fa-scroll"></i> CLAN CODE & IN-GAME TAGS</h3>
+          <p>Servers (PikaNetwork / CubeCraft) par saath khelne ke liye mera Gamertag copy karo:</p>
+          <div class="tag-copy-row">
+            <code>IGN: ZenvroPlayz</code>
+            <button onclick="copyToClipboard('ZenvroPlayz')" class="btn-card" style="max-width: 180px;">
+              <i class="fas fa-copy"></i> Copy Gamertag
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>☁ <strong>ZENVROPLAYZ</strong> // Akatsuki Clan Network</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

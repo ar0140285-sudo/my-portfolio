@@ -1,26 +1,29 @@
 /* ==========================================================
-   1. GOOGLE FONTS & THEME VARIABLES
+   1. GOOGLE FONTS & AKATSUKI THEME COLORS
+   Orbitron = Gaming Headings ke liye
+   Plus Jakarta Sans = Clean Body Text ke liye
+   JetBrains Mono = Tech/Tags ke liye
    ========================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
 
 :root {
-  --bg: #090a0f;
-  --card-bg: #11131a;
-  --card-hover: #161922;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.2);
-  --text: #f8fafc;
-  --muted: #94a3b8;
-  --accent: #38bdf8;
-  --accent-soft: rgba(56, 189, 248, 0.1);
-  --accent-border: rgba(56, 189, 248, 0.25);
+  --bg-dark: #070709;                        /* Deep pitch black background */
+  --card-bg: rgba(14, 14, 18, 0.80);         /* Glassmorphism dark card */
+  --card-hover: rgba(24, 18, 28, 0.92);      /* Card hover color */
+  --crimson: #e11d48;                        /* Main Akatsuki Red */
+  --crimson-bright: #ff1e42;                 /* Neon Red Highlight */
+  --crimson-glow: rgba(225, 29, 72, 0.35);   /* Red Glow Shadow */
+  --crimson-soft: rgba(225, 29, 72, 0.12);   /* Light Red Tint */
+  --border: rgba(255, 255, 255, 0.08);       /* Subtle Grey Border */
+  --border-crimson: rgba(225, 29, 72, 0.45); /* Red Border */
+  --text: #f8fafc;                           /* White Text */
+  --muted: #94a3b8;                          /* Grey Subtext */
+  --font-display: 'Orbitron', sans-serif;
   --font-sans: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* ==========================================================
-   2. BASE RESET & BODY
-   ========================================================== */
+/* Base Reset */
 * {
   margin: 0;
   padding: 0;
@@ -32,444 +35,857 @@ html {
 }
 
 body {
-  background-color: var(--bg);
+  background-color: var(--bg-dark);
   color: var(--text);
   font-family: var(--font-sans);
   line-height: 1.6;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  padding: 0 20px;
+  overflow-x: hidden;
 }
 
 /* ==========================================================
-   3. NAVIGATION BAR
+   2. FULLSCREEN AKATSUKI BACKGROUND & MEMBER HUD
+   ========================================================== */
+.bg-stage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  background: #050507;
+}
+
+/* Har member ki image slide jo fade aur zoom hoti hai */
+.bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 1.4s ease-out;
+  filter: contrast(1.1) saturate(1.15);
+}
+
+/* Jis slide par 'active' class hogi wahi dikhegi */
+.bg-slide.active {
+  opacity: 0.42;
+  transform: scale(1);
+}
+
+/* Dark Vignette taaki background ke upar text bilkul clear padhne me aaye */
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 80% 20%, rgba(225, 29, 72, 0.18), transparent 45%),
+    linear-gradient(to right, rgba(7, 7, 9, 0.95) 0%, rgba(7, 7, 9, 0.72) 55%, rgba(7, 7, 9, 0.92) 100%),
+    linear-gradient(to bottom, rgba(7, 7, 9, 0.35) 0%, rgba(7, 7, 9, 0.95) 100%);
+}
+
+/* Bottom-Right Corner Box jo Akatsuki Member ka Naam aur Quote dikhata hai */
+.akatsuki-hud {
+  position: fixed;
+  bottom: 28px;
+  right: 32px;
+  z-index: 20;
+  max-width: 330px;
+  background: rgba(10, 10, 14, 0.88);
+  border-left: 3px solid var(--crimson);
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 18px;
+  border-radius: 6px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.hud-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--crimson-bright);
+  letter-spacing: 0.08em;
+  display: block;
+}
+
+.akatsuki-hud h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  margin: 2px 0 4px;
+  color: #fff;
+}
+
+.akatsuki-hud p {
+  font-size: 0.76rem;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* ==========================================================
+   3. TOP NAVIGATION BAR
    ========================================================== */
 .nav {
-  max-width: 760px;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  z-index: 100;
+  background: rgba(7, 7, 9, 0.85);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 16px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 0;
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  background: rgba(9, 10, 15, 0.9);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  z-index: 100;
 }
 
 .nav-logo {
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.2rem;
   color: var(--text);
   text-decoration: none;
-  font-size: 1.05rem;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.nav-logo span {
-  color: var(--accent);
+.cloud-icon {
+  color: var(--crimson);
+  font-size: 1.4rem;
+  filter: drop-shadow(0 0 8px var(--crimson));
+}
+
+.nav-logo span:last-child {
+  color: var(--crimson);
 }
 
 .nav-links {
   display: flex;
-  gap: 20px;
   align-items: center;
+  gap: 22px;
 }
 
 .nav-links a {
   color: var(--muted);
   text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
   transition: color 0.2s ease;
 }
 
-.nav-links a:hover {
-  color: var(--text);
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--crimson-bright);
 }
 
-.nav-links a.hub-btn {
-  color: var(--text);
-  background: var(--accent-soft);
-  border: 1px solid var(--accent-border);
-  padding: 5px 12px;
+/* Join Clan Special Button in Navbar */
+.nav-links a.cta-nav {
+  background: var(--crimson-soft);
+  border: 1px solid var(--border-crimson);
+  color: #fff;
+  padding: 7px 14px;
   border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-.nav-links a.hub-btn:hover {
-  background: var(--accent);
-  color: #090a0f;
-}
-
-/* ==========================================================
-   4. LAYOUT & TYPOGRAPHY
-   ========================================================== */
-.container {
-  max-width: 760px;
-  width: 100%;
-  padding: 50px 0 80px;
-  flex: 1;
-}
-
-.badge {
+  font-weight: 600;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 12px;
+}
+
+.nav-links a.cta-nav:hover,
+.nav-links a.cta-nav.active {
+  background: var(--crimson);
+  box-shadow: 0 0 18px var(--crimson-glow);
+}
+
+/* Mobile Menu Button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+}
+
+/* ==========================================================
+   4. HERO & COMMON SECTION LAYOUT
+   ========================================================== */
+.main-wrapper {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.scroll-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 110px 0 80px;
+}
+
+.back-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  margin-bottom: 24px;
+  width: fit-content;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+
+.back-pill:hover {
+  color: #fff;
+  border-color: var(--crimson);
+}
+
+.akatsuki-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--crimson-bright);
+  background: var(--crimson-soft);
+  border: 1px solid var(--border-crimson);
+  padding: 6px 14px;
   border-radius: 999px;
-  background: var(--accent-soft);
-  border: 1px solid var(--accent-border);
-  color: var(--accent);
-  font-size: 0.8rem;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--crimson-bright);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--crimson-bright);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+}
+
+.glitch-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 5vw, 4.1rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.glitch-title span {
+  color: var(--crimson);
+  text-shadow: 0 0 25px var(--crimson-glow);
+}
+
+.hero-desc {
+  max-width: 640px;
+  font-size: 1.06rem;
+  color: #cbd5e1;
+  margin-bottom: 32px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.btn-primary {
+  background: var(--crimson);
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 26px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 25px var(--crimson-glow);
+  transition: all 0.25s ease;
+}
+
+.btn-primary:hover {
+  background: var(--crimson-bright);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+  padding: 14px 26px;
+  border-radius: 8px;
   font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--crimson);
+  background: var(--card-hover);
+}
+
+.live-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 210px));
+  gap: 16px;
+}
+
+.stat-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--crimson);
+  padding: 14px 18px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fff;
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.76rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+/* ==========================================================
+   5. EDITION SELECTOR (JAVA VS BEDROCK PORTAL CARDS)
+   ========================================================== */
+.edition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.edition-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 30px;
+  text-decoration: none;
+  color: var(--text);
+  backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.edition-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--crimson);
+  box-shadow: 0 15px 40px rgba(225, 29, 72, 0.22);
+}
+
+.edition-badge {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--crimson-bright);
+  background: var(--crimson-soft);
+  border: 1px solid var(--border-crimson);
+  padding: 4px 12px;
+  border-radius: 99px;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+
+.edition-icon {
+  font-size: 2.8rem;
+  color: var(--crimson);
   margin-bottom: 18px;
 }
 
-.badge::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
+.edition-card h2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  margin-bottom: 12px;
 }
 
-.hero {
-  margin-bottom: 55px;
+.edition-card h2 span {
+  color: var(--crimson-bright);
 }
 
-.hero h1 {
-  font-size: 2.3rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.25;
-  margin-bottom: 16px;
-}
-
-.hero p {
+.edition-card p {
   color: var(--muted);
-  font-size: 1.02rem;
-  line-height: 1.7;
-}
-
-.section-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin: 45px 0 18px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.section-title span {
-  color: var(--accent);
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 0.94rem;
+  margin-bottom: 22px;
 }
 
 /* ==========================================================
-   5. SKILLS & PILLS
+   6. MODPACK CARDS & GRIDS
    ========================================================== */
-.skills-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.section-header {
+  margin-bottom: 40px;
 }
 
-.skill-pill {
+.sec-code {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  padding: 6px 12px;
-  border-radius: 6px;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  color: #cbd5e1;
-}
-
-/* ==========================================================
-   6. CARDS & GRIDS (Projects & Resources)
-   ========================================================== */
-.grid {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 20px;
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  transition: all 0.2s ease;
-}
-
-.card:hover {
-  background: var(--card-hover);
-  border-color: var(--border-hover);
-  transform: translateY(-2px);
-}
-
-.card-content h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 5px;
-}
-
-.card-content p {
-  font-size: 0.88rem;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.card-tag {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--accent);
-  margin-bottom: 6px;
-  display: inline-block;
-}
-
-/* ==========================================================
-   7. TIMELINE ROADMAP
-   ========================================================== */
-.roadmap {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.roadmap-item {
-  display: flex;
-  gap: 20px;
-  padding: 16px 20px;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-}
-
-.roadmap-year {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--accent);
-  min-width: 90px;
-  font-weight: 600;
-}
-
-.roadmap-detail h4 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin-bottom: 3px;
-}
-
-.roadmap-detail p {
+  color: var(--crimson-bright);
   font-size: 0.85rem;
-  color: var(--muted);
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 6px;
 }
 
-/* ==========================================================
-   8. SOCIAL LINKS
-   ========================================================== */
-.social-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 10px;
-}
-
-.social-btn {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  padding: 14px 16px;
-  border-radius: 8px;
-  color: var(--text);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.88rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.social-btn i {
-  font-size: 1.15rem;
-  color: var(--muted);
-  transition: color 0.2s ease;
-}
-
-.social-btn:hover {
-  background: var(--card-hover);
-  border-color: var(--border-hover);
-  transform: translateY(-2px);
-}
-
-.social-btn:hover i {
-  color: var(--accent);
-}
-
-/* ==========================================================
-   9. BCA STUDY HUB SPECIFIC STYLES
-   ========================================================== */
-.header-box {
-  margin-bottom: 35px;
-}
-
-.header-box h1 {
-  font-size: 2rem;
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.02em;
   margin-bottom: 8px;
 }
 
-.header-box p {
+.section-header p {
   color: var(--muted);
-  font-size: 0.95rem;
+  max-width: 620px;
 }
 
-.user-pill {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.85rem;
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
 }
 
-.user-badge {
-  color: var(--accent);
-  background: var(--accent-soft);
-  border: 1px solid var(--accent-border);
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-}
-
-.logout-btn {
-  background: transparent;
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: #f87171;
-  padding: 4px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  transition: all 0.2s ease;
-}
-
-.logout-btn:hover {
-  background: rgba(239, 68, 68, 0.15);
-}
-
-.resource-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.resource-card {
+.game-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 18px 20px;
+  border-radius: 12px;
+  padding: 26px;
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-crimson);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+}
+
+.featured-card {
+  border-color: var(--border-crimson);
+  box-shadow: inset 0 0 25px rgba(225, 29, 72, 0.08);
+}
+
+.card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
-  transition: all 0.2s ease;
+  margin-bottom: 16px;
 }
 
-.resource-card:hover {
-  background: var(--card-hover);
-  border-color: var(--border-hover);
-}
-
-.resource-info h3 {
-  font-size: 0.98rem;
-  font-weight: 600;
-  margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.resource-info p {
-  font-size: 0.84rem;
-  color: var(--muted);
-}
-
-.sem-tag {
+.tag-pill {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  padding: 2px 7px;
+  font-size: 0.72rem;
+  padding: 4px 10px;
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.06);
   color: #cbd5e1;
-  border: 1px solid var(--border);
 }
 
-.download-btn {
-  color: var(--text);
+.tag-pill.crimson {
+  background: var(--crimson-soft);
+  color: var(--crimson-bright);
+  border: 1px solid var(--border-crimson);
+}
+
+.card-icon {
+  font-size: 1.3rem;
+  color: var(--crimson);
+}
+
+.game-card h3 {
+  font-size: 1.22rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.game-card p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.spec-list {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.spec-list li {
+  font-size: 0.84rem;
+  color: #e2e8f0;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spec-list i {
+  color: var(--crimson-bright);
+  font-size: 0.75rem;
+}
+
+.card-footer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-card {
+  flex: 1;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border);
-  text-decoration: none;
-  padding: 8px 14px;
-  border-radius: 6px;
-  font-size: 0.82rem;
+  color: #fff;
+  padding: 11px 16px;
+  border-radius: 8px;
+  font-family: var(--font-sans);
   font-weight: 600;
-  white-space: nowrap;
-  transition: all 0.2s ease;
+  font-size: 0.86rem;
+  cursor: pointer;
   display: inline-flex;
+  justify-content: center;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  transition: all 0.2s ease;
 }
 
-.download-btn:hover {
-  background: var(--accent);
-  color: #090a0f;
-  border-color: var(--accent);
+.btn-card:hover {
+  background: var(--crimson);
+  border-color: var(--crimson);
 }
 
 /* ==========================================================
-   10. FOOTER
+   7. MONTAGES, ARSENAL & TIMELINE
    ========================================================== */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 28px 0;
-  text-align: center;
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.video-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-crimson);
+}
+
+.video-thumb {
+  height: 210px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.play-btn {
+  position: relative;
+  z-index: 2;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--crimson);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 0 25px var(--crimson-glow);
+}
+
+.vid-duration {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.video-info {
+  padding: 20px;
+}
+
+.vid-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--crimson-bright);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.arsenal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.arsenal-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 22px;
+  border-radius: 10px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  backdrop-filter: blur(10px);
+}
+
+.arsenal-item i {
+  font-size: 1.5rem;
+  color: var(--crimson);
+  background: var(--crimson-soft);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.arsenal-item span {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--crimson-bright);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.timeline-row {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--crimson);
+  border-radius: 10px;
+  padding: 22px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.time-badge {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  color: var(--crimson-bright);
+  background: var(--crimson-soft);
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+/* ==========================================================
+   8. JOIN CLAN & SOCIAL MEDIA PAGE STYLES
+   ========================================================== */
+.connect-banner {
+  background: var(--card-bg);
+  border: 1px solid var(--border-crimson);
+  border-radius: 16px;
+  padding: 42px;
+  backdrop-filter: blur(14px);
+}
+
+.connect-text {
+  margin-bottom: 32px;
+}
+
+.connect-text p {
   color: var(--muted);
-  font-size: 0.85rem;
-  width: 100%;
-  max-width: 760px;
+  max-width: 650px;
+}
+
+.social-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+.soc-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  padding: 22px;
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.25s ease;
+}
+
+.soc-card i {
+  font-size: 2rem;
+  color: var(--crimson);
+}
+
+.soc-card strong {
+  display: block;
+  font-size: 1.02rem;
+  margin-bottom: 2px;
+}
+
+.soc-card span {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.soc-card:hover {
+  background: var(--crimson-soft);
+  border-color: var(--crimson);
+  transform: translateY(-4px);
+}
+
+.clan-perks {
+  border-top: 1px solid var(--border);
+  padding-top: 26px;
+}
+
+.clan-perks h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.clan-perks p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.tag-copy-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.tag-copy-row code {
+  font-family: var(--font-mono);
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: var(--crimson-bright);
 }
 
 /* ==========================================================
-   11. RESPONSIVE DESIGN
+   9. FOOTER & MOBILE RESPONSIVE
    ========================================================== */
-@media (max-width: 600px) {
-  .hero h1 {
-    font-size: 1.85rem;
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 24px;
+  text-align: center;
+  background: rgba(7, 7, 9, 0.92);
+}
+
+.footer-sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
   }
-  .roadmap-item {
-    flex-direction: column;
-    gap: 6px;
-  }
-  .resource-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .download-btn {
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
     width: 100%;
-    justify-content: center;
-  }
-  .nav-links a:not(.hub-btn) {
+    background: rgba(7, 7, 9, 0.98);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    padding: 20px;
     display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .akatsuki-hud {
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+    max-width: none;
+    padding: 10px 14px;
+  }
+
+  .timeline-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .connect-banner {
+    padding: 24px;
   }
 }

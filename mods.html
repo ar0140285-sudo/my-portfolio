@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MODS VAULT // Choose Edition — ZenvroPlayz</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Background Stage (Pain & Sasori Theme) -->
+  <div class="bg-stage" id="bgStage">
+    <div class="bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop');"></div>
+    <div class="bg-overlay"></div>
+    
+    <div class="akatsuki-hud">
+      <div class="member-indicator">
+        <span class="hud-label">VAULT GUARDIAN //</span>
+        <h3 id="activeMemberName">PAIN (NAGATO)</h3>
+        <p id="activeMemberQuote">"The world shall know true FPS optimization. Choose your edition."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="cloud-icon">☁</span> ZENVRO<span>PLAYZ</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="mods.html" class="active">Mods Vault</a>
+        <a href="java-mods.html">Java Mods</a>
+        <a href="bedrock-mods.html">Bedrock Mods</a>
+        <a href="clan.html" class="cta-nav"><i class="fas fa-dragon"></i> Join Clan</a>
+      </div>
+      <button class="hamburger" id="mobileMenu" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content: Edition Selector -->
+  <main class="main-wrapper">
+    <section class="scroll-section" data-index="0" data-name="PAIN (NAGATO)" data-quote="The world shall know true FPS optimization. Choose your edition.">
+      
+      <div class="section-header" style="text-align: center; margin: 0 auto 45px;">
+        <span class="sec-code">// FORBIDDEN SCROLLS VAULT</span>
+        <h1 class="glitch-title" style="font-size: clamp(2rem, 4vw, 3.2rem);">SELECT YOUR <span>EDITION</span></h1>
+        <p style="margin: 0 auto;">Apna Minecraft platform choose karo. Humne PC (Java) aur Mobile/Win10 (Bedrock) dono ke liye high-FPS modpacks aur PvP textures taiyar kiye hain.</p>
+      </div>
+
+      <!-- 2 Big Portal Cards: Java vs Bedrock -->
+      <div class="edition-grid">
+        
+        <!-- JAVA EDITION PORTAL CARD -->
+        <a href="java-mods.html" class="edition-card">
+          <div class="edition-badge">PC / MAC / LINUX</div>
+          <i class="fas fa-desktop edition-icon"></i>
+          <h2>MINECRAFT <span>JAVA</span></h2>
+          <p>Sodium/Lithium FPS modpacks, 1.8.9 & 1.20+ PvP clients, custom JVM launch arguments aur 16x Sharingan resource packs.</p>
+          <ul class="spec-list">
+            <li><i class="fas fa-check"></i> Fabric & Forge Optimized (.mrpack / .zip)</li>
+            <li><i class="fas fa-check"></i> PikaNetwork & 2b2t Ready Configs</li>
+            <li><i class="fas fa-check"></i> +150% Boost on Integrated Graphics</li>
+          </ul>
+          <span class="btn-primary" style="width: 100%; justify-content: center;">
+            Enter Java Vault <i class="fas fa-arrow-right"></i>
+          </span>
+        </a>
+
+        <!-- BEDROCK EDITION PORTAL CARD -->
+        <a href="bedrock-mods.html" class="edition-card">
+          <div class="edition-badge">MCPE / ANDROID / IOS / WIN 10</div>
+          <i class="fas fa-mobile-alt edition-icon"></i>
+          <h2>MINECRAFT <span>BEDROCK</span></h2>
+          <p>One-click `.mcpack` aur `.mcaddon` files. Mobile aur Windows Bedrock ke liye lag-free shaders, Java-style UI aur PvP hitboxes.</p>
+          <ul class="spec-list">
+            <li><i class="fas fa-check"></i> Direct Import (.mcpack / .mcaddon)</li>
+            <li><i class="fas fa-check"></i> CubeCraft & Hive PvP Optimized</li>
+            <li><i class="fas fa-check"></i> No-Lag Particles & Short Swords</li>
+          </ul>
+          <span class="btn-primary" style="width: 100%; justify-content: center;">
+            Enter Bedrock Vault <i class="fas fa-arrow-right"></i>
+          </span>
+        </a>
+
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>☁ <strong>ZENVROPLAYZ</strong> // Mods Vault Selection</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

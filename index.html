@@ -3,133 +3,244 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Akash Rathod — Developer & BCA Student</title>
+  <title>ZENVRO // Akatsuki Gaming Hub — Home</title>
+  <!-- Main Stylesheet aur FontAwesome Icons -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- =========================================================
+       DYNAMIC AKATSUKI FULLSCREEN BACKGROUND
+       Note: Scroll karne par ye slides apne aap change hongi.
+       Apni images lagane ke liye url('...') ke andar link badal dena.
+       ========================================================= -->
+  <div class="bg-stage" id="bgStage">
+    <!-- Slide 0: Itachi (Hero Section) -->
+    <div class="bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1920&auto=format&fit=crop');"></div>
+    <!-- Slide 1: Obito (Montages Section) -->
+    <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1920&auto=format&fit=crop');"></div>
+    <!-- Slide 2: Deidara (Gaming Rig Section) -->
+    <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1920&auto=format&fit=crop');"></div>
+    <!-- Slide 3: Kisame (Clan Roadmap Section) -->
+    <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=1920&auto=format&fit=crop');"></div>
+    
+    <!-- Dark Vignette Overlay taaki text saaf dikhe -->
+    <div class="bg-overlay"></div>
+    
+    <!-- Bottom-Right HUD Box (Jo active Akatsuki member ka naam aur quote dikhata hai) -->
+    <div class="akatsuki-hud">
+      <div class="member-indicator">
+        <span class="hud-label">CURRENT GUARDIAN //</span>
+        <h3 id="activeMemberName">ITACHI UCHIHA</h3>
+        <p id="activeMemberQuote">"Those who forgive themselves, and accept their true nature... They are the strong ones!"</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       NAVIGATION BAR (Sabhi pages ke links ke saath)
+       ========================================================= -->
   <nav class="nav">
-    <a href="#" class="nav-logo">Akash Rathod<span>.</span></a>
-    <div class="nav-links">
-      <a href="#projects">Projects</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#connect">Connect</a>
-      <a href="bca.html" class="hub-btn"><i class="fas fa-book-open"></i> BCA Notes</a>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="cloud-icon">☁</span> ZENVRO<span>PLAYZ</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="mods.html">Mods Vault</a>
+        <a href="#montages">Montages</a>
+        <a href="#arsenal">Rig & Gear</a>
+        <a href="clan.html" class="cta-nav"><i class="fas fa-dragon"></i> Join Clan</a>
+      </div>
+
+      <!-- Mobile 3-Lines Hamburger Button -->
+      <button class="hamburger" id="mobileMenu" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
-  <main class="container">
-    
-    <!-- Hero / Intro -->
-    <header class="hero">
-      <div class="badge">BCA Student & Developer</div>
-      <h1>Building lightweight systems, clean web tools & game servers.</h1>
-      <p>
-        Mai KIPS Institute, Khandwa se BCA kar raha hu. Mera focus C, C++, frontend web development aur Linux systems par hai. Saath hi high-FPS gaming optimization aur video edits me active interest hai.
-      </p>
-    </header>
+  <!-- =========================================================
+       MAIN SCROLLABLE CONTENT
+       ========================================================= -->
+  <main class="main-wrapper">
 
-    <!-- Skills -->
-    <section>
-      <h2 class="section-title"><span>01.</span> Tech & Tools</h2>
-      <div class="skills-wrap">
-        <span class="skill-pill">C / C++</span>
-        <span class="skill-pill">HTML5 & CSS3</span>
-        <span class="skill-pill">JavaScript</span>
-        <span class="skill-pill">Linux & Kali</span>
-        <span class="skill-pill">Git & GitHub</span>
-        <span class="skill-pill">Supabase</span>
-        <span class="skill-pill">VirtualBox</span>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects">
-      <h2 class="section-title"><span>02.</span> Projects & Work</h2>
-      <div class="grid">
-        <a href="bca.html" class="card">
-          <div class="card-content">
-            <span class="card-tag">WEB APP • SUPABASE</span>
-            <h3>BCA Study Portal</h3>
-            <p>Semester notes, C handbooks aur OS resources ka secure student hub jisme approval-based auth laga hai.</p>
-          </div>
-          <span style="color: var(--muted);">↗</span>
-        </a>
-
-        <a href="https://www.curseforge.com/minecraft" target="_blank" class="card">
-          <div class="card-content">
-            <span class="card-tag">GAMING • OPTIMIZATION</span>
-            <h3>Zenvro FPS & PvP Modpack</h3>
-            <p>Low-end aur mid-range hardware ke liye high-FPS zero-latency custom pack (Sodium/Lithium based).</p>
-          </div>
-          <span style="color: var(--muted);">↗</span>
-        </a>
-
-        <a href="https://www.youtube.com/@zenvroplayz" target="_blank" class="card">
-          <div class="card-content">
-            <span class="card-tag">CONTENT CREATION</span>
-            <h3>Zenvro Gaming & Video Edits</h3>
-            <p>Minecraft Bedwars, custom challenges aur high-sync anime AMV edits (CapCut / Premiere workflow).</p>
-          </div>
-          <span style="color: var(--muted);">↗</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Career Roadmap -->
-    <section id="roadmap">
-      <h2 class="section-title"><span>03.</span> Future Roadmap</h2>
-      <div class="roadmap">
-        <div class="roadmap-item">
-          <span class="roadmap-year">2024 — 2027</span>
-          <div class="roadmap-detail">
-            <h4>BCA Degree (KIPS Institute)</h4>
-            <p>Core fundamentals, Data Structures, OOPs aur modern web architecture master karna.</p>
-          </div>
+    <!-- 01. HERO SECTION (ITACHI UCHIHA) -->
+    <section id="home" class="scroll-section" data-index="0" data-name="ITACHI UCHIHA" data-quote="Those who forgive themselves, and accept their true nature... They are the strong ones!">
+      <div class="hero-box">
+        <div class="akatsuki-badge">
+          <span class="pulse-dot"></span> S-RANK COMPETITIVE GAMER & OPTIMIZER
         </div>
-        <div class="roadmap-item">
-          <span class="roadmap-year">2027 — 2029</span>
-          <div class="roadmap-detail">
-            <h4>MCA in Indore</h4>
-            <p>Advanced software engineering, distributed systems aur backend design me specialization.</p>
-          </div>
+        <h1 class="glitch-title">DOMINATING FRAMES.<br><span>SHATTERING LIMITS.</span></h1>
+        <p class="hero-desc">
+          Main <strong>Akash Rathod (Zenvro)</strong> hu — Minecraft PvP strategist, low-latency optimizer aur high-sync AMV/Gaming editor. Jaha baaki players lag se haarte hain, waha mera custom optimization 200+ FPS deliver karta hai.
+        </p>
+        
+        <!-- Action Buttons (Mods page aur Clan page par jane ke liye) -->
+        <div class="hero-actions">
+          <a href="mods.html" class="btn-primary">
+            <i class="fas fa-bolt"></i> Explore Mods Vault
+          </a>
+          <a href="clan.html" class="btn-secondary">
+            <i class="fas fa-users"></i> Join Akatsuki Clan
+          </a>
         </div>
-        <div class="roadmap-item">
-          <span class="roadmap-year">2029+</span>
-          <div class="roadmap-detail">
-            <h4>Master's in Germany</h4>
-            <p>Higher computer science education aur global software development engineering role.</p>
+
+        <!-- Live Gaming Stats -->
+        <div class="live-stats">
+          <div class="stat-box">
+            <span class="stat-num">300+</span>
+            <span class="stat-label">Peak Bedwars FPS</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">Java & PE</span>
+            <span class="stat-label">Cross-Edition Mods</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">S-Rank</span>
+            <span class="stat-label">PvP Tier</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Socials / Connect -->
-    <section id="connect">
-      <h2 class="section-title"><span>04.</span> Connect</h2>
-      <div class="social-grid">
-        <a href="https://github.com/ar0140285-sudo" target="_blank" class="social-btn">
-          <i class="fab fa-github"></i> GitHub
+    <!-- 02. MONTAGES & EDITS SECTION (OBITO UCHIHA) -->
+    <section id="montages" class="scroll-section" data-index="1" data-name="OBITO UCHIHA" data-quote="In the gaming world, those who break the rules are scum... but those who abandon their squad are worse than scum.">
+      <div class="section-header">
+        <span class="sec-code">// 02. VISUAL GENJUTSU</span>
+        <h2>HIGH-SYNC MONTAGES & AMVs</h2>
+        <p>Frame-perfect velocity edits, sound design, aur intense PikaNetwork / CubeCraft clutches.</p>
+      </div>
+
+      <div class="video-grid">
+        <!-- Video Card 1 -->
+        <a href="https://www.youtube.com/@zenvroplayz" target="_blank" class="video-card">
+          <div class="video-thumb" style="background-image: url('https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=800&auto=format&fit=crop');">
+            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <span class="vid-duration">02:45</span>
+          </div>
+          <div class="video-info">
+            <span class="vid-tag">BEDWARS MONTAGE • 60FPS</span>
+            <h4>"KAMUI" — 1v4 Clutch & Telly Bridge Showcase</h4>
+            <p>Edited in Premiere Pro & CapCut • Beat-synced velocity</p>
+          </div>
         </a>
-        <a href="https://www.youtube.com/@zenvroplayz" target="_blank" class="social-btn">
-          <i class="fab fa-youtube"></i> YouTube
+
+        <!-- Video Card 2 -->
+        <a href="https://www.youtube.com/@zenvroplayz" target="_blank" class="video-card">
+          <div class="video-thumb" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop');">
+            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <span class="vid-duration">01:30</span>
+          </div>
+          <div class="video-info">
+            <span class="vid-tag">ANIME 4K EDIT • JJK & NARUTO</span>
+            <h4>CRIMSON DOMAIN // High-Sync Anime Velocity Edit</h4>
+            <p>3D camera tracking, custom RSMB motion blur & dark color grading</p>
+          </div>
         </a>
-        <a href="https://www.instagram.com/painxvibe_?utm_source=qr&stkn=MWhsMjBsdjE0dWszNQ==" target="_blank" class="social-btn">
-          <i class="fab fa-instagram"></i> Instagram
-        </a>
-        <a href="https://t.me/ZenvroPlayz" target="_blank" class="social-btn">
-          <i class="fab fa-telegram"></i> Telegram
-        </a>
+      </div>
+    </section>
+
+    <!-- 03. GAMING RIG & ARSENAL (DEIDARA) -->
+    <section id="arsenal" class="scroll-section" data-index="2" data-name="DEIDARA" data-quote="True optimization is an explosion! Every single frame counts.">
+      <div class="section-header">
+        <span class="sec-code">// 03. WEAPONRY & SETUP</span>
+        <h2>THE GAMING ARSENAL</h2>
+        <p>Hardware, peripherals aur software workflow jo har PvP match aur edit ko power karte hain.</p>
+      </div>
+
+      <div class="arsenal-grid">
+        <div class="arsenal-item">
+          <i class="fas fa-microchip"></i>
+          <div>
+            <span>SYSTEM & OS</span>
+            <h4>Linux (Kali/Ubuntu) & Debloated Windows</h4>
+            <p>Custom kernel & process tuning for zero input latency</p>
+          </div>
+        </div>
+
+        <div class="arsenal-item">
+          <i class="fas fa-mouse"></i>
+          <div>
+            <span>MOUSE & AIM</span>
+            <h4>Gaming Mouse (800 DPI • 1000Hz Polling)</h4>
+            <p>20+ CPS Butterfly / Jitter Clicking • Raw Input ON</p>
+          </div>
+        </div>
+
+        <div class="arsenal-item">
+          <i class="fas fa-keyboard"></i>
+          <div>
+            <span>KEYBOARD</span>
+            <h4>Ant Esports Gaming Keyboard</h4>
+            <p>Fast actuation for W-Tap, S-Tap & speed-bridging</p>
+          </div>
+        </div>
+
+        <div class="arsenal-item">
+          <i class="fas fa-film"></i>
+          <div>
+            <span>CONTENT SUITE</span>
+            <h4>Premiere Pro, CapCut & OBS Studio</h4>
+            <p>120FPS Smooth Recording • Custom Akatsuki Color LUTs</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. CLAN ROADMAP & RECORDS (KISAME) -->
+    <section id="records" class="scroll-section" data-index="3" data-name="KISAME HOSHIGAKI" data-quote="Only the strongest sharks survive in the deep waters of competitive PvP.">
+      <div class="section-header">
+        <span class="sec-code">// 04. SHINOBI BINGO BOOK</span>
+        <h2>CLAN RANKINGS & GOALS</h2>
+        <p>Competitive milestones, modpack updates aur upcoming ZenvroPlayz targets.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-row">
+          <div class="time-badge">PHASE 01</div>
+          <div class="time-content">
+            <h4>Java & Bedrock Dual Modpack Ecosystem</h4>
+            <p>PC aur Mobile dono players ke liye zero-lag custom packs aur PvP textures launch karna.</p>
+          </div>
+        </div>
+
+        <div class="timeline-row">
+          <div class="time-badge">PHASE 02</div>
+          <div class="time-content">
+            <h4>Custom Practice & Duels Server</h4>
+            <p>Low-ping Indian practice server jisme custom knockback profiles aur Bedwars practice arenas honge.</p>
+          </div>
+        </div>
+
+        <div class="timeline-row">
+          <div class="time-badge">PHASE 03</div>
+          <div class="time-content">
+            <h4>ZenvroPlayz Clan Tournaments</h4>
+            <p>YouTube aur Telegram/Discord par subscriber PvP tournaments aur AMV editing battles host karna.</p>
+          </div>
+        </div>
       </div>
     </section>
 
   </main>
 
-  <footer>
-    <p>© 2026 Akash Rathod. Built with simplicity & clean code.</p>
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>☁ <strong>ZENVROPLAYZ</strong> // Designed & Built by Akash Rathod.</p>
+      <p class="footer-sub">Akatsuki Gaming Hub • Home Base</p>
+    </div>
   </footer>
 
+  <!-- Main JS File -->
+  <script src="script.js"></script>
 </body>
 </html>

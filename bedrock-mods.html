@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BEDROCK EDITION MODS // ZenvroPlayz</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Background Stage (Hidan / Kakuzu Theme) -->
+  <div class="bg-stage" id="bgStage">
+    <div class="bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1920&auto=format&fit=crop');"></div>
+    <div class="bg-overlay"></div>
+    
+    <div class="akatsuki-hud">
+      <div class="member-indicator">
+        <span class="hud-label">BEDROCK VANGUARD //</span>
+        <h3 id="activeMemberName">KAKUZU</h3>
+        <p id="activeMemberQuote">"Five hearts, zero frame drops. Dominate Pocket & Windows Edition."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="cloud-icon">☁</span> ZENVRO<span>PLAYZ</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="mods.html">Mods Vault</a>
+        <a href="java-mods.html">Java Mods</a>
+        <a href="bedrock-mods.html" class="active">Bedrock Mods</a>
+        <a href="clan.html" class="cta-nav"><i class="fas fa-dragon"></i> Join Clan</a>
+      </div>
+      <button class="hamburger" id="mobileMenu" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content: Bedrock Mods List -->
+  <main class="main-wrapper">
+    <section class="scroll-section" data-index="0" data-name="KAKUZU" data-quote="Five hearts, zero frame drops. Dominate Pocket & Windows Edition.">
+      
+      <!-- Back Button -->
+      <a href="mods.html" class="back-pill"><i class="fas fa-arrow-left"></i> Back to Mods Vault</a>
+
+      <div class="section-header">
+        <span class="sec-code">// MINECRAFT BEDROCK & MCPE (MOBILE / WIN 10)</span>
+        <h2>BEDROCK ADDONS & MCPE CLIENTS</h2>
+        <p>Direct `.mcpack` files jo single tap me Minecraft Pocket Edition aur Windows 10/11 Bedrock me import ho jati hain.</p>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Bedrock Pack 1 -->
+        <div class="game-card featured-card">
+          <div class="card-top">
+            <span class="tag-pill crimson">MCPE / WIN10 CLIENT</span>
+            <i class="fas fa-bolt card-icon"></i>
+          </div>
+          <h3>Zenvro Bedrock Client V2 (.mcpack)</h3>
+          <p>Bedrock players ke liye full Java-like PvP client experience! CPS counter, FPS display, Keystrokes aur Dark Akatsuki UI.</p>
+          <ul class="spec-list">
+            <li><i class="fas fa-check"></i> Removes Unnecessary Animations & Lag</li>
+            <li><i class="fas fa-check"></i> Quick Craft & Java Chat UI</li>
+            <li><i class="fas fa-check"></i> Works on CubeCraft, Hive & Zeqa</li>
+          </ul>
+          <div class="card-footer">
+            <button onclick="downloadModpack('Zenvro Bedrock Client V2.mcpack')" class="btn-card">
+              <i class="fas fa-download"></i> Download (.mcpack)
+            </button>
+          </div>
+        </div>
+
+        <!-- Bedrock Pack 2 -->
+        <div class="game-card">
+          <div class="card-top">
+            <span class="tag-pill">RENDERDRAGON SUPPORTED</span>
+            <i class="fas fa-sun card-icon"></i>
+          </div>
+          <h3>Crimson Glow No-Lag Shader</h3>
+          <p>2GB/4GB RAM phones aur low-end PCs ke liye RenderDragon compatible aesthetics. Waving leaves nahi, sirf crisp sky aur lighting.</p>
+          <ul class="spec-list">
+            <li><i class="fas fa-check"></i> Custom Akatsuki Blood Moon Skybox</li>
+            <li><i class="fas fa-check"></i> Glowing Ores & Night Vision Toggle</li>
+            <li><i class="fas fa-check"></i> Zero Heating & 60/120 FPS Locked</li>
+          </ul>
+          <div class="card-footer">
+            <button onclick="downloadModpack('Crimson Glow Bedrock Shader.mcpack')" class="btn-card">
+              <i class="fas fa-download"></i> Download (.mcpack)
+            </button>
+          </div>
+        </div>
+
+        <!-- Bedrock Pack 3 -->
+        <div class="game-card">
+          <div class="card-top">
+            <span class="tag-pill">PVP UTILITY ADDON</span>
+            <i class="fas fa-crosshairs card-icon"></i>
+          </div>
+          <h3>Hitbox & Combo Tracker Pack</h3>
+          <p>Touchscreen, Controller aur Keyboard/Mouse players ke liye clean white/red entity hitboxes aur damage indicator particles.</p>
+          <ul class="spec-list">
+            <li><i class="fas fa-check"></i> 3D Hitbox Outline & Eye-Line</li>
+            <li><i class="fas fa-check"></i> Invisible Touch Controls Option</li>
+            <li><i class="fas fa-check"></i> Short Swords & Low Shield</li>
+          </ul>
+          <div class="card-footer">
+            <button onclick="downloadModpack('Bedrock Hitbox Pack.mcpack')" class="btn-card">
+              <i class="fas fa-download"></i> Download (.mcpack)
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>☁ <strong>ZENVROPLAYZ</strong> // Bedrock & MCPE Vault</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
