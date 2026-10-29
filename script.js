@@ -84,3 +84,32 @@ if (mobileMenuBtn && navLinksContainer) {
     });
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   AUTO SHARINGAN FAVICON FOR ALL PAGES (Sabhi pages ke liye)
+   Bas niche 'APNA_LINK_YAHA_DALO' ki jagah apna link paste kar do!
+   ========================================================== */
+(function setFaviconForAllPages() {
+  const sharinganLink = 'https://imgs.search.brave.com/d3ixZ6cTq8A6g2IeB4OZFxm9lR5qfrZMa4QytInrYos/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly80a3dh/bGxwYXBlcnMuY29t/L2ltYWdlcy93YWxs/cy90aHVtYnMvMjU3/MjcucG5n'; // 👈 Yaha quotes ke andar apna image link daal do
+
+  let linkTag = document.querySelector("link[rel~='icon']");
+  if (!linkTag) {
+    linkTag = document.createElement('link');
+    linkTag.rel = 'icon';
+    document.head.appendChild(linkTag);
+  }
+  linkTag.href = sharinganLink;
+})();

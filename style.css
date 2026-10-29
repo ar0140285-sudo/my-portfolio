@@ -1,25 +1,32 @@
 /* ==========================================================
-   1. GOOGLE FONTS & ULTRA-TRANSPARENT AKATSUKI VARIABLES
-   Sirf yaha ke rgba() numbers badal kar tum transparency 
-   kam ya zyada kar sakte ho!
+   1. GOOGLE FONTS & 95% TRANSPARENT ITACHI THEME VARIABLES
+   --card-bg me 0.05 ka matlab hai 95% Pura Transparent!
+   Blur ko 0px kar diya hai taaki piche ki photo bilkul HD dikhe.
    ========================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
 
 :root {
   --bg-dark: #050507;
-  /* 0.22 ka matlab hai 78% Transparent Glass! */
-  --card-bg: rgba(12, 12, 18, 0.22);         
-  --card-hover: rgba(225, 29, 72, 0.12);     /* Hover karne par halka red glass */
-  --glass-blur: blur(16px);                  /* Piche ki image ko softly blur karega */
+  /* 95% Transparent (Sirf 5% halka tint) */
+  --card-bg: rgba(0, 0, 0, 0.05);         
+  --card-hover: rgba(225, 29, 72, 0.08);     /* Hover par halka Sharingan Red touch */
+  --glass-blur: blur(0px);                   /* Blur zero taaki character 100% sharp dikhe */
+  
+  /* Itachi Uchiha Crimson & Sharingan Colors */
   --crimson: #e11d48;                        
   --crimson-bright: #ff1e42;                 
-  --crimson-glow: rgba(225, 29, 72, 0.45);   
-  --crimson-soft: rgba(225, 29, 72, 0.15);   
-  /* Glass ki chamakti hui patli border */
-  --border: rgba(255, 255, 255, 0.15);       
-  --border-crimson: rgba(225, 29, 72, 0.55); 
+  --crimson-glow: rgba(225, 29, 72, 0.55);   
+  --crimson-soft: rgba(225, 29, 72, 0.10);   
+  
+  /* Sharp Visible Borders (Sirf border aur text dikhane ke liye) */
+  --border: rgba(255, 255, 255, 0.28);       
+  --border-crimson: rgba(255, 30, 66, 0.75); 
+  
+  /* Text Colors + Heavy Shadow taaki kisi bhi wallpaper par text saaf padhne me aaye */
   --text: #ffffff;                           
-  --muted: #cbd5e1;                          /* Subtext ko thoda bright kiya taaki transparent par saaf dikhe */
+  --muted: #f1f5f9;                          
+  --text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 4px rgba(0, 0, 0, 0.9);
+  
   --font-display: 'Orbitron', sans-serif;
   --font-sans: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -42,10 +49,11 @@ body {
   font-family: var(--font-sans);
   line-height: 1.6;
   overflow-x: hidden;
+  text-shadow: var(--text-shadow);
 }
 
 /* ==========================================================
-   2. FULLSCREEN AKATSUKI BACKGROUND (EXTRA CLEAR & BRIGHT)
+   2. FULLSCREEN AKATSUKI BACKGROUND (CRYSTAL CLEAR)
    ========================================================== */
 .bg-stage {
   position: fixed;
@@ -65,44 +73,39 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
-  transform: scale(1.08);
+  transform: scale(1.06);
   transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 1.4s ease-out;
-  filter: contrast(1.12) saturate(1.2);
+  filter: contrast(1.08) saturate(1.15);
 }
 
-/* Opacity 0.42 se badha kar 0.75 kar di taaki Akatsuki member saaf dikhe */
+/* Background character image ko 88% bright rakha hai */
 .bg-slide.active {
-  opacity: 0.75;
+  opacity: 0.88;
   transform: scale(1);
 }
 
-/* Overlay ko kaafi halka (transparent) kar diya gaya hai */
+/* Bahut halka vignette sirf edges par taaki white text kabhi gayab na ho */
 .bg-overlay {
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(circle at 80% 20%, rgba(225, 29, 72, 0.22), transparent 50%),
-    linear-gradient(to right, rgba(5, 5, 7, 0.70) 0%, rgba(5, 5, 7, 0.35) 55%, rgba(5, 5, 7, 0.65) 100%),
-    linear-gradient(to bottom, rgba(5, 5, 7, 0.20) 0%, rgba(5, 5, 7, 0.80) 100%);
+    radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.55) 100%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, transparent 30%, rgba(0, 0, 0, 0.55) 100%);
 }
 
-/* Bottom-Right Corner Transparent Glass HUD */
+/* Bottom-Right Corner HUD (95% Transparent + Red Border) */
 .akatsuki-hud {
   position: fixed;
   bottom: 28px;
   right: 32px;
   z-index: 20;
   max-width: 330px;
-  background: rgba(10, 10, 14, 0.30);
-  border-left: 3px solid var(--crimson);
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: var(--card-bg);
+  border: 1px solid var(--border-crimson);
+  border-left: 4px solid var(--crimson-bright);
   padding: 14px 18px;
-  border-radius: 10px;
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  border-radius: 8px;
+  box-shadow: 0 0 18px rgba(225, 29, 72, 0.2);
 }
 
 .hud-label {
@@ -119,7 +122,6 @@ body {
   letter-spacing: 0.04em;
   margin: 2px 0 4px;
   color: #fff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .akatsuki-hud p {
@@ -130,7 +132,7 @@ body {
 }
 
 /* ==========================================================
-   3. TRANSPARENT GLASS NAVIGATION BAR
+   3. 95% TRANSPARENT NAVIGATION BAR (ONLY BORDER & TEXT)
    ========================================================== */
 .nav {
   position: fixed;
@@ -138,9 +140,7 @@ body {
   left: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(8, 8, 12, 0.25); /* Ultra transparent navbar */
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  background: rgba(0, 0, 0, 0.05); /* 95% Transparent */
   border-bottom: 1px solid var(--border);
 }
 
@@ -163,17 +163,16 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .cloud-icon {
-  color: var(--crimson);
+  color: var(--crimson-bright);
   font-size: 1.4rem;
   filter: drop-shadow(0 0 8px var(--crimson));
 }
 
 .nav-logo span:last-child {
-  color: var(--crimson);
+  color: var(--crimson-bright);
 }
 
 .nav-links {
@@ -184,36 +183,33 @@ body {
 
 .nav-links a {
   color: var(--text);
-  opacity: 0.85;
   text-decoration: none;
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
+  font-weight: 600;
   transition: all 0.2s ease;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  opacity: 1;
   color: var(--crimson-bright);
+  text-shadow: 0 0 12px var(--crimson-glow);
 }
 
 .nav-links a.cta-nav {
-  background: var(--crimson-soft);
+  background: var(--card-bg);
   border: 1px solid var(--border-crimson);
   color: #fff;
   padding: 7px 14px;
   border-radius: 6px;
-  font-weight: 600;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  backdrop-filter: blur(8px);
 }
 
 .nav-links a.cta-nav:hover,
 .nav-links a.cta-nav.active {
-  background: var(--crimson);
+  background: rgba(225, 29, 72, 0.25);
   box-shadow: 0 0 18px var(--crimson-glow);
 }
 
@@ -230,6 +226,7 @@ body {
   width: 24px;
   height: 2px;
   background: var(--text);
+  box-shadow: 0 1px 4px #000;
 }
 
 /* ==========================================================
@@ -263,14 +260,12 @@ body {
   border-radius: 8px;
   background: var(--card-bg);
   border: 1px solid var(--border);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
   transition: all 0.2s;
 }
 
 .back-pill:hover {
-  border-color: var(--crimson);
-  background: var(--card-hover);
+  border-color: var(--crimson-bright);
+  box-shadow: 0 0 12px var(--crimson-glow);
 }
 
 .akatsuki-badge {
@@ -280,13 +275,13 @@ body {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   color: #fff;
-  background: rgba(225, 29, 72, 0.22);
+  background: var(--card-bg);
   border: 1px solid var(--border-crimson);
   padding: 6px 14px;
   border-radius: 999px;
   margin-bottom: 20px;
   width: fit-content;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 0 12px rgba(225, 29, 72, 0.2);
 }
 
 .pulse-dot {
@@ -311,20 +306,19 @@ body {
   letter-spacing: -0.02em;
   margin-bottom: 20px;
   text-transform: uppercase;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95);
 }
 
 .glitch-title span {
   color: var(--crimson-bright);
-  text-shadow: 0 0 25px var(--crimson-glow);
+  text-shadow: 0 0 22px var(--crimson-glow), 0 3px 12px #000;
 }
 
 .hero-desc {
   max-width: 640px;
-  font-size: 1.06rem;
-  color: #f1f5f9;
+  font-size: 1.08rem;
+  color: #ffffff;
   margin-bottom: 32px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 .hero-actions {
@@ -334,9 +328,10 @@ body {
   margin-bottom: 48px;
 }
 
+/* Transparent Neon Buttons (Only Border & Text) */
 .btn-primary {
-  background: rgba(225, 29, 72, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(225, 29, 72, 0.15);
+  border: 1.5px solid var(--crimson-bright);
   color: #fff;
   text-decoration: none;
   padding: 14px 26px;
@@ -346,19 +341,19 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 25px var(--crimson-glow);
+  box-shadow: 0 0 20px rgba(225, 29, 72, 0.3);
   transition: all 0.25s ease;
 }
 
 .btn-primary:hover {
-  background: var(--crimson-bright);
+  background: rgba(225, 29, 72, 0.35);
+  box-shadow: 0 0 28px var(--crimson-glow);
   transform: translateY(-2px);
 }
 
 .btn-secondary {
   background: var(--card-bg);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   color: var(--text);
   text-decoration: none;
   padding: 14px 26px;
@@ -368,14 +363,13 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
   transition: all 0.25s ease;
 }
 
 .btn-secondary:hover {
-  border-color: var(--crimson);
+  border-color: var(--crimson-bright);
   background: var(--card-hover);
+  box-shadow: 0 0 18px rgba(225, 29, 72, 0.25);
 }
 
 .live-stats {
@@ -387,12 +381,9 @@ body {
 .stat-box {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-left: 3px solid var(--crimson);
+  border-left: 3px solid var(--crimson-bright);
   padding: 14px 18px;
   border-radius: 10px;
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 .stat-num {
@@ -410,7 +401,7 @@ body {
 }
 
 /* ==========================================================
-   5. EDITION SELECTOR (CRYSTAL GLASS PORTAL CARDS)
+   5. EDITION SELECTOR (95% TRANSPARENT WIREFRAME PORTALS)
    ========================================================== */
 .edition-grid {
   display: grid;
@@ -420,33 +411,29 @@ body {
 
 .edition-card {
   background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-top: 1px solid rgba(255, 255, 255, 0.28); /* Glass Top Shine */
+  border: 1.5px solid var(--border);
   border-radius: 16px;
   padding: 36px 30px;
   text-decoration: none;
   color: var(--text);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .edition-card:hover {
   transform: translateY(-6px);
   background: var(--card-hover);
-  border-color: var(--crimson);
-  box-shadow: 0 15px 40px rgba(225, 29, 72, 0.28);
+  border-color: var(--crimson-bright);
+  box-shadow: 0 0 25px rgba(225, 29, 72, 0.3);
 }
 
 .edition-badge {
   font-family: var(--font-mono);
   font-size: 0.74rem;
   color: #fff;
-  background: var(--crimson-soft);
+  background: var(--card-bg);
   border: 1px solid var(--border-crimson);
   padding: 4px 12px;
   border-radius: 99px;
@@ -478,7 +465,7 @@ body {
 }
 
 /* ==========================================================
-   6. MODPACK GLASS CARDS & GRIDS
+   6. MODPACK CARDS (95% TRANSPARENT + NEON BORDERS)
    ========================================================== */
 .section-header {
   margin-bottom: 40px;
@@ -491,7 +478,6 @@ body {
   letter-spacing: 0.08em;
   display: block;
   margin-bottom: 6px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .section-header h2 {
@@ -500,13 +486,11 @@ body {
   font-weight: 800;
   letter-spacing: 0.02em;
   margin-bottom: 8px;
-  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
 }
 
 .section-header p {
   color: var(--muted);
   max-width: 620px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .cards-grid {
@@ -516,30 +500,26 @@ body {
 }
 
 .game-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-top: 1px solid rgba(255, 255, 255, 0.25); /* Top Glass Highlight */
+  background: var(--card-bg); /* 95% Transparent */
+  border: 1.5px solid var(--border);
   border-radius: 14px;
   padding: 26px;
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: all 0.25s ease;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
 }
 
 .game-card:hover {
   transform: translateY(-5px);
   background: var(--card-hover);
-  border-color: var(--border-crimson);
-  box-shadow: 0 12px 35px rgba(225, 29, 72, 0.22);
+  border-color: var(--crimson-bright);
+  box-shadow: 0 0 25px rgba(225, 29, 72, 0.28);
 }
 
 .featured-card {
   border-color: var(--border-crimson);
-  background: rgba(225, 29, 72, 0.10);
+  box-shadow: 0 0 18px rgba(225, 29, 72, 0.18);
 }
 
 .card-top {
@@ -554,15 +534,14 @@ body {
   font-size: 0.72rem;
   padding: 4px 10px;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
   color: #fff;
 }
 
 .tag-pill.crimson {
-  background: var(--crimson-soft);
-  color: #fff;
-  border: 1px solid var(--border-crimson);
+  border-color: var(--border-crimson);
+  color: var(--crimson-bright);
 }
 
 .card-icon {
@@ -590,7 +569,7 @@ body {
 
 .spec-list li {
   font-size: 0.84rem;
-  color: #f1f5f9;
+  color: #ffffff;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -610,8 +589,8 @@ body {
 
 .btn-card {
   flex: 1;
-  background: rgba(255, 255, 255, 0.10);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
   color: #fff;
   padding: 11px 16px;
   border-radius: 8px;
@@ -623,17 +602,18 @@ body {
   justify-content: center;
   align-items: center;
   gap: 8px;
+  text-shadow: var(--text-shadow);
   transition: all 0.2s ease;
 }
 
 .btn-card:hover {
-  background: var(--crimson);
-  border-color: var(--crimson);
+  background: rgba(225, 29, 72, 0.25);
+  border-color: var(--crimson-bright);
   box-shadow: 0 0 15px var(--crimson-glow);
 }
 
 /* ==========================================================
-   7. MONTAGES, ARSENAL & TIMELINE (TRANSPARENT GLASS)
+   7. MONTAGES, ARSENAL & TIMELINE (95% TRANSPARENT)
    ========================================================== */
 .video-grid {
   display: grid;
@@ -643,37 +623,37 @@ body {
 
 .video-card {
   background: var(--card-bg);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
   transition: all 0.25s ease;
 }
 
 .video-card:hover {
   transform: translateY(-4px);
   background: var(--card-hover);
-  border-color: var(--border-crimson);
+  border-color: var(--crimson-bright);
+  box-shadow: 0 0 22px rgba(225, 29, 72, 0.25);
 }
 
 .video-thumb {
-  height: 210px;
+  height: 200px;
   background-size: cover;
   background-position: center;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid var(--border);
 }
 
 .video-thumb::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.30);
+  background: rgba(0, 0, 0, 0.25);
 }
 
 .play-btn {
@@ -682,9 +662,8 @@ body {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: rgba(225, 29, 72, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.35);
+  border: 2px solid var(--crimson-bright);
   color: #fff;
   display: flex;
   align-items: center;
@@ -698,8 +677,8 @@ body {
   bottom: 12px;
   right: 12px;
   z-index: 2;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid var(--border);
   padding: 3px 8px;
   border-radius: 4px;
   font-family: var(--font-mono);
@@ -726,27 +705,25 @@ body {
 
 .arsenal-item {
   background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1.5px solid var(--border);
   padding: 22px;
   border-radius: 12px;
   display: flex;
   gap: 16px;
   align-items: flex-start;
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
   transition: all 0.25s ease;
 }
 
 .arsenal-item:hover {
   background: var(--card-hover);
-  border-color: var(--border-crimson);
+  border-color: var(--crimson-bright);
+  box-shadow: 0 0 18px rgba(225, 29, 72, 0.22);
 }
 
 .arsenal-item i {
   font-size: 1.5rem;
   color: var(--crimson-bright);
-  background: var(--crimson-soft);
+  background: var(--card-bg);
   border: 1px solid var(--border-crimson);
   padding: 12px;
   border-radius: 10px;
@@ -766,22 +743,20 @@ body {
 
 .timeline-row {
   background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--crimson);
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--crimson-bright);
   border-radius: 12px;
   padding: 22px;
   display: flex;
   gap: 24px;
   align-items: flex-start;
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
 }
 
 .time-badge {
   font-family: var(--font-display);
   font-size: 0.82rem;
   color: #fff;
-  background: var(--crimson-soft);
+  background: var(--card-bg);
   border: 1px solid var(--border-crimson);
   padding: 6px 12px;
   border-radius: 6px;
@@ -789,17 +764,14 @@ body {
 }
 
 /* ==========================================================
-   8. JOIN CLAN & SOCIAL MEDIA (GLASS BANNER)
+   8. JOIN CLAN & SOCIAL MEDIA (95% TRANSPARENT)
    ========================================================== */
 .connect-banner {
   background: var(--card-bg);
-  border: 1px solid var(--border-crimson);
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1.5px solid var(--border-crimson);
   border-radius: 18px;
   padding: 42px;
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 30px rgba(225, 29, 72, 0.15);
 }
 
 .connect-text {
@@ -819,8 +791,8 @@ body {
 }
 
 .soc-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--border);
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
   padding: 22px;
   border-radius: 12px;
   color: var(--text);
@@ -828,7 +800,6 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
-  backdrop-filter: blur(10px);
   transition: all 0.25s ease;
 }
 
@@ -850,8 +821,9 @@ body {
 }
 
 .soc-card:hover {
-  background: var(--crimson-soft);
-  border-color: var(--crimson);
+  background: var(--card-hover);
+  border-color: var(--crimson-bright);
+  box-shadow: 0 0 20px rgba(225, 29, 72, 0.28);
   transform: translateY(-4px);
 }
 
@@ -882,23 +854,21 @@ body {
 
 .tag-copy-row code {
   font-family: var(--font-mono);
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid var(--border);
+  background: var(--card-bg);
+  border: 1px solid var(--border-crimson);
   padding: 10px 16px;
   border-radius: 8px;
   color: var(--crimson-bright);
 }
 
 /* ==========================================================
-   9. TRANSPARENT FOOTER & MOBILE RESPONSIVE
+   9. 95% TRANSPARENT FOOTER & MOBILE RESPONSIVE
    ========================================================== */
 .footer {
   border-top: 1px solid var(--border);
   padding: 32px 24px;
   text-align: center;
-  background: rgba(5, 5, 7, 0.35);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  background: var(--card-bg);
 }
 
 .footer-sub {
@@ -912,14 +882,14 @@ body {
     display: flex;
   }
 
+  /* Mobile menu khulne par thoda dark rakha hai taaki links overlap na ho */
   .nav-links {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(8, 8, 12, 0.88);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
+    background: rgba(5, 5, 7, 0.85);
+    border-bottom: 1px solid var(--border-crimson);
     flex-direction: column;
     padding: 20px;
     display: none;
