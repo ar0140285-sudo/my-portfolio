@@ -1,32 +1,32 @@
 /* ==========================================================
-   1. GOOGLE FONTS & 95% TRANSPARENT ITACHI THEME VARIABLES
-   --card-bg me 0.05 ka matlab hai 95% Pura Transparent!
-   Blur ko 0px kar diya hai taaki piche ki photo bilkul HD dikhe.
+   1. GOOGLE FONTS & ITACHI RED LINE + ZOOM VARIABLES
    ========================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
 
 :root {
   --bg-dark: #050507;
-  /* 95% Transparent (Sirf 5% halka tint) */
+  /* 95% Transparent (Zero Blur) */
   --card-bg: rgba(0, 0, 0, 0.05);         
-  --card-hover: rgba(225, 29, 72, 0.08);     /* Hover par halka Sharingan Red touch */
-  --glass-blur: blur(0px);                   /* Blur zero taaki character 100% sharp dikhe */
+  --card-hover: rgba(225, 29, 72, 0.10);     
   
   /* Itachi Uchiha Crimson & Sharingan Colors */
   --crimson: #e11d48;                        
   --crimson-bright: #ff1e42;                 
-  --crimson-glow: rgba(225, 29, 72, 0.55);   
-  --crimson-soft: rgba(225, 29, 72, 0.10);   
+  --crimson-glow: rgba(255, 30, 66, 0.55);   
+  --crimson-soft: rgba(225, 29, 72, 0.12);   
   
-  /* Sharp Visible Borders (Sirf border aur text dikhane ke liye) */
-  --border: rgba(255, 255, 255, 0.28);       
-  --border-crimson: rgba(255, 30, 66, 0.75); 
+  /* 👇 AB SABHI BORDERS PURE SHARINGAN RED HAIN 👇 */
+  --border: rgba(255, 30, 66, 0.65);       
+  --border-crimson: #ff1e42; 
   
-  /* Text Colors + Heavy Shadow taaki kisi bhi wallpaper par text saaf padhne me aaye */
+  /* Text Colors + Heavy Shadow */
   --text: #ffffff;                           
   --muted: #f1f5f9;                          
-  --text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 4px rgba(0, 0, 0, 0.9);
+  --text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 5px rgba(0, 0, 0, 0.95);
   
+  /* Active Background URL for Box Zoom Effect */
+  --active-bg: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1920&auto=format&fit=crop');
+
   --font-display: 'Orbitron', sans-serif;
   --font-sans: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -53,7 +53,7 @@ body {
 }
 
 /* ==========================================================
-   2. FULLSCREEN AKATSUKI BACKGROUND (CRYSTAL CLEAR)
+   2. FULLSCREEN AKATSUKI BACKGROUND (WITH SMOOTH ZOOM)
    ========================================================== */
 .bg-stage {
   position: fixed;
@@ -73,18 +73,22 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
-  transform: scale(1.06);
-  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 1.4s ease-out;
+  transform: scale(1.14);
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 1.6s ease-out;
   filter: contrast(1.08) saturate(1.15);
 }
 
-/* Background character image ko 88% bright rakha hai */
+/* Active background me halka zoom-in pulse rahega */
 .bg-slide.active {
   opacity: 0.88;
-  transform: scale(1);
+  transform: scale(1.04);
 }
 
-/* Bahut halka vignette sirf edges par taaki white text kabhi gayab na ho */
+/* Jab user kisi bhi box/card par mouse le jayega, piche ka background halka zoom hoga */
+body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:hover) .bg-slide.active {
+  transform: scale(1.10);
+}
+
 .bg-overlay {
   position: absolute;
   inset: 0;
@@ -93,7 +97,58 @@ body {
     linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, transparent 30%, rgba(0, 0, 0, 0.55) 100%);
 }
 
-/* Bottom-Right Corner HUD (95% Transparent + Red Border) */
+/* ==========================================================
+   3. BOX BACKGROUND MAGNIFIER / ZOOM LENS EFFECT
+   Jahan pehle blur tha, ab har box ke andar background image 
+   halki si ZOOM (106% -> 112% on hover) dikhegi!
+   ========================================================== */
+.game-card,
+.edition-card,
+.arsenal-item,
+.timeline-row,
+.stat-box,
+.soc-card,
+.connect-banner {
+  position: relative;
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border); /* Red Line Border */
+  box-shadow: 0 0 12px rgba(225, 29, 72, 0.18), inset 0 0 10px rgba(225, 29, 72, 0.08);
+  z-index: 1;
+}
+
+/* Box ke andar Zoomed Background Layer */
+.game-card::before,
+.edition-card::before,
+.arsenal-item::before,
+.timeline-row::before,
+.stat-box::before,
+.soc-card::before,
+.connect-banner::before {
+  content: '';
+  position: absolute;
+  inset: -15px; /* Zoom margin */
+  background-image: var(--active-bg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.06); /* Halka Zoom andar */
+  opacity: 0.35;          /* 95% Transparent feel maintain karne ke liye */
+  z-index: -1;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+  pointer-events: none;
+}
+
+/* Box par hover karne par andar ki photo aur halki zoom hogi + Red Line chamkegi */
+.game-card:hover::before,
+.edition-card:hover::before,
+.arsenal-item:hover::before,
+.soc-card:hover::before {
+  transform: scale(1.12);
+  opacity: 0.50;
+}
+
+/* Bottom-Right Corner HUD */
 .akatsuki-hud {
   position: fixed;
   bottom: 28px;
@@ -101,11 +156,11 @@ body {
   z-index: 20;
   max-width: 330px;
   background: var(--card-bg);
-  border: 1px solid var(--border-crimson);
+  border: 1.5px solid var(--border-crimson);
   border-left: 4px solid var(--crimson-bright);
   padding: 14px 18px;
   border-radius: 8px;
-  box-shadow: 0 0 18px rgba(225, 29, 72, 0.2);
+  box-shadow: 0 0 20px rgba(225, 29, 72, 0.3);
 }
 
 .hud-label {
@@ -132,7 +187,7 @@ body {
 }
 
 /* ==========================================================
-   3. 95% TRANSPARENT NAVIGATION BAR (ONLY BORDER & TEXT)
+   4. NAVIGATION BAR (RED LINE BORDER)
    ========================================================== */
 .nav {
   position: fixed;
@@ -140,8 +195,9 @@ body {
   left: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.05); /* 95% Transparent */
-  border-bottom: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.05);
+  border-bottom: 1.5px solid var(--border);
+  box-shadow: 0 2px 15px rgba(225, 29, 72, 0.15);
 }
 
 .nav-inner {
@@ -198,7 +254,7 @@ body {
 
 .nav-links a.cta-nav {
   background: var(--card-bg);
-  border: 1px solid var(--border-crimson);
+  border: 1.5px solid var(--border-crimson);
   color: #fff;
   padding: 7px 14px;
   border-radius: 6px;
@@ -225,12 +281,12 @@ body {
 .hamburger span {
   width: 24px;
   height: 2px;
-  background: var(--text);
+  background: var(--crimson-bright);
   box-shadow: 0 1px 4px #000;
 }
 
 /* ==========================================================
-   4. HERO & COMMON SECTION LAYOUT
+   5. HERO & COMMON SECTION LAYOUT
    ========================================================== */
 .main-wrapper {
   max-width: 1140px;
@@ -259,13 +315,13 @@ body {
   padding: 6px 14px;
   border-radius: 8px;
   background: var(--card-bg);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   transition: all 0.2s;
 }
 
 .back-pill:hover {
   border-color: var(--crimson-bright);
-  box-shadow: 0 0 12px var(--crimson-glow);
+  box-shadow: 0 0 15px var(--crimson-glow);
 }
 
 .akatsuki-badge {
@@ -276,12 +332,12 @@ body {
   font-size: 0.78rem;
   color: #fff;
   background: var(--card-bg);
-  border: 1px solid var(--border-crimson);
+  border: 1.5px solid var(--border-crimson);
   padding: 6px 14px;
   border-radius: 999px;
   margin-bottom: 20px;
   width: fit-content;
-  box-shadow: 0 0 12px rgba(225, 29, 72, 0.2);
+  box-shadow: 0 0 14px rgba(225, 29, 72, 0.28);
 }
 
 .pulse-dot {
@@ -328,7 +384,6 @@ body {
   margin-bottom: 48px;
 }
 
-/* Transparent Neon Buttons (Only Border & Text) */
 .btn-primary {
   background: rgba(225, 29, 72, 0.15);
   border: 1.5px solid var(--crimson-bright);
@@ -341,7 +396,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 0 0 20px rgba(225, 29, 72, 0.3);
+  box-shadow: 0 0 20px rgba(225, 29, 72, 0.35);
   transition: all 0.25s ease;
 }
 
@@ -369,7 +424,7 @@ body {
 .btn-secondary:hover {
   border-color: var(--crimson-bright);
   background: var(--card-hover);
-  box-shadow: 0 0 18px rgba(225, 29, 72, 0.25);
+  box-shadow: 0 0 20px var(--crimson-glow);
 }
 
 .live-stats {
@@ -379,9 +434,7 @@ body {
 }
 
 .stat-box {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--crimson-bright);
+  border-left: 4px solid var(--crimson-bright);
   padding: 14px 18px;
   border-radius: 10px;
 }
@@ -401,7 +454,7 @@ body {
 }
 
 /* ==========================================================
-   5. EDITION SELECTOR (95% TRANSPARENT WIREFRAME PORTALS)
+   6. EDITION SELECTOR & MODPACK CARDS (RED LINE + ZOOM)
    ========================================================== */
 .edition-grid {
   display: grid;
@@ -410,8 +463,6 @@ body {
 }
 
 .edition-card {
-  background: var(--card-bg);
-  border: 1.5px solid var(--border);
   border-radius: 16px;
   padding: 36px 30px;
   text-decoration: none;
@@ -424,9 +475,8 @@ body {
 
 .edition-card:hover {
   transform: translateY(-6px);
-  background: var(--card-hover);
   border-color: var(--crimson-bright);
-  box-shadow: 0 0 25px rgba(225, 29, 72, 0.3);
+  box-shadow: 0 0 28px var(--crimson-glow);
 }
 
 .edition-badge {
@@ -464,9 +514,6 @@ body {
   margin-bottom: 22px;
 }
 
-/* ==========================================================
-   6. MODPACK CARDS (95% TRANSPARENT + NEON BORDERS)
-   ========================================================== */
 .section-header {
   margin-bottom: 40px;
 }
@@ -500,8 +547,6 @@ body {
 }
 
 .game-card {
-  background: var(--card-bg); /* 95% Transparent */
-  border: 1.5px solid var(--border);
   border-radius: 14px;
   padding: 26px;
   display: flex;
@@ -512,14 +557,13 @@ body {
 
 .game-card:hover {
   transform: translateY(-5px);
-  background: var(--card-hover);
   border-color: var(--crimson-bright);
-  box-shadow: 0 0 25px rgba(225, 29, 72, 0.28);
+  box-shadow: 0 0 28px var(--crimson-glow);
 }
 
 .featured-card {
-  border-color: var(--border-crimson);
-  box-shadow: 0 0 18px rgba(225, 29, 72, 0.18);
+  border: 2px solid var(--border-crimson);
+  box-shadow: 0 0 22px rgba(255, 30, 66, 0.3);
 }
 
 .card-top {
@@ -535,12 +579,11 @@ body {
   padding: 4px 10px;
   border-radius: 6px;
   background: var(--card-bg);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-crimson);
   color: #fff;
 }
 
 .tag-pill.crimson {
-  border-color: var(--border-crimson);
   color: var(--crimson-bright);
 }
 
@@ -590,7 +633,7 @@ body {
 .btn-card {
   flex: 1;
   background: var(--card-bg);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border-crimson);
   color: #fff;
   padding: 11px 16px;
   border-radius: 8px;
@@ -607,13 +650,12 @@ body {
 }
 
 .btn-card:hover {
-  background: rgba(225, 29, 72, 0.25);
-  border-color: var(--crimson-bright);
-  box-shadow: 0 0 15px var(--crimson-glow);
+  background: rgba(225, 29, 72, 0.28);
+  box-shadow: 0 0 18px var(--crimson-glow);
 }
 
 /* ==========================================================
-   7. MONTAGES, ARSENAL & TIMELINE (95% TRANSPARENT)
+   7. MONTAGES, ARSENAL & TIMELINE (RED LINE + ZOOM)
    ========================================================== */
 .video-grid {
   display: grid;
@@ -623,19 +665,18 @@ body {
 
 .video-card {
   background: var(--card-bg);
-  border: 1.5px solid var(--border);
+  border: 1.5px solid var(--border-crimson);
   border-radius: 14px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
   transition: all 0.25s ease;
+  box-shadow: 0 0 14px rgba(225, 29, 72, 0.2);
 }
 
 .video-card:hover {
   transform: translateY(-4px);
-  background: var(--card-hover);
-  border-color: var(--crimson-bright);
-  box-shadow: 0 0 22px rgba(225, 29, 72, 0.25);
+  box-shadow: 0 0 26px var(--crimson-glow);
 }
 
 .video-thumb {
@@ -646,7 +687,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1.5px solid var(--border-crimson);
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+
+.video-card:hover .video-thumb {
+  transform: scale(1.05);
 }
 
 .video-thumb::after {
@@ -678,7 +725,7 @@ body {
   right: 12px;
   z-index: 2;
   background: rgba(0, 0, 0, 0.55);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-crimson);
   padding: 3px 8px;
   border-radius: 4px;
   font-family: var(--font-mono);
@@ -704,8 +751,6 @@ body {
 }
 
 .arsenal-item {
-  background: var(--card-bg);
-  border: 1.5px solid var(--border);
   padding: 22px;
   border-radius: 12px;
   display: flex;
@@ -715,9 +760,8 @@ body {
 }
 
 .arsenal-item:hover {
-  background: var(--card-hover);
   border-color: var(--crimson-bright);
-  box-shadow: 0 0 18px rgba(225, 29, 72, 0.22);
+  box-shadow: 0 0 22px var(--crimson-glow);
 }
 
 .arsenal-item i {
@@ -742,8 +786,6 @@ body {
 }
 
 .timeline-row {
-  background: var(--card-bg);
-  border: 1.5px solid var(--border);
   border-left: 4px solid var(--crimson-bright);
   border-radius: 12px;
   padding: 22px;
@@ -764,14 +806,13 @@ body {
 }
 
 /* ==========================================================
-   8. JOIN CLAN & SOCIAL MEDIA (95% TRANSPARENT)
+   8. JOIN CLAN & SOCIAL MEDIA (RED LINE + ZOOM)
    ========================================================== */
 .connect-banner {
-  background: var(--card-bg);
-  border: 1.5px solid var(--border-crimson);
+  border: 2px solid var(--border-crimson);
   border-radius: 18px;
   padding: 42px;
-  box-shadow: 0 0 30px rgba(225, 29, 72, 0.15);
+  box-shadow: 0 0 30px rgba(225, 29, 72, 0.22);
 }
 
 .connect-text {
@@ -791,8 +832,6 @@ body {
 }
 
 .soc-card {
-  background: var(--card-bg);
-  border: 1.5px solid var(--border);
   padding: 22px;
   border-radius: 12px;
   color: var(--text);
@@ -821,9 +860,8 @@ body {
 }
 
 .soc-card:hover {
-  background: var(--card-hover);
   border-color: var(--crimson-bright);
-  box-shadow: 0 0 20px rgba(225, 29, 72, 0.28);
+  box-shadow: 0 0 24px var(--crimson-glow);
   transform: translateY(-4px);
 }
 
@@ -855,17 +893,17 @@ body {
 .tag-copy-row code {
   font-family: var(--font-mono);
   background: var(--card-bg);
-  border: 1px solid var(--border-crimson);
+  border: 1.5px solid var(--border-crimson);
   padding: 10px 16px;
   border-radius: 8px;
   color: var(--crimson-bright);
 }
 
 /* ==========================================================
-   9. 95% TRANSPARENT FOOTER & MOBILE RESPONSIVE
+   9. FOOTER & MOBILE RESPONSIVE
    ========================================================== */
 .footer {
-  border-top: 1px solid var(--border);
+  border-top: 1.5px solid var(--border);
   padding: 32px 24px;
   text-align: center;
   background: var(--card-bg);
@@ -882,14 +920,13 @@ body {
     display: flex;
   }
 
-  /* Mobile menu khulne par thoda dark rakha hai taaki links overlap na ho */
   .nav-links {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(5, 5, 7, 0.85);
-    border-bottom: 1px solid var(--border-crimson);
+    background: rgba(5, 5, 7, 0.90);
+    border-bottom: 1.5px solid var(--border-crimson);
     flex-direction: column;
     padding: 20px;
     display: none;

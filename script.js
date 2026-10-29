@@ -113,3 +113,32 @@ if (mobileMenuBtn && navLinksContainer) {
   }
   linkTag.href = sharinganLink;
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 1. Background image slide change karo + Card Zoom Lens me wahi photo set karo
+      if (bgSlides.length > 0) {
+        bgSlides.forEach((slide, idx) => {
+          if (idx === index || bgSlides.length === 1) {
+            slide.classList.add('active');
+            // 👇 Ye line har box ke andar active Akatsuki member ko zoom karegi 👇
+            const bgImage = slide.style.backgroundImage;
+            if (bgImage) {
+              document.documentElement.style.setProperty('--active-bg', bgImage);
+            }
+          } else {
+            slide.classList.remove('active');
+          }
+        });
+      }
