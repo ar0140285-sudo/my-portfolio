@@ -1,35 +1,62 @@
 /* ==========================================================
-   1. GOOGLE FONTS & ITACHI RED LINE + ZOOM VARIABLES
+   1. GOOGLE FONTS & ITACHI AKATSUKI COLOR VARIABLES
    ========================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
 
 :root {
   --bg-dark: #050507;
-  /* 95% Transparent (Zero Blur) */
-  --card-bg: rgba(0, 0, 0, 0.05);         
-  --card-hover: rgba(225, 29, 72, 0.10);     
   
-  /* Itachi Uchiha Crimson & Sharingan Colors */
+  /* 95% Transparent background (Zero Blur for crystal clear wallpaper) */
+  --card-bg: rgba(0, 0, 0, 0.05);         
+  --card-hover: rgba(225, 29, 72, 0.12);     
+  
+  /* Itachi Uchiha & Sharingan Crimson Colors */
   --crimson: #e11d48;                        
   --crimson-bright: #ff1e42;                 
   --crimson-glow: rgba(255, 30, 66, 0.55);   
-  --crimson-soft: rgba(225, 29, 72, 0.12);   
+  --crimson-soft: rgba(225, 29, 72, 0.14);   
   
-  /* 👇 AB SABHI BORDERS PURE SHARINGAN RED HAIN 👇 */
+  /* Red Line Borders */
   --border: rgba(255, 30, 66, 0.65);       
   --border-crimson: #ff1e42; 
   
-  /* Text Colors + Heavy Shadow */
+  /* Text & Heavy Drop Shadow */
   --text: #ffffff;                           
   --muted: #f1f5f9;                          
   --text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 5px rgba(0, 0, 0, 0.95);
   
-  /* Active Background URL for Box Zoom Effect */
-  --active-bg: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1920&auto=format&fit=crop');
-
   --font-display: 'Orbitron', sans-serif;
   --font-sans: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+
+  /* ==========================================================
+     👇 PC / LAPTOP / WINDOWS WIDESCREEN WALLPAPERS 👇
+     (Apni pasand ke PC links yaha badal sakte ho)
+     ========================================================== */
+  --bg-member-0: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1920&auto=format&fit=crop'); /* Itachi (Desktop) */
+  --bg-member-1: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop'); /* Pain (Desktop) */
+  --bg-member-2: url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1920&auto=format&fit=crop'); /* Obito (Desktop) */
+  --bg-member-3: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1920&auto=format&fit=crop'); /* Deidara (Desktop) */
+  --bg-member-4: url('https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=1920&auto=format&fit=crop'); /* Kisame (Desktop) */
+  --bg-member-5: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop'); /* Konan (Desktop) */
+  
+  /* Zoom Lens Active Background Reference */
+  --active-bg: var(--bg-member-0);
+}
+
+/* ==========================================================
+   👇 MOBILE SCREENS (768px se chhote phones ke liye Vertical Images) 👇
+   (Mobile me vertical portrait image automatic switch hogi)
+   ========================================================== */
+@media (max-width: 768px) {
+  :root {
+    --bg-member-0: url('https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1080&auto=format&fit=crop'); /* Itachi (Mobile) */
+    --bg-member-1: url('https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1080&auto=format&fit=crop'); /* Pain (Mobile) */
+    --bg-member-2: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1080&auto=format&fit=crop'); /* Obito (Mobile) */
+    --bg-member-3: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1080&auto=format&fit=crop'); /* Deidara (Mobile) */
+    --bg-member-4: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1080&auto=format&fit=crop'); /* Kisame (Mobile) */
+    --bg-member-5: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1080&auto=format&fit=crop'); /* Konan (Mobile) */
+  }
 }
 
 /* Base Reset */
@@ -53,7 +80,7 @@ body {
 }
 
 /* ==========================================================
-   2. FULLSCREEN AKATSUKI BACKGROUND (WITH SMOOTH ZOOM)
+   2. FULLSCREEN AKATSUKI BACKGROUND (SMOOTH SCROLL SWITCH)
    ========================================================== */
 .bg-stage {
   position: fixed;
@@ -78,17 +105,26 @@ body {
   filter: contrast(1.08) saturate(1.15);
 }
 
-/* Active background me halka zoom-in pulse rahega */
+/* Har slide ko unke respective PC/Mobile wallpaper variable se map kiya hai */
+.bg-slide:nth-child(1) { background-image: var(--bg-member-0) !important; }
+.bg-slide:nth-child(2) { background-image: var(--bg-member-1) !important; }
+.bg-slide:nth-child(3) { background-image: var(--bg-member-2) !important; }
+.bg-slide:nth-child(4) { background-image: var(--bg-member-3) !important; }
+.bg-slide:nth-child(5) { background-image: var(--bg-member-4) !important; }
+.bg-slide:nth-child(6) { background-image: var(--bg-member-5) !important; }
+
+/* Active slide full brightness aur natural scale par aayegi */
 .bg-slide.active {
   opacity: 0.88;
   transform: scale(1.04);
 }
 
-/* Jab user kisi bhi box/card par mouse le jayega, piche ka background halka zoom hoga */
+/* Mouse hover hone par piche ka active background halka sa zoom-in karega */
 body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:hover) .bg-slide.active {
   transform: scale(1.10);
 }
 
+/* Subtle Vignette for Text Clarity */
 .bg-overlay {
   position: absolute;
   inset: 0;
@@ -99,8 +135,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
 
 /* ==========================================================
    3. BOX BACKGROUND MAGNIFIER / ZOOM LENS EFFECT
-   Jahan pehle blur tha, ab har box ke andar background image 
-   halki si ZOOM (106% -> 112% on hover) dikhegi!
+   (Boxes ke andar halki si Zoomed background image)
    ========================================================== */
 .game-card,
 .edition-card,
@@ -112,12 +147,12 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   position: relative;
   overflow: hidden;
   background: var(--card-bg);
-  border: 1.5px solid var(--border); /* Red Line Border */
-  box-shadow: 0 0 12px rgba(225, 29, 72, 0.18), inset 0 0 10px rgba(225, 29, 72, 0.08);
+  border: 1.5px solid var(--border); /* Pure Red Border */
+  box-shadow: 0 0 14px rgba(225, 29, 72, 0.2), inset 0 0 10px rgba(225, 29, 72, 0.08);
   z-index: 1;
 }
 
-/* Box ke andar Zoomed Background Layer */
+/* Box Zoom Lens Layer */
 .game-card::before,
 .edition-card::before,
 .arsenal-item::before,
@@ -127,19 +162,19 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
 .connect-banner::before {
   content: '';
   position: absolute;
-  inset: -15px; /* Zoom margin */
+  inset: -15px;
   background-image: var(--active-bg);
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  transform: scale(1.06); /* Halka Zoom andar */
-  opacity: 0.35;          /* 95% Transparent feel maintain karne ke liye */
+  transform: scale(1.06); /* Box ke andar halka zoom */
+  opacity: 0.35;          /* 95% Transparent feel maintain rahegi */
   z-index: -1;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
   pointer-events: none;
 }
 
-/* Box par hover karne par andar ki photo aur halki zoom hogi + Red Line chamkegi */
+/* Hover karne par box ke andar ki photo aur halki zoom hogi */
 .game-card:hover::before,
 .edition-card:hover::before,
 .arsenal-item:hover::before,
@@ -148,7 +183,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   opacity: 0.50;
 }
 
-/* Bottom-Right Corner HUD */
+/* Bottom-Right Corner HUD Box */
 .akatsuki-hud {
   position: fixed;
   bottom: 28px;
@@ -286,7 +321,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
 }
 
 /* ==========================================================
-   5. HERO & COMMON SECTION LAYOUT
+   5. HERO & SECTION HEADERS
    ========================================================== */
 .main-wrapper {
   max-width: 1140px;
@@ -454,7 +489,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
 }
 
 /* ==========================================================
-   6. EDITION SELECTOR & MODPACK CARDS (RED LINE + ZOOM)
+   6. PORTAL EDITION SELECTOR & MODPACK CARDS
    ========================================================== */
 .edition-grid {
   display: grid;
@@ -655,7 +690,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
 }
 
 /* ==========================================================
-   7. MONTAGES, ARSENAL & TIMELINE (RED LINE + ZOOM)
+   7. MONTAGES, ARSENAL & TIMELINE
    ========================================================== */
 .video-grid {
   display: grid;
@@ -806,7 +841,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
 }
 
 /* ==========================================================
-   8. JOIN CLAN & SOCIAL MEDIA (RED LINE + ZOOM)
+   8. JOIN CLAN & SOCIAL MEDIA
    ========================================================== */
 .connect-banner {
   border: 2px solid var(--border-crimson);
