@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZENVRO // Core System Terminal — Akash Rathod</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- =========================================================
+       DISTINCT STEALTH WALLPAPER (Pain / Deva Path Domain)
+       ========================================================= -->
+  <div class="bg-stage" id="bgStage">
+    <!-- Distinct Wallpaper for Hub -->
+    <div class="bg-slide active" style="background-image: url('https://images.wallpapersden.com/image/download/pain-tendo-naruto_a2lmaGyUmZqaraWkpJRmbmdlrWZlbWU.jpg');"></div>
+    <div class="bg-overlay"></div>
+    
+    <!-- Secret Terminal Telemetry HUD -->
+    <div class="akatsuki-hud">
+      <div class="member-indicator">
+        <span class="hud-label">CLASSIFIED NODE //</span>
+        <h3>ARCHIVE TERMINAL</h3>
+        <p>"Visible as Gaming. Operating as Master Database."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SECRET PASSCODE GATE (Bina Password Khole Content Lock Rahega)
+       ========================================================= -->
+  <div id="securityGateModal" class="gate-overlay">
+    <div class="gate-box">
+      <div class="gate-badge">
+        <span class="pulse-dot"></span> S-RANK RESTRICTED CLEARANCE
+      </div>
+      <i class="fas fa-user-secret gate-icon"></i>
+      <h2>ENCRYPTED TERMINAL</h2>
+      <p>Ye repository private cloud se link hai. Access ke liye apna Akatsuki master passkey dalein.</p>
+
+      <form id="gateForm" onsubmit="unlockTerminal(event)">
+        <div class="passcode-input-wrap">
+          <i class="fas fa-key key-icon"></i>
+          <input 
+            type="password" 
+            id="secretPassInput" 
+            placeholder="Enter Master Passcode..." 
+            autocomplete="off" 
+            required 
+          />
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 15px;">
+          DECRYPT ARCHIVE <i class="fas fa-unlock"></i>
+        </button>
+      </form>
+
+      <div id="gateErrorMsg" class="gate-error" style="display: none;">
+        <i class="fas fa-exclamation-triangle"></i> ACCESS DENIED: Invalid Security Key!
+      </div>
+      
+      <a href="index.html" class="return-home-link">
+        <i class="fas fa-arrow-left"></i> Return to Gaming Portal
+      </a>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       NAVIGATION BAR
+       ========================================================= -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="cloud-icon">☁</span> ZENVRO<span>TERMINAL</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">01. Base</a>
+        <a href="mods.html">02. Mods</a>
+        <a href="hub.html" class="active">03. Archive [50]</a>
+        <a href="clan.html" class="cta-nav"><i class="fas fa-dragon"></i> Clan</a>
+      </div>
+
+      <button class="hamburger" id="mobileMenu" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- =========================================================
+       MAIN CONTENT: SEARCH & 50 LINK NODES
+       ========================================================= -->
+  <main class="main-wrapper">
+    <section class="scroll-section" style="padding-top: 120px; justify-content: flex-start;">
+      
+      <!-- Stealth Header (Covered as Game Configs / Master Repository) -->
+      <div class="section-header" style="text-align: center; margin-bottom: 25px;">
+        <span class="sec-code">// LEVEL-4 DATABASE DIRECTORY</span>
+        <h1 class="glitch-title" style="font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: 8px;">
+          MASTER <span>KNOWLEDGE TERMINAL</span>
+        </h1>
+        <p style="margin: 0 auto; max-width: 680px;">
+          C/C++, Web Engines, Linux Kernels, Computer Hardware, Cloud Compilers & Semester Theory — 50 Dedicated Operational Nodes.
+        </p>
+      </div>
+
+      <!-- Real-time Search & Filter Chips -->
+      <div class="hub-search-wrapper">
+        <div class="search-box-bar">
+          <i class="fas fa-search search-icon"></i>
+          <input 
+            type="text" 
+            id="hubSearchInput" 
+            placeholder="Search by topic, node ID, keyword (e.g. pointers, bash, flexbox, sql)..." 
+            autocomplete="off"
+            onkeyup="filterHubResources()"
+          />
+          <button class="clear-search-btn" id="clearBtn" onclick="clearSearch()" style="display: none;">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="filter-chips">
+          <button class="chip active" onclick="setCategoryFilter('all', this)">All Nodes (50)</button>
+          <button class="chip" onclick="setCategoryFilter('c-lang', this)">C / C++ (10)</button>
+          <button class="chip" onclick="setCategoryFilter('web-dev', this)">Web Stack (10)</button>
+          <button class="chip" onclick="setCategoryFilter('os-linux', this)">OS & Linux (10)</button>
+          <button class="chip" onclick="setCategoryFilter('hardware', this)">Hardware & Core (10)</button>
+          <button class="chip" onclick="setCategoryFilter('tools', this)">Cloud Labs & DB (10)</button>
+        </div>
+      </div>
+
+      <!-- Live Counter -->
+      <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); margin: 15px 0 10px; display: flex; justify-content: space-between;">
+        <span>STATUS: <strong style="color: #4ade80;">SYNCHRONIZED</strong></span>
+        <span>VISIBLE NODES: <strong id="nodesCount" style="color: var(--crimson);">50 / 50</strong></span>
+      </div>
+
+      <!-- GRID OF 50 CARDS -->
+      <div class="cards-grid" id="hubCardsGrid">
+
+        <!-- ================= SECTION 1: C & C++ (NODES 01 to 10) ================= -->
+        
+        <!-- Node 01 -->
+        <div class="game-card featured-card" data-category="c-lang" data-keywords="c basics variables syntax control flow sem 1 handwritten notes" data-url="https://drive.google.com/file/d/1BH3SI3Xab1vJuqnS-xyVXEanTaHx4DF2/view?usp=drivesdk">
+          <div class="card-top">
+            <span class="tag-pill crimson">NODE 01 • C BASICS[cite: 1]</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com/file/d/1BH3SI3Xab1vJuqnS-xyVXEanTaHx4DF2/view?usp=drivesdk" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link[cite: 1]</a>
+                <button onclick="copyCardUrl('https://drive.google.com/file/d/1BH3SI3Xab1vJuqnS-xyVXEanTaHx4DF2/view?usp=drivesdk')"><i class="fas fa-copy"></i> Copy Link[cite: 1]</button>
+              </div>
+            </div>
+          </div>
+          <h3>C Syntax & Variable Control Flow[cite: 1]</h3>
+          <p>Handwritten notes: Operators, conditionals (if-else, switch) aur loop constructs with dry runs[cite: 1].</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com/file/d/1BH3SI3Xab1vJuqnS-xyVXEanTaHx4DF2/view?usp=drivesdk" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node[cite: 1]</a>
+          </div>
+        </div>
+
+        <!-- Node 02 -->
+        <div class="game-card" data-category="c-lang" data-keywords="pointers memory addresses pointer arithmetic double pointer dereference" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 02 • POINTERS</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Pointers & Memory Addressing</h3>
+          <p>Pointer arithmetic, double pointers (**ptr), void pointers aur pointer to function practical guide.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 03 -->
+        <div class="game-card" data-category="c-lang" data-keywords="dynamic memory allocation malloc calloc realloc free heap" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 03 • DMA HEAP</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Heap Allocation (malloc, calloc, free)</h3>
+          <p>Runtime memory handling, memory leaks prevention aur dynamic 1D/2D array creation handbook.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 04 -->
+        <div class="game-card" data-category="c-lang" data-keywords="c structures union typedef struct memory padding alignment" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 04 • STRUCTURES</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Structures, Unions & Typedef</h3>
+          <p>Heterogeneous data collections, nested structs, memory alignment aur size difference in union.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 05 -->
+        <div class="game-card" data-category="c-lang" data-keywords="file handling fopen fclose fread fwrite fseek binary files" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 05 • FILE I/O</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>File Handling in C (I/O Streams)</h3>
+          <p>Text vs Binary modes, file pointers, appending data aur persistent record management programs.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 06 -->
+        <div class="game-card" data-category="c-lang" data-keywords="c handbook textbook theory complete pdf book" data-url="https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/YouTube/The%20Ultimate%20C%20Handbook.pdf">
+          <div class="card-top">
+            <span class="tag-pill crimson">NODE 06 • C BOOK[cite: 1]</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/YouTube/The%20Ultimate%20C%20Handbook.pdf" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link[cite: 1]</a>
+                <button onclick="copyCardUrl('https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/YouTube/The%20Ultimate%20C%20Handbook.pdf')"><i class="fas fa-copy"></i> Copy Link[cite: 1]</button>
+              </div>
+            </div>
+          </div>
+          <h3>The Ultimate C Handbook PDF[cite: 1]</h3>
+          <p>Complete theory coverage, syntax tables, operator precedence sheet aur exam cheatsheet[cite: 1].</p>
+          <div class="card-footer">
+            <a href="https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/YouTube/The%20Ultimate%20C%20Handbook.pdf" target="_blank" class="btn-card"><i class="fas fa-book"></i> Read Handbook[cite: 1]</a>
+          </div>
+        </div>
+
+        <!-- Node 07 -->
+        <div class="game-card" data-category="c-lang" data-keywords="cpp oops classes objects inheritance polymorphism encapsulation" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 07 • C++ OOPS</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>C++ OOPs & Class Architectures</h3>
+          <p>Constructors, destructors, single/multiple inheritance aur runtime polymorphism with virtual functions.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 08 -->
+        <div class="game-card" data-category="c-lang" data-keywords="cpp stl standard template library vectors maps sets algorithms" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 08 • C++ STL</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>C++ Standard Template Library (STL)</h3>
+          <p>Vectors, deques, unordered_maps, sets, iterators aur binary search template implementations.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 09 -->
+        <div class="game-card" data-category="c-lang" data-keywords="dsa arrays linked list stack queue sorting searching algorithms" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 09 • DSA CORE</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Data Structures (Arrays to Linked Lists)</h3>
+          <p>Singly/doubly linked lists, stack push/pop, queue circular buffers, quick sort & binary search.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 10 -->
+        <div class="game-card" data-category="c-lang" data-keywords="college c lab practical manual assignment solutions viva questions" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill crimson">NODE 10 • LAB MANUAL</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>C Practical Lab Assignment Manual</h3>
+          <p>Index of 30 college lab programs with formatted inputs, expected outputs & viva voce FAQs.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- ================= SECTION 2: WEB DEVELOPMENT (NODES 11 to 20) ================= -->
+
+        <!-- Node 11 -->
+        <div class="game-card featured-card" data-category="web-dev" data-keywords="html5 semantic tags seo web structure forms tables accessibility" data-url="https://drive.google.com/drive/u/0/folders/1obUVSQAlbbP6VGYbO2UWqlUghPO55a8I">
+          <div class="card-top">
+            <span class="tag-pill crimson">NODE 11 • HTML5[cite: 1]</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com/drive/u/0/folders/1obUVSQAlbbP6VGYbO2UWqlUghPO55a8I" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link[cite: 1]</a>
+                <button onclick="copyCardUrl('https://drive.google.com/drive/u/0/folders/1obUVSQAlbbP6VGYbO2UWqlUghPO55a8I')"><i class="fas fa-copy"></i> Copy Link[cite: 1]</button>
+              </div>
+            </div>
+          </div>
+          <h3>HTML5 Semantic Architecture Kit[cite: 1]</h3>
+          <p>Semantic tags (`article`, `section`, `nav`), form validation patterns aur SEO meta tags[cite: 1].</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com/drive/u/0/folders/1obUVSQAlbbP6VGYbO2UWqlUghPO55a8I" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Open Web Drive[cite: 1]</a>
+          </div>
+        </div>
+
+        <!-- Node 12 -->
+        <div class="game-card" data-category="web-dev" data-keywords="css flexbox grid layout responsive design media queries alignment" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 12 • CSS LAYOUT</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>CSS3 Flexbox & Grid Master Blueprint</h3>
+          <p>Justify, align, fr units, minmax(), grid template areas aur zero-lag responsive design cheatsheet.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 13 -->
+        <div class="game-card" data-category="web-dev" data-keywords="glassmorphism transparent css backdrop-filter ui design dark mode" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 13 • GLASSMORPHISM</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Glassmorphism & Transparent UI Recipes</h3>
+          <p>Pure CSS `backdrop-filter`, RGBA alpha layers, neon borders aur custom box-shadow snippets.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 14 -->
+        <div class="game-card" data-category="web-dev" data-keywords="vanilla javascript es6 dom manipulation events listeners queryselector" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 14 • VANILLA JS</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Modern Vanilla JS (ES6+ & DOM API)</h3>
+          <p>Arrow functions, destructuring, promises, async/await, event bubbling aur local/sessionStorage API.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 15 -->
+        <div class="game-card" data-category="web-dev" data-keywords="fetch api ajax json rest apis asynchronous requests" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 15 • FETCH & APIS</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Fetch API & Async JSON Integration</h3>
+          <p>RESTful client calls, GET/POST payload structuring, response status handling aur loading states.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 16 -->
+        <div class="game-card" data-category="web-dev" data-keywords="tailwind css utility first classes responsive styling configs" data-url="https://tailwindcss.com">
+          <div class="card-top">
+            <span class="tag-pill crimson">NODE 16 • TAILWIND</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://tailwindcss.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://tailwindcss.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Tailwind CSS Fast-Production Handbook</h3>
+          <p>Utility-first workflow, custom color palettes, pseudo-classes aur rapid UI prototyping setups.</p>
+          <div class="card-footer">
+            <a href="https://tailwindcss.com" target="_blank" class="btn-card"><i class="fas fa-external-link-alt"></i> Documentation</a>
+          </div>
+        </div>
+
+        <!-- Node 17 -->
+        <div class="game-card" data-category="web-dev" data-keywords="git version control github commit branch push pull merge stash" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 17 • GIT / GITHUB</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Git Terminal Commands & GitHub Workflow</h3>
+          <p>Branching strategies, resolving merge conflicts, git stash, commit tagging aur remote sync guide.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 18 -->
+        <div class="game-card" data-category="web-dev" data-keywords="vercel netlify deployment custom domain hosting cicd pipeline" data-url="https://vercel.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 18 • DEPLOYMENT</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://vercel.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://vercel.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Vercel & Netlify Production Deployment</h3>
+          <p>Zero-config static hosting, continuous deployment via GitHub repo aur custom domain DNS routing.</p>
+          <div class="card-footer">
+            <a href="https://vercel.com" target="_blank" class="btn-card"><i class="fas fa-external-link-alt"></i> Open Dashboard</a>
+          </div>
+        </div>
+
+        <!-- Node 19 -->
+        <div class="game-card" data-category="web-dev" data-keywords="web security cors xss csrf headers auth basics" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 19 • WEB SECURITY</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Web Security Essentials (CORS, XSS, CSRF)</h3>
+          <p>Preventing cross-site scripting, secure cookies, content security policy (CSP) headers aur auth guards.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 20 -->
+        <div class="game-card" data-category="web-dev" data-keywords="college web practicals lab assignment html css js code files" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill crimson">NODE 20 • WEB PRACTICALS</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Semester Web Dev Lab Submissions</h3>
+          <p>Complete set of 15 practical assignments: Bio page, table styling, forms validation & dynamic calculators.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- ================= SECTION 3: OS & LINUX (NODES 21 to 30) ================= -->
+
+        <!-- Node 21 -->
+        <div class="game-card featured-card" data-category="os-linux" data-keywords="linux terminal commands bash permissions chmod chown grep awk sed" data-url="https://drive.google.com/drive/folders/1SEfL7Yw3nJfVLToz9MAuAm2_NoCCk1qD">
+          <div class="card-top">
+            <span class="tag-pill crimson">NODE 21 • BASH HANDBOOK[cite: 1]</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com/drive/folders/1SEfL7Yw3nJfVLToz9MAuAm2_NoCCk1qD" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link[cite: 1]</a>
+                <button onclick="copyCardUrl('https://drive.google.com/drive/folders/1SEfL7Yw3nJfVLToz9MAuAm2_NoCCk1qD')"><i class="fas fa-copy"></i> Copy Link[cite: 1]</button>
+              </div>
+            </div>
+          </div>
+          <h3>Linux Command Line 100+ Cheatsheet[cite: 1]</h3>
+          <p>Essential pipeline administration: `grep`, `awk`, `find`, `tar`, `chmod` file permissions aur piping handbook[cite: 1].</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com/drive/folders/1SEfL7Yw3nJfVLToz9MAuAm2_NoCCk1qD" target="_blank" class="btn-card"><i class="fas fa-terminal"></i> Terminal Drive[cite: 1]</a>
+          </div>
+        </div>
+
+        <!-- Node 22 -->
+        <div class="game-card" data-category="os-linux" data-keywords="operating systems theory process management states pcb context switching" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 22 • PROCESS STATES</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Process Lifecycle & PCB Architecture</h3>
+          <p>Process Control Block internals, Context Switching overheads, states transition diagram aur IPC mechanisms.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 23 -->
+        <div class="game-card" data-category="os-linux" data-keywords="cpu scheduling algorithms fcfs sjf round robin priority scheduling" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 23 • CPU SCHEDULING</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>CPU Scheduling Algorithms with Solved Math</h3>
+          <p>Step-by-step Gantt charts for FCFS, SJF (Preemptive/Non-preemptive), Round Robin aur Priority calculations.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 24 -->
+        <div class="game-card" data-category="os-linux" data-keywords="deadlock conditions bankers algorithm avoidance detection recovery" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 24 • DEADLOCK</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Deadlock Prevention & Banker's Algorithm</h3>
+          <p>Coffman 4 necessary conditions, Resource Allocation Graphs (RAG) aur Banker's safety state matrix calculations.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 25 -->
+        <div class="game-card" data-category="os-linux" data-keywords="memory management paging segmentation virtual memory page faults fifo lru" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 25 • PAGING & LRU</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Virtual Memory & Page Replacement (LRU/FIFO)</h3>
+          <p>Logical vs physical addresses, TLB translation lookup, Belady's anomaly aur solved numerical questions.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 26 -->
+        <div class="game-card" data-category="os-linux" data-keywords="kali linux network scanning cybersecurity nmap fundamentals terminal" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill crimson">NODE 26 • KALI & NETWORK</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Kali Linux & Network Scanning Toolkit</h3>
+          <p>Nmap flag cheat sheets, Wireshark packet capture basics, port discovery aur firewall probe explanations.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 27 -->
+        <div class="game-card" data-category="os-linux" data-keywords="shell scripting bash automation loops variables cron jobs" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 27 • SHELL SCRIPTS</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Bash Shell Scripting & Automation</h3>
+          <p>Writing `.sh` scripts, positional parameters (`$1`, `$#`), conditional checks, loops aur crontab scheduling.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 28 -->
+        <div class="game-card" data-category="os-linux" data-keywords="virtualbox vm setup dual boot partition grub windows linux" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 28 • VIRTUALBOX</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>VirtualBox & Dual-Boot Partition Guide</h3>
+          <p>Configuring EFI partitions, GRUB rescue commands, guest additions aur shared folder mount troubleshooting.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 29 -->
+        <div class="game-card" data-category="os-linux" data-keywords="disk scheduling fcfs sstf scan cscan look algorithms" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 29 • DISK SCAN</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Disk Scheduling Algorithms (SCAN / LOOK)</h3>
+          <p>Head movement track count calculation for FCFS, SSTF, Elevator SCAN aur C-SCAN exam problems.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 30 -->
+        <div class="game-card" data-category="os-linux" data-keywords="college os practical assignments shell script files exam question papers" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill crimson">NODE 30 • OS LAB MANUAL</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Semester Operating Systems Lab File</h3>
+          <p>Hand-verified shell scripts, system call programs (`fork()`, `exec()`) aur semester theory question bank.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- ================= SECTION 4: HARDWARE & ARCHITECTURE (NODES 31 to 40) ================= -->
+
+        <!-- Node 31 -->
+        <div class="game-card featured-card" data-category="hardware" data-keywords="computer architecture fundamentals number systems binary octal hex boolean logic[cite: 1]" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill crimson">NODE 31 • FUNDAMENTALS[cite: 1]</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Computer Architecture & Fundamentals[cite: 1]</h3>
+          <p>Number system radix conversions, 1's/2's complement arithmetic, Boolean logic gates & Karnaugh Maps (K-Map)[cite: 1].</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-microchip"></i> Architecture Sheet[cite: 1]</a>
+          </div>
+        </div>
+
+        <!-- Node 32 -->
+        <div class="game-card" data-category="hardware" data-keywords="cpu registers alu program counter instruction cycle fetch decode execute" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 32 • CPU INTERNALS</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>CPU Registers & Instruction Execution Cycle</h3>
+          <p>Accumulator, Program Counter, Memory Address Register (MAR) aur Fetch-Decode-Execute pipeline stages.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 33 -->
+        <div class="game-card" data-category="hardware" data-keywords="memory hierarchy cache l1 l2 l3 ram rom sram dram registers" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 33 • CACHE HIERARCHY</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Memory Hierarchy & Cache Memory Mapping</h3>
+          <p>Direct, associative & set-associative cache mapping, write-through vs write-back, SRAM vs DRAM notes.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 34 -->
+        <div class="game-card" data-category="hardware" data-keywords="combinational circuits adders half adder full adder multiplexer demux" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 34 • LOGIC CIRCUITS</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Digital Circuits (Adders, Multiplexers, Encoders)</h3>
+          <p>Half/Full Adder circuit diagrams, 4:1 Multiplexer truth tables aur 3:8 Decoder hardware configurations.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 35 -->
+        <div class="game-card" data-category="hardware" data-keywords="sequential circuits flip flops sr jk d t registers counters" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 35 • FLIP-FLOPS</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Sequential Logic (Flip-Flops & Counters)</h3>
+          <p>SR, JK, D, T Flip-flops truth tables, master-slave race condition elimination aur synchronous counters.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 36 -->
+        <div class="game-card" data-category="hardware" data-keywords="input output organization dma controller interrupt handling programmed io" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 36 • I/O DMA</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>I/O Organization & DMA Controllers</h3>
+          <p>Direct Memory Access cycle stealing, burst mode, interrupt-driven I/O vs programmed polling.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 37 -->
+        <div class="game-card" data-category="hardware" data-keywords="pc hardware motherboard bios uefi nvme ssd ddr4 ddr5 ram thermal paste" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 37 • RIG HARDWARE</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>PC Hardware Architecture & Assembly</h3>
+          <p>PCIe lanes distribution, NVMe PCIe Gen3/Gen4 speeds, dual-channel RAM timings aur motherboard BIOS flags.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 38 -->
+        <div class="game-card" data-category="hardware" data-keywords="gpu cuda cores tensor cores vram rasterization directx vulkan" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 38 • GPU ENGINES</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>GPU Architecture & Graphics Pipelines</h3>
+          <p>Rasterization, shader processors, Vulkan vs DirectX12 draw call overheads aur hardware video encoding.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 39 -->
+        <div class="game-card" data-category="hardware" data-keywords="networking osi model tcp ip ethernet switches routers ip addressing" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 39 • NETWORKING CORE</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Computer Networks & OSI 7-Layer Protocol</h3>
+          <p>Packet encapsulation, TCP 3-way handshake, Subnetting (IPv4 CIDR masks) aur DNS resolution flow.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 40 -->
+        <div class="game-card" data-category="hardware" data-keywords="college computer fundamentals exam questions syllabus previous year papers" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill crimson">NODE 40 • EXAM REPO</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Semester Fundamentals Exam Question Bank</h3>
+          <p>Past 5 years solved university examination papers, 2-mark definitions aur 10-mark architectural essays.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- ================= SECTION 5: CLOUD LABS, PYTHON & DB (NODES 41 to 50) ================= -->
+
+        <!-- Node 41 -->
+        <div class="game-card featured-card" data-category="tools" data-keywords="online gdb compiler run c cpp python ide lab instant" data-url="https://www.onlinegdb.com/">
+          <div class="card-top">
+            <span class="tag-pill crimson">NODE 41 • ONLINE GDB[cite: 2]</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://www.onlinegdb.com/" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link[cite: 2]</a>
+                <button onclick="copyCardUrl('https://www.onlinegdb.com/')"><i class="fas fa-copy"></i> Copy Link[cite: 2]</button>
+              </div>
+            </div>
+          </div>
+          <h3>Online GDB Cloud Compiler & Debugger[cite: 2]</h3>
+          <p>Instant C, C++, Python terminal runner with breakpoint debugging without local GCC setup[cite: 2].</p>
+          <div class="card-footer">
+            <a href="https://www.onlinegdb.com/" target="_blank" class="btn-card"><i class="fas fa-external-link-alt"></i> Launch IDE[cite: 2]</a>
+          </div>
+        </div>
+
+        <!-- Node 42 -->
+        <div class="game-card" data-category="tools" data-keywords="python basics loops functions syntax list dict tuple oop" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 42 • PYTHON CORE</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Python 3 Core Scripting & Data Types</h3>
+          <p>List comprehensions, dictionaries, lambda functions, file operations aur module importing reference.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 43 -->
+        <div class="game-card" data-category="tools" data-keywords="sql mysql queries select insert update delete joins foreign key rdbms" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 43 • SQL RDBMS</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>SQL Queries & Relational Database Handbook</h3>
+          <p>DDL, DML, INNER/LEFT joins, aggregate functions (`GROUP BY`, `HAVING`) aur primary key constraints.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 44 -->
+        <div class="game-card" data-category="tools" data-keywords="dbms normalization 1nf 2nf 3nf bcnf er diagrams er modeling" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 44 • NORMALIZATION</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>DBMS Normalization (1NF to BCNF) & ER Diagrams</h3>
+          <p>Functional dependencies, resolving partial/transitive anomalies aur Entity-Relationship modeling.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 45 -->
+        <div class="game-card" data-category="tools" data-keywords="supabase postgres backend database tables auth row level security" data-url="https://supabase.com">
+          <div class="card-top">
+            <span class="tag-pill crimson">NODE 45 • SUPABASE</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://supabase.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://supabase.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Supabase Postgres & Cloud Authentication</h3>
+          <p>PostgreSQL schema design, Row-Level Security (RLS) policies aur JS client integration reference.</p>
+          <div class="card-footer">
+            <a href="https://supabase.com" target="_blank" class="btn-card"><i class="fas fa-external-link-alt"></i> Cloud Database</a>
+          </div>
+        </div>
+
+        <!-- Node 46 -->
+        <div class="game-card" data-category="tools" data-keywords="vscode visual studio code extensions shortcuts keybindings configs c gcc" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 46 • VS CODE</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>VS Code Power Shortcuts & C/C++ Configs</h3>
+          <p>`tasks.json`, `launch.json` compiler flags, multi-cursor speed keys aur essential extensions pack.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-folder-open"></i> Access Node</a>
+          </div>
+        </div>
+
+        <!-- Node 47 -->
+        <div class="game-card" data-category="tools" data-keywords="markdown cheat sheet documentation readme md syntax formatting" data-url="https://www.markdownguide.org">
+          <div class="card-top">
+            <span class="tag-pill">NODE 47 • MARKDOWN</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://www.markdownguide.org" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://www.markdownguide.org')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Markdown (.md) Documentation Blueprint</h3>
+          <p>Structuring professional GitHub `README.md`, tables, syntax highlighting aur badges for web projects.</p>
+          <div class="card-footer">
+            <a href="https://www.markdownguide.org" target="_blank" class="btn-card"><i class="fas fa-external-link-alt"></i> Markdown Guide</a>
+          </div>
+        </div>
+
+        <!-- Node 48 -->
+        <div class="game-card" data-category="tools" data-keywords="google notebooklm study guides bca exam questions analysis pdf summaries" data-url="https://notebooklm.google.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 48 • NOTEBOOKLM</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://notebooklm.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://notebooklm.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>NotebookLM Academic Processing Setup</h3>
+          <p>Processing semester syllabus documents, generating targeted questions & voice study syntheses.</p>
+          <div class="card-footer">
+            <a href="https://notebooklm.google.com" target="_blank" class="btn-card"><i class="fas fa-external-link-alt"></i> Open NotebookLM</a>
+          </div>
+        </div>
+
+        <!-- Node 49 -->
+        <div class="game-card" data-category="tools" data-keywords="speedtest latency ping jitter packet loss network optimization" data-url="https://fast.com">
+          <div class="card-top">
+            <span class="tag-pill">NODE 49 • TELEMETRY</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://fast.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://fast.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Real-time Network Telemetry & Ping Gauge</h3>
+          <p>Testing server response time, loaded/unloaded jitter aur bufferbloat diagnostics tool.</p>
+          <div class="card-footer">
+            <a href="https://fast.com" target="_blank" class="btn-card"><i class="fas fa-tachometer-alt"></i> Run Benchmark</a>
+          </div>
+        </div>
+
+        <!-- Node 50 -->
+        <div class="game-card featured-card" data-category="tools" data-keywords="master drive cloud repository index root storage all subjects backup" data-url="https://drive.google.com">
+          <div class="card-top">
+            <span class="tag-pill crimson">NODE 50 • ROOT BACKUP</span>
+            <div class="menu-dropdown">
+              <button class="dots-btn" onclick="toggleCardMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dots-menu">
+                <a href="https://drive.google.com" target="_blank"><i class="fas fa-external-link-alt"></i> Open Link</a>
+                <button onclick="copyCardUrl('https://drive.google.com')"><i class="fas fa-copy"></i> Copy Link</button>
+              </div>
+            </div>
+          </div>
+          <h3>Master Cloud Storage (Root Node 50)</h3>
+          <p>Direct encrypted cloud link containing all semester folders, lab practicals & syllabus documents.</p>
+          <div class="card-footer">
+            <a href="https://drive.google.com" target="_blank" class="btn-card"><i class="fas fa-database"></i> Open Master Vault</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- No Results Message -->
+      <div id="noResultsBox" style="display: none; text-align: center; padding: 60px 20px;">
+        <i class="fas fa-search-minus" style="font-size: 2.5rem; color: var(--crimson); margin-bottom: 12px;"></i>
+        <h3 style="font-family: var(--font-racing); font-style: italic; font-size: 1.6rem;">NO MATCHING NODES</h3>
+        <p style="color: var(--muted); font-size: 0.95rem;">Koi matching study ya tool node nahi mila. Kisi dusre keyword se search karein.</p>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>☁ <strong>ZENVRO SECRETS TERMINAL</strong> // 50 Operational Nodes Synced</p>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       SCRIPTS: SECURITY GATE, SEARCH & 3-DOTS MENU
+       ========================================================= -->
+  <script>
+    // 1. SECRET MASTER PASSCODE
+    const SECRET_ACCESS_KEY = "KATASUKI2026"; 
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const isUnlocked = sessionStorage.getItem('hub_clearance_granted');
+      const gateModal = document.getElementById('securityGateModal');
+
+      if (isUnlocked === 'true') {
+        gateModal.style.display = 'none';
+        document.body.classList.remove('content-locked');
+      } else {
+        gateModal.style.display = 'flex';
+        document.body.classList.add('content-locked');
+      }
+    });
+
+    function unlockTerminal(event) {
+      event.preventDefault();
+      const enteredPass = document.getElementById('secretPassInput').value.trim();
+      const errorMsg = document.getElementById('gateErrorMsg');
+      const gateModal = document.getElementById('securityGateModal');
+
+      if (enteredPass === SECRET_ACCESS_KEY) {
+        sessionStorage.setItem('hub_clearance_granted', 'true');
+        gateModal.style.opacity = '0';
+        setTimeout(() => {
+          gateModal.style.display = 'none';
+          document.body.classList.remove('content-locked');
+        }, 300);
+      } else {
+        errorMsg.style.display = 'block';
+        document.getElementById('secretPassInput').value = '';
+        document.getElementById('secretPassInput').focus();
+        
+        const gateBox = document.querySelector('.gate-box');
+        gateBox.classList.add('shake-anim');
+        setTimeout(() => gateBox.classList.remove('shake-anim'), 500);
+      }
+    }
+
+    // 2. LIVE SEARCH & CHIP FILTER LOGIC
+    let activeCategory = 'all';
+
+    function setCategoryFilter(category, buttonElement) {
+      activeCategory = category;
+      document.querySelectorAll('.filter-chips .chip').forEach(btn => btn.classList.remove('active'));
+      buttonElement.classList.add('active');
+      filterHubResources();
+    }
+
+    function filterHubResources() {
+      const searchVal = document.getElementById('hubSearchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('#hubCardsGrid .game-card');
+      const clearBtn = document.getElementById('clearBtn');
+      const noResultsBox = document.getElementById('noResultsBox');
+      const countEl = document.getElementById('nodesCount');
+      let visibleCount = 0;
+
+      clearBtn.style.display = searchVal.length > 0 ? 'block' : 'none';
+
+      cards.forEach(card => {
+        const title = card.querySelector('h3').innerText.toLowerCase();
+        const desc = card.querySelector('p').innerText.toLowerCase();
+        const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+        const category = card.getAttribute('data-category');
+
+        const matchesSearch = title.includes(searchVal) || desc.includes(searchVal) || keywords.includes(searchVal);
+        const matchesCategory = activeCategory === 'all' || category === activeCategory;
+
+        if (matchesSearch && matchesCategory) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      countEl.innerText = `${visibleCount} / 50`;
+      noResultsBox.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    function clearSearch() {
+      const input = document.getElementById('hubSearchInput');
+      input.value = '';
+      filterHubResources();
+      input.focus();
+    }
+
+    // 3. 3-DOTS MENU INTERACTION
+    function toggleCardMenu(button) {
+      event.stopPropagation();
+      const currentMenu = button.nextElementSibling;
+      
+      // Close all other open menus
+      document.querySelectorAll('.dots-menu').forEach(menu => {
+        if (menu !== currentMenu) menu.classList.remove('show');
+      });
+
+      currentMenu.classList.toggle('show');
+    }
+
+    function copyCardUrl(url) {
+      navigator.clipboard.writeText(url);
+      alert(`✅ Copied Node Link:\n${url}`);
+      document.querySelectorAll('.dots-menu').forEach(menu => menu.classList.remove('show'));
+    }
+
+    // Close menu when clicking outside
+    window.addEventListener('click', () => {
+      document.querySelectorAll('.dots-menu').forEach(menu => menu.classList.remove('show'));
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
