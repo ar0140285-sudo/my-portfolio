@@ -50,10 +50,10 @@
    ========================================================== */
 @media (max-width: 768px) {
   :root {
-    --bg-member-0: url('https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1080&auto=format&fit=crop'); /* Itachi (Mobile) */
-    --bg-member-1: url('https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1080&auto=format&fit=crop'); /* Pain (Mobile) */
-    --bg-member-2: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1080&auto=format&fit=crop'); /* Obito (Mobile) */
-    --bg-member-3: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1080&auto=format&fit=crop'); /* Deidara (Mobile) */
+    --bg-member-0: url('https://wallpapercave.com/wp/wp12672335.jpg'); /* Itachi (Mobile) */
+    --bg-member-1: url('https://wallpaperaccess.com/full/302445.jpg'); /* Pain (Mobile) */
+    --bg-member-2: url('https://wallpaperaccess.com/full/394052.jpg'); /* Obito (Mobile) */
+    --bg-member-3: url('https://imgs.search.brave.com/Q8YZxgUDCxWD9Xdfh2kvrI_AKhP_E-EbLn2msc3sfsY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzUxLzZk/L2FiLzUxNmRhYmEy/NjQxNjg5ZTUwNzI2/OGQwMjYzMDE2ODc2/LmpwZw'); /* Deidara (Mobile) */
     --bg-member-4: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1080&auto=format&fit=crop'); /* Kisame (Mobile) */
     --bg-member-5: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1080&auto=format&fit=crop'); /* Konan (Mobile) */
   }
