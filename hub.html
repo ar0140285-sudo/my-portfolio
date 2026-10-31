@@ -3,33 +3,112 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZENVRO // Core System Terminal — Akash Rathod</title>
+  <title>ZENVRO // Master Knowledge Terminal — Akash Rathod</title>
   
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Clean Solid Terminal Background - No Global Wallpaper */
+    body {
+      background-color: #050507 !important;
+      background-image: none !important;
+    }
+    .bg-stage {
+      display: none !important;
+    }
+
+    /* Card Background Image Styling - Har card ke piche visual photo */
+    .game-card {
+      position: relative;
+      overflow: hidden;
+      background: rgba(10, 10, 14, 0.75) !important;
+      border: 1.5px solid var(--border-racing);
+      z-index: 1;
+    }
+
+    .card-bg-banner {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18; /* Halka rakha hai taaki text bilkul saaf padhne me aaye */
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .game-card:hover .card-bg-banner {
+      transform: scale(1.08);
+      opacity: 0.32; /* Hover par photo aur clear chamkegi */
+    }
+
+    /* 3-Dots Menu Styling */
+    .menu-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dots-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 1.1rem;
+      padding: 4px 8px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .dots-btn:hover {
+      color: var(--crimson);
+    }
+
+    .dots-menu {
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background: rgba(10, 10, 14, 0.95);
+      border: 1px solid var(--border-racing);
+      min-width: 140px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+      border-radius: 4px;
+      display: none;
+      flex-direction: column;
+      z-index: 50;
+      overflow: hidden;
+    }
+
+    .dots-menu.show {
+      display: flex;
+    }
+
+    .dots-menu a,
+    .dots-menu button {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 10px 14px;
+      text-align: left;
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+
+    .dots-menu a:hover,
+    .dots-menu button:hover {
+      background: rgba(255, 0, 60, 0.25);
+      color: var(--crimson);
+    }
+  </style>
 </head>
 <body>
 
   <!-- =========================================================
-       DISTINCT STEALTH WALLPAPER (Pain / Deva Path Domain)
-       ========================================================= -->
-  <div class="bg-stage" id="bgStage">
-    <!-- Distinct Wallpaper for Hub -->
-    <div class="bg-slide active" style="background-image: url('https://images.wallpapersden.com/image/download/pain-tendo-naruto_a2lmaGyUmZqaraWkpJRmbmdlrWZlbWU.jpg');"></div>
-    <div class="bg-overlay"></div>
-    
-    <!-- Secret Terminal Telemetry HUD -->
-    <div class="akatsuki-hud">
-      <div class="member-indicator">
-        <span class="hud-label">CLASSIFIED NODE //</span>
-        <h3>ARCHIVE TERMINAL</h3>
-        <p>"Visible as Gaming. Operating as Master Database."</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- =========================================================
-       SECRET PASSCODE GATE (Bina Password Khole Content Lock Rahega)
+       SECRET PASSCODE GATE (Restricted Access)
        ========================================================= -->
   <div id="securityGateModal" class="gate-overlay">
     <div class="gate-box">
@@ -38,7 +117,7 @@
       </div>
       <i class="fas fa-user-secret gate-icon"></i>
       <h2>ENCRYPTED TERMINAL</h2>
-      <p>Ye repository private cloud se link hai. Access ke liye apna Akatsuki master passkey dalein.</p>
+      <p>Ye repository private cloud se link hai. Access ke liye apna secret passkey dalein.</p>
 
       <form id="gateForm" onsubmit="unlockTerminal(event)">
         <div class="passcode-input-wrap">
@@ -89,19 +168,18 @@
   </nav>
 
   <!-- =========================================================
-       MAIN CONTENT: SEARCH & 50 LINK NODES
+       MAIN CONTENT: LIVE SEARCH & 50 IMAGE-BACKED NODES
        ========================================================= -->
   <main class="main-wrapper">
     <section class="scroll-section" style="padding-top: 120px; justify-content: flex-start;">
       
-      <!-- Stealth Header (Covered as Game Configs / Master Repository) -->
       <div class="section-header" style="text-align: center; margin-bottom: 25px;">
-        <span class="sec-code">// LEVEL-4 DATABASE DIRECTORY</span>
+        <span class="sec-code">// LEVEL-4 MASTER DATABASE</span>
         <h1 class="glitch-title" style="font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: 8px;">
-          MASTER <span>KNOWLEDGE TERMINAL</span>
+          CENTRAL <span>KNOWLEDGE TERMINAL</span>
         </h1>
         <p style="margin: 0 auto; max-width: 680px;">
-          C/C++, Web Engines, Linux Kernels, Computer Hardware, Cloud Compilers & Semester Theory — 50 Dedicated Operational Nodes.
+          Visual Card Banners: Har box ke piche related image lagi hai taaki dekhte hi topic clear ho jaye[cite: 1, 2].
         </p>
       </div>
 
@@ -112,7 +190,7 @@
           <input 
             type="text" 
             id="hubSearchInput" 
-            placeholder="Search by topic, node ID, keyword (e.g. pointers, bash, flexbox, sql)..." 
+            placeholder="Search by topic, node ID, keyword (pointers, bash, flexbox, sql)..." 
             autocomplete="off"
             onkeyup="filterHubResources()"
           />
@@ -137,13 +215,14 @@
         <span>VISIBLE NODES: <strong id="nodesCount" style="color: var(--crimson);">50 / 50</strong></span>
       </div>
 
-      <!-- GRID OF 50 CARDS -->
+      <!-- GRID OF 50 CARDS WITH IMAGE BACKDROPS -->
       <div class="cards-grid" id="hubCardsGrid">
 
         <!-- ================= SECTION 1: C & C++ (NODES 01 to 10) ================= -->
         
         <!-- Node 01 -->
         <div class="game-card featured-card" data-category="c-lang" data-keywords="c basics variables syntax control flow sem 1 handwritten notes" data-url="https://drive.google.com/file/d/1BH3SI3Xab1vJuqnS-xyVXEanTaHx4DF2/view?usp=drivesdk">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill crimson">NODE 01 • C BASICS[cite: 1]</span>
             <div class="menu-dropdown">
@@ -163,6 +242,7 @@
 
         <!-- Node 02 -->
         <div class="game-card" data-category="c-lang" data-keywords="pointers memory addresses pointer arithmetic double pointer dereference" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 02 • POINTERS</span>
             <div class="menu-dropdown">
@@ -182,6 +262,7 @@
 
         <!-- Node 03 -->
         <div class="game-card" data-category="c-lang" data-keywords="dynamic memory allocation malloc calloc realloc free heap" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 03 • DMA HEAP</span>
             <div class="menu-dropdown">
@@ -201,6 +282,7 @@
 
         <!-- Node 04 -->
         <div class="game-card" data-category="c-lang" data-keywords="c structures union typedef struct memory padding alignment" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 04 • STRUCTURES</span>
             <div class="menu-dropdown">
@@ -220,6 +302,7 @@
 
         <!-- Node 05 -->
         <div class="game-card" data-category="c-lang" data-keywords="file handling fopen fclose fread fwrite fseek binary files" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1562813733-b31f71025d54?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 05 • FILE I/O</span>
             <div class="menu-dropdown">
@@ -239,6 +322,7 @@
 
         <!-- Node 06 -->
         <div class="game-card" data-category="c-lang" data-keywords="c handbook textbook theory complete pdf book" data-url="https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/YouTube/The%20Ultimate%20C%20Handbook.pdf">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill crimson">NODE 06 • C BOOK[cite: 1]</span>
             <div class="menu-dropdown">
@@ -258,6 +342,7 @@
 
         <!-- Node 07 -->
         <div class="game-card" data-category="c-lang" data-keywords="cpp oops classes objects inheritance polymorphism encapsulation" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 07 • C++ OOPS</span>
             <div class="menu-dropdown">
@@ -277,6 +362,7 @@
 
         <!-- Node 08 -->
         <div class="game-card" data-category="c-lang" data-keywords="cpp stl standard template library vectors maps sets algorithms" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 08 • C++ STL</span>
             <div class="menu-dropdown">
@@ -296,6 +382,7 @@
 
         <!-- Node 09 -->
         <div class="game-card" data-category="c-lang" data-keywords="dsa arrays linked list stack queue sorting searching algorithms" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 09 • DSA CORE</span>
             <div class="menu-dropdown">
@@ -315,6 +402,7 @@
 
         <!-- Node 10 -->
         <div class="game-card" data-category="c-lang" data-keywords="college c lab practical manual assignment solutions viva questions" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill crimson">NODE 10 • LAB MANUAL</span>
             <div class="menu-dropdown">
@@ -336,6 +424,7 @@
 
         <!-- Node 11 -->
         <div class="game-card featured-card" data-category="web-dev" data-keywords="html5 semantic tags seo web structure forms tables accessibility" data-url="https://drive.google.com/drive/u/0/folders/1obUVSQAlbbP6VGYbO2UWqlUghPO55a8I">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1621839673705-6617adf9e890?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill crimson">NODE 11 • HTML5[cite: 1]</span>
             <div class="menu-dropdown">
@@ -355,6 +444,7 @@
 
         <!-- Node 12 -->
         <div class="game-card" data-category="web-dev" data-keywords="css flexbox grid layout responsive design media queries alignment" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 12 • CSS LAYOUT</span>
             <div class="menu-dropdown">
@@ -374,6 +464,7 @@
 
         <!-- Node 13 -->
         <div class="game-card" data-category="web-dev" data-keywords="glassmorphism transparent css backdrop-filter ui design dark mode" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 13 • GLASSMORPHISM</span>
             <div class="menu-dropdown">
@@ -393,6 +484,7 @@
 
         <!-- Node 14 -->
         <div class="game-card" data-category="web-dev" data-keywords="vanilla javascript es6 dom manipulation events listeners queryselector" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 14 • VANILLA JS</span>
             <div class="menu-dropdown">
@@ -412,6 +504,7 @@
 
         <!-- Node 15 -->
         <div class="game-card" data-category="web-dev" data-keywords="fetch api ajax json rest apis asynchronous requests" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 15 • FETCH & APIS</span>
             <div class="menu-dropdown">
@@ -431,6 +524,7 @@
 
         <!-- Node 16 -->
         <div class="game-card" data-category="web-dev" data-keywords="tailwind css utility first classes responsive styling configs" data-url="https://tailwindcss.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill crimson">NODE 16 • TAILWIND</span>
             <div class="menu-dropdown">
@@ -450,6 +544,7 @@
 
         <!-- Node 17 -->
         <div class="game-card" data-category="web-dev" data-keywords="git version control github commit branch push pull merge stash" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1618401471353-b98aedd04e11?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 17 • GIT / GITHUB</span>
             <div class="menu-dropdown">
@@ -469,6 +564,7 @@
 
         <!-- Node 18 -->
         <div class="game-card" data-category="web-dev" data-keywords="vercel netlify deployment custom domain hosting cicd pipeline" data-url="https://vercel.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 18 • DEPLOYMENT</span>
             <div class="menu-dropdown">
@@ -488,6 +584,7 @@
 
         <!-- Node 19 -->
         <div class="game-card" data-category="web-dev" data-keywords="web security cors xss csrf headers auth basics" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 19 • WEB SECURITY</span>
             <div class="menu-dropdown">
@@ -507,6 +604,7 @@
 
         <!-- Node 20 -->
         <div class="game-card" data-category="web-dev" data-keywords="college web practicals lab assignment html css js code files" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill crimson">NODE 20 • WEB PRACTICALS</span>
             <div class="menu-dropdown">
@@ -528,6 +626,7 @@
 
         <!-- Node 21 -->
         <div class="game-card featured-card" data-category="os-linux" data-keywords="linux terminal commands bash permissions chmod chown grep awk sed" data-url="https://drive.google.com/drive/folders/1SEfL7Yw3nJfVLToz9MAuAm2_NoCCk1qD">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1629654297299-c8506221ca97?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill crimson">NODE 21 • BASH HANDBOOK[cite: 1]</span>
             <div class="menu-dropdown">
@@ -547,6 +646,7 @@
 
         <!-- Node 22 -->
         <div class="game-card" data-category="os-linux" data-keywords="operating systems theory process management states pcb context switching" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 22 • PROCESS STATES</span>
             <div class="menu-dropdown">
@@ -566,6 +666,7 @@
 
         <!-- Node 23 -->
         <div class="game-card" data-category="os-linux" data-keywords="cpu scheduling algorithms fcfs sjf round robin priority scheduling" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 23 • CPU SCHEDULING</span>
             <div class="menu-dropdown">
@@ -585,6 +686,7 @@
 
         <!-- Node 24 -->
         <div class="game-card" data-category="os-linux" data-keywords="deadlock conditions bankers algorithm avoidance detection recovery" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 24 • DEADLOCK</span>
             <div class="menu-dropdown">
@@ -604,6 +706,7 @@
 
         <!-- Node 25 -->
         <div class="game-card" data-category="os-linux" data-keywords="memory management paging segmentation virtual memory page faults fifo lru" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 25 • PAGING & LRU</span>
             <div class="menu-dropdown">
@@ -623,6 +726,7 @@
 
         <!-- Node 26 -->
         <div class="game-card" data-category="os-linux" data-keywords="kali linux network scanning cybersecurity nmap fundamentals terminal" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill crimson">NODE 26 • KALI & NETWORK</span>
             <div class="menu-dropdown">
@@ -642,6 +746,7 @@
 
         <!-- Node 27 -->
         <div class="game-card" data-category="os-linux" data-keywords="shell scripting bash automation loops variables cron jobs" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1618401471353-b98aedd04e11?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 27 • SHELL SCRIPTS</span>
             <div class="menu-dropdown">
@@ -661,6 +766,7 @@
 
         <!-- Node 28 -->
         <div class="game-card" data-category="os-linux" data-keywords="virtualbox vm setup dual boot partition grub windows linux" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 28 • VIRTUALBOX</span>
             <div class="menu-dropdown">
@@ -680,6 +786,7 @@
 
         <!-- Node 29 -->
         <div class="game-card" data-category="os-linux" data-keywords="disk scheduling fcfs sstf scan cscan look algorithms" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1597852074816-d933c7d2b988?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 29 • DISK SCAN</span>
             <div class="menu-dropdown">
@@ -699,6 +806,7 @@
 
         <!-- Node 30 -->
         <div class="game-card" data-category="os-linux" data-keywords="college os practical assignments shell script files exam question papers" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill crimson">NODE 30 • OS LAB MANUAL</span>
             <div class="menu-dropdown">
@@ -719,7 +827,8 @@
         <!-- ================= SECTION 4: HARDWARE & ARCHITECTURE (NODES 31 to 40) ================= -->
 
         <!-- Node 31 -->
-        <div class="game-card featured-card" data-category="hardware" data-keywords="computer architecture fundamentals number systems binary octal hex boolean logic[cite: 1]" data-url="https://drive.google.com">
+        <div class="game-card featured-card" data-category="hardware" data-keywords="computer architecture fundamentals number systems binary octal hex boolean logic" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill crimson">NODE 31 • FUNDAMENTALS[cite: 1]</span>
             <div class="menu-dropdown">
@@ -739,6 +848,7 @@
 
         <!-- Node 32 -->
         <div class="game-card" data-category="hardware" data-keywords="cpu registers alu program counter instruction cycle fetch decode execute" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 32 • CPU INTERNALS</span>
             <div class="menu-dropdown">
@@ -758,6 +868,7 @@
 
         <!-- Node 33 -->
         <div class="game-card" data-category="hardware" data-keywords="memory hierarchy cache l1 l2 l3 ram rom sram dram registers" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1562975079-662762269a63?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 33 • CACHE HIERARCHY</span>
             <div class="menu-dropdown">
@@ -777,6 +888,7 @@
 
         <!-- Node 34 -->
         <div class="game-card" data-category="hardware" data-keywords="combinational circuits adders half adder full adder multiplexer demux" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 34 • LOGIC CIRCUITS</span>
             <div class="menu-dropdown">
@@ -796,6 +908,7 @@
 
         <!-- Node 35 -->
         <div class="game-card" data-category="hardware" data-keywords="sequential circuits flip flops sr jk d t registers counters" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 35 • FLIP-FLOPS</span>
             <div class="menu-dropdown">
@@ -815,6 +928,7 @@
 
         <!-- Node 36 -->
         <div class="game-card" data-category="hardware" data-keywords="input output organization dma controller interrupt handling programmed io" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 36 • I/O DMA</span>
             <div class="menu-dropdown">
@@ -834,6 +948,7 @@
 
         <!-- Node 37 -->
         <div class="game-card" data-category="hardware" data-keywords="pc hardware motherboard bios uefi nvme ssd ddr4 ddr5 ram thermal paste" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 37 • RIG HARDWARE</span>
             <div class="menu-dropdown">
@@ -853,6 +968,7 @@
 
         <!-- Node 38 -->
         <div class="game-card" data-category="hardware" data-keywords="gpu cuda cores tensor cores vram rasterization directx vulkan" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 38 • GPU ENGINES</span>
             <div class="menu-dropdown">
@@ -872,6 +988,7 @@
 
         <!-- Node 39 -->
         <div class="game-card" data-category="hardware" data-keywords="networking osi model tcp ip ethernet switches routers ip addressing" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 39 • NETWORKING CORE</span>
             <div class="menu-dropdown">
@@ -891,6 +1008,7 @@
 
         <!-- Node 40 -->
         <div class="game-card" data-category="hardware" data-keywords="college computer fundamentals exam questions syllabus previous year papers" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill crimson">NODE 40 • EXAM REPO</span>
             <div class="menu-dropdown">
@@ -912,6 +1030,7 @@
 
         <!-- Node 41 -->
         <div class="game-card featured-card" data-category="tools" data-keywords="online gdb compiler run c cpp python ide lab instant" data-url="https://www.onlinegdb.com/">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill crimson">NODE 41 • ONLINE GDB[cite: 2]</span>
             <div class="menu-dropdown">
@@ -931,6 +1050,7 @@
 
         <!-- Node 42 -->
         <div class="game-card" data-category="tools" data-keywords="python basics loops functions syntax list dict tuple oop" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 42 • PYTHON CORE</span>
             <div class="menu-dropdown">
@@ -950,6 +1070,7 @@
 
         <!-- Node 43 -->
         <div class="game-card" data-category="tools" data-keywords="sql mysql queries select insert update delete joins foreign key rdbms" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 43 • SQL RDBMS</span>
             <div class="menu-dropdown">
@@ -969,6 +1090,7 @@
 
         <!-- Node 44 -->
         <div class="game-card" data-category="tools" data-keywords="dbms normalization 1nf 2nf 3nf bcnf er diagrams er modeling" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 44 • NORMALIZATION</span>
             <div class="menu-dropdown">
@@ -988,6 +1110,7 @@
 
         <!-- Node 45 -->
         <div class="game-card" data-category="tools" data-keywords="supabase postgres backend database tables auth row level security" data-url="https://supabase.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill crimson">NODE 45 • SUPABASE</span>
             <div class="menu-dropdown">
@@ -1007,6 +1130,7 @@
 
         <!-- Node 46 -->
         <div class="game-card" data-category="tools" data-keywords="vscode visual studio code extensions shortcuts keybindings configs c gcc" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 46 • VS CODE</span>
             <div class="menu-dropdown">
@@ -1026,6 +1150,7 @@
 
         <!-- Node 47 -->
         <div class="game-card" data-category="tools" data-keywords="markdown cheat sheet documentation readme md syntax formatting" data-url="https://www.markdownguide.org">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 47 • MARKDOWN</span>
             <div class="menu-dropdown">
@@ -1045,6 +1170,7 @@
 
         <!-- Node 48 -->
         <div class="game-card" data-category="tools" data-keywords="google notebooklm study guides bca exam questions analysis pdf summaries" data-url="https://notebooklm.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 48 • NOTEBOOKLM</span>
             <div class="menu-dropdown">
@@ -1064,6 +1190,7 @@
 
         <!-- Node 49 -->
         <div class="game-card" data-category="tools" data-keywords="speedtest latency ping jitter packet loss network optimization" data-url="https://fast.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill">NODE 49 • TELEMETRY</span>
             <div class="menu-dropdown">
@@ -1083,6 +1210,7 @@
 
         <!-- Node 50 -->
         <div class="game-card featured-card" data-category="tools" data-keywords="master drive cloud repository index root storage all subjects backup" data-url="https://drive.google.com">
+          <div class="card-bg-banner" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop');"></div>
           <div class="card-top">
             <span class="tag-pill crimson">NODE 50 • ROOT BACKUP</span>
             <div class="menu-dropdown">
@@ -1123,7 +1251,7 @@
        ========================================================= -->
   <script>
     // 1. SECRET MASTER PASSCODE
-    const SECRET_ACCESS_KEY = "KATASUKI2026"; 
+    const SECRET_ACCESS_KEY = "AKATSUKI2026"; 
 
     window.addEventListener('DOMContentLoaded', () => {
       const isUnlocked = sessionStorage.getItem('hub_clearance_granted');
@@ -1215,7 +1343,6 @@
       event.stopPropagation();
       const currentMenu = button.nextElementSibling;
       
-      // Close all other open menus
       document.querySelectorAll('.dots-menu').forEach(menu => {
         if (menu !== currentMenu) menu.classList.remove('show');
       });
@@ -1229,7 +1356,6 @@
       document.querySelectorAll('.dots-menu').forEach(menu => menu.classList.remove('show'));
     }
 
-    // Close menu when clicking outside
     window.addEventListener('click', () => {
       document.querySelectorAll('.dots-menu').forEach(menu => menu.classList.remove('show'));
     });
