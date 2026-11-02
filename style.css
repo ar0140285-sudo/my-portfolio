@@ -4,9 +4,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
 
 :root {
-  --bg-dark: #050507;
-  --card-bg: rgba(0, 0, 0, 0.05);
-  --card-hover: rgba(225, 29, 72, 0.12);
+  --bg-dark: #000000;
+  --card-bg: rgba(12, 12, 12, 0.82);
+  --card-hover: rgba(225, 29, 72, 0.18);
   --crimson: #e11d48;
   --crimson-bright: #ff1e42;
   --crimson-glow: rgba(255, 30, 66, 0.55);
@@ -50,7 +50,7 @@ html {
 }
 
 body {
-  background-color: var(--bg-dark);
+  background-color: #000000;
   color: var(--text);
   font-family: var(--font-sans);
   line-height: 1.6;
@@ -66,7 +66,7 @@ body {
   height: 100vh;
   z-index: -1;
   overflow: hidden;
-  background: #050507;
+  background: #000000;
 }
 
 .bg-slide {
@@ -160,7 +160,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   right: 32px;
   z-index: 20;
   max-width: 330px;
-  background: var(--card-bg);
+  background: rgba(10, 10, 10, 0.88);
   border: 1.5px solid var(--border-crimson);
   border-left: 4px solid var(--crimson-bright);
   padding: 14px 18px;
@@ -197,7 +197,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   left: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.92);
   border-bottom: 1.5px solid var(--border);
   box-shadow: 0 2px 15px rgba(225, 29, 72, 0.15);
 }
@@ -255,7 +255,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
 }
 
 .nav-links a.cta-nav {
-  background: var(--card-bg);
+  background: rgba(10, 10, 10, 0.9);
   border: 1.5px solid var(--border-crimson);
   color: #fff;
   padding: 7px 14px;
@@ -313,7 +313,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   width: fit-content;
   padding: 6px 14px;
   border-radius: 8px;
-  background: var(--card-bg);
+  background: rgba(10, 10, 10, 0.9);
   border: 1.5px solid var(--border);
   transition: all 0.2s;
 }
@@ -330,7 +330,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   font-family: var(--font-mono);
   font-size: 0.78rem;
   color: #fff;
-  background: var(--card-bg);
+  background: rgba(10, 10, 10, 0.9);
   border: 1.5px solid var(--border-crimson);
   padding: 6px 14px;
   border-radius: 999px;
@@ -406,7 +406,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
 }
 
 .btn-secondary {
-  background: var(--card-bg);
+  background: rgba(10, 10, 10, 0.9);
   border: 1.5px solid var(--border);
   color: var(--text);
   text-decoration: none;
@@ -521,7 +521,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   font-family: var(--font-mono);
   font-size: 0.74rem;
   color: #fff;
-  background: var(--card-bg);
+  background: rgba(10, 10, 10, 0.9);
   border: 1px solid var(--border-crimson);
   padding: 4px 12px;
   border-radius: 99px;
@@ -616,7 +616,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   font-size: 0.72rem;
   padding: 4px 10px;
   border-radius: 6px;
-  background: var(--card-bg);
+  background: rgba(10, 10, 10, 0.9);
   border: 1px solid var(--border-crimson);
   color: #fff;
 }
@@ -670,7 +670,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
 
 .btn-card {
   flex: 1;
-  background: var(--card-bg);
+  background: rgba(10, 10, 10, 0.9);
   border: 1.5px solid var(--border-crimson);
   color: #fff;
   padding: 11px 16px;
@@ -745,7 +745,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
 }
 
 .video-card {
-  background: var(--card-bg);
+  background: rgba(10, 10, 10, 0.9);
   border: 1.5px solid var(--border-crimson);
   border-radius: 14px;
   overflow: hidden;
@@ -909,7 +909,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
 
 .tag-copy-row code {
   font-family: var(--font-mono);
-  background: var(--card-bg);
+  background: rgba(10, 10, 10, 0.9);
   border: 1.5px solid var(--border-crimson);
   padding: 10px 16px;
   border-radius: 8px;
@@ -920,7 +920,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   border-top: 1.5px solid var(--border);
   padding: 32px 24px;
   text-align: center;
-  background: var(--card-bg);
+  background: rgba(10, 10, 10, 0.9);
 }
 
 .footer-sub {
@@ -1232,4 +1232,192 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
 
 
 
-"}]} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"}]} ,
