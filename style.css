@@ -1,65 +1,44 @@
 /* ==========================================================
-   1. GOOGLE FONTS & ITACHI AKATSUKI COLOR VARIABLES
-   ========================================================== */
+    1. GOOGLE FONTS & ITACHI AKATSUKI COLOR VARIABLES
+    ========================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
 
 :root {
   --bg-dark: #050507;
-  
-  /* 95% Transparent background (Zero Blur for crystal clear wallpaper) */
-  --card-bg: rgba(0, 0, 0, 0.05);         
-  --card-hover: rgba(225, 29, 72, 0.12);     
-  
-  /* Itachi Uchiha & Sharingan Crimson Colors */
-  --crimson: #e11d48;                        
-  --crimson-bright: #ff1e42;                 
-  --crimson-glow: rgba(255, 30, 66, 0.55);   
-  --crimson-soft: rgba(225, 29, 72, 0.14);   
-  
-  /* Red Line Borders */
-  --border: rgba(255, 30, 66, 0.65);       
-  --border-crimson: #ff1e42; 
-  
-  /* Text & Heavy Drop Shadow */
-  --text: #ffffff;                           
-  --muted: #f1f5f9;                          
+  --card-bg: rgba(0, 0, 0, 0.05);
+  --card-hover: rgba(225, 29, 72, 0.12);
+  --crimson: #e11d48;
+  --crimson-bright: #ff1e42;
+  --crimson-glow: rgba(255, 30, 66, 0.55);
+  --crimson-soft: rgba(225, 29, 72, 0.14);
+  --border: rgba(255, 30, 66, 0.65);
+  --border-crimson: #ff1e42;
+  --text: #ffffff;
+  --muted: #f1f5f9;
   --text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 5px rgba(0, 0, 0, 0.95);
-  
   --font-display: 'Orbitron', sans-serif;
   --font-sans: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-
-  /* ==========================================================
-     👇 PC / LAPTOP / WINDOWS WIDESCREEN WALLPAPERS 👇
-     (Apni pasand ke PC links yaha badal sakte ho)
-     ========================================================== */
-  --bg-member-0: url('https://4kwallpapers.com/images/walls/thumbs_3t/25550.jpg'); /* Itachi (Desktop) */
-  --bg-member-1: url('https://4kwallpapers.com/images/walls/thumbs_3t/24786.jpg'); /* Pain (Desktop) */
-  --bg-member-2: url('https://images7.alphacoders.com/103/thumb-1920-1032873.jpg'); /* Obito (Desktop) */
-  --bg-member-3: url('https://images5.alphacoders.com/709/thumb-1920-709539.jpg'); /* Deidara (Desktop) */
-  --bg-member-4: url('https://images5.alphacoders.com/709/thumb-1920-709539.jpg'); /* Kisame (Desktop) */
-  --bg-member-5: url('https://images5.alphacoders.com/709/thumb-1920-709539.jpg'); /* Konan (Desktop) */
-  
-  /* Zoom Lens Active Background Reference */
+  --bg-member-0: url('https://4kwallpapers.com/images/walls/thumbs_3t/25550.jpg');
+  --bg-member-1: url('https://4kwallpapers.com/images/walls/thumbs_3t/24786.jpg');
+  --bg-member-2: url('https://images7.alphacoders.com/103/thumb-1920-1032873.jpg');
+  --bg-member-3: url('https://images5.alphacoders.com/709/thumb-1920-709539.jpg');
+  --bg-member-4: url('https://images5.alphacoders.com/709/thumb-1920-709539.jpg');
+  --bg-member-5: url('https://images5.alphacoders.com/709/thumb-1920-709539.jpg');
   --active-bg: var(--bg-member-0);
 }
 
-/* ==========================================================
-   👇 MOBILE SCREENS (768px se chhote phones ke liye Vertical Images) 👇
-   (Mobile me vertical portrait image automatic switch hogi)
-   ========================================================== */
 @media (max-width: 768px) {
   :root {
-    --bg-member-0: url('https://wallpapercave.com/wp/wp12672335.jpg'); /* Itachi (Mobile) */
-    --bg-member-1: url('https://wallpaperaccess.com/full/302445.jpg'); /* Pain (Mobile) */
-    --bg-member-2: url('https://wallpaperaccess.com/full/394052.jpg'); /* Obito (Mobile) */
-    --bg-member-3: url('https://imgs.search.brave.com/Q8YZxgUDCxWD9Xdfh2kvrI_AKhP_E-EbLn2msc3sfsY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzUxLzZk/L2FiLzUxNmRhYmEy/NjQxNjg5ZTUwNzI2/OGQwMjYzMDE2ODc2/LmpwZw'); /* Deidara (Mobile) */
-    --bg-member-4: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1080&auto=format&fit=crop'); /* Kisame (Mobile) */
-    --bg-member-5: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1080&auto=format&fit=crop'); /* Konan (Mobile) */
+    --bg-member-0: url('https://wallpapercave.com/wp/wp12672335.jpg');
+    --bg-member-1: url('https://wallpaperaccess.com/full/302445.jpg');
+    --bg-member-2: url('https://wallpaperaccess.com/full/394052.jpg');
+    --bg-member-3: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1080&auto=format&fit=crop');
+    --bg-member-4: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1080&auto=format&fit=crop');
+    --bg-member-5: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1080&auto=format&fit=crop');
   }
 }
 
-/* Base Reset */
 * {
   margin: 0;
   padding: 0;
@@ -79,9 +58,6 @@ body {
   text-shadow: var(--text-shadow);
 }
 
-/* ==========================================================
-   2. FULLSCREEN AKATSUKI BACKGROUND (SMOOTH SCROLL SWITCH)
-   ========================================================== */
 .bg-stage {
   position: fixed;
   top: 0;
@@ -105,7 +81,6 @@ body {
   filter: contrast(1.08) saturate(1.15);
 }
 
-/* Har slide ko unke respective PC/Mobile wallpaper variable se map kiya hai */
 .bg-slide:nth-child(1) { background-image: var(--bg-member-0) !important; }
 .bg-slide:nth-child(2) { background-image: var(--bg-member-1) !important; }
 .bg-slide:nth-child(3) { background-image: var(--bg-member-2) !important; }
@@ -113,53 +88,49 @@ body {
 .bg-slide:nth-child(5) { background-image: var(--bg-member-4) !important; }
 .bg-slide:nth-child(6) { background-image: var(--bg-member-5) !important; }
 
-/* Active slide full brightness aur natural scale par aayegi */
 .bg-slide.active {
   opacity: 0.88;
   transform: scale(1.04);
 }
 
-/* Mouse hover hone par piche ka active background halka sa zoom-in karega */
 body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:hover) .bg-slide.active {
   transform: scale(1.10);
 }
 
-/* Subtle Vignette for Text Clarity */
 .bg-overlay {
   position: absolute;
   inset: 0;
-  background: 
+  background:
     radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.55) 100%),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, transparent 30%, rgba(0, 0, 0, 0.55) 100%);
 }
 
-/* ==========================================================
-   3. BOX BACKGROUND MAGNIFIER / ZOOM LENS EFFECT
-   (Boxes ke andar halki si Zoomed background image)
-   ========================================================== */
 .game-card,
 .edition-card,
 .arsenal-item,
 .timeline-row,
 .stat-box,
 .soc-card,
-.connect-banner {
+.connect-banner,
+.feature-card,
+.info-item {
   position: relative;
   overflow: hidden;
   background: var(--card-bg);
-  border: 1.5px solid var(--border); /* Pure Red Border */
+  border: 1.5px solid var(--border);
   box-shadow: 0 0 14px rgba(225, 29, 72, 0.2), inset 0 0 10px rgba(225, 29, 72, 0.08);
   z-index: 1;
 }
 
-/* Box Zoom Lens Layer */
 .game-card::before,
 .edition-card::before,
 .arsenal-item::before,
 .timeline-row::before,
 .stat-box::before,
 .soc-card::before,
-.connect-banner::before {
+.connect-banner::before,
+.feature-card::before,
+.info-item::before {
   content: '';
   position: absolute;
   inset: -15px;
@@ -167,23 +138,22 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  transform: scale(1.06); /* Box ke andar halka zoom */
-  opacity: 0.35;          /* 95% Transparent feel maintain rahegi */
+  transform: scale(1.06);
+  opacity: 0.35;
   z-index: -1;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
   pointer-events: none;
 }
 
-/* Hover karne par box ke andar ki photo aur halki zoom hogi */
 .game-card:hover::before,
 .edition-card:hover::before,
 .arsenal-item:hover::before,
-.soc-card:hover::before {
+.soc-card:hover::before,
+.feature-card:hover::before {
   transform: scale(1.12);
   opacity: 0.50;
 }
 
-/* Bottom-Right Corner HUD Box */
 .akatsuki-hud {
   position: fixed;
   bottom: 28px;
@@ -221,9 +191,6 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   line-height: 1.4;
 }
 
-/* ==========================================================
-   4. NAVIGATION BAR (RED LINE BORDER)
-   ========================================================== */
 .nav {
   position: fixed;
   top: 0;
@@ -320,9 +287,6 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   box-shadow: 0 1px 4px #000;
 }
 
-/* ==========================================================
-   5. HERO & SECTION HEADERS
-   ========================================================== */
 .main-wrapper {
   max-width: 1140px;
   margin: 0 auto;
@@ -488,9 +452,48 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   font-family: var(--font-mono);
 }
 
-/* ==========================================================
-   6. PORTAL EDITION SELECTOR & MODPACK CARDS
-   ========================================================== */
+.info-strip {
+  max-width: 1140px;
+  margin: 0 auto 12px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.info-item i {
+  color: var(--crimson-bright);
+  font-size: 1.2rem;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(225, 29, 72, 0.08);
+  border: 1px solid var(--border-crimson);
+}
+
+.info-item strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.info-item span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+}
+
 .edition-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -680,6 +683,7 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   justify-content: center;
   align-items: center;
   gap: 8px;
+  text-decoration: none;
   text-shadow: var(--text-shadow);
   transition: all 0.2s ease;
 }
@@ -689,9 +693,51 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   box-shadow: 0 0 18px var(--crimson-glow);
 }
 
-/* ==========================================================
-   7. MONTAGES, ARSENAL & TIMELINE
-   ========================================================== */
+.premium-feature-wrap {
+  padding: 18px 0 0;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.feature-card {
+  border-radius: 14px;
+  padding: 26px 22px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--crimson-bright);
+  box-shadow: 0 0 22px var(--crimson-glow);
+}
+
+.feature-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  background: rgba(225, 29, 72, 0.12);
+  border: 1px solid var(--border-crimson);
+  color: var(--crimson-bright);
+  font-size: 1.3rem;
+}
+
+.feature-card h3 {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.feature-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 .video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -779,70 +825,6 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   margin-bottom: 6px;
 }
 
-.arsenal-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
-}
-
-.arsenal-item {
-  padding: 22px;
-  border-radius: 12px;
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  transition: all 0.25s ease;
-}
-
-.arsenal-item:hover {
-  border-color: var(--crimson-bright);
-  box-shadow: 0 0 22px var(--crimson-glow);
-}
-
-.arsenal-item i {
-  font-size: 1.5rem;
-  color: var(--crimson-bright);
-  background: var(--card-bg);
-  border: 1px solid var(--border-crimson);
-  padding: 12px;
-  border-radius: 10px;
-}
-
-.arsenal-item span {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--crimson-bright);
-}
-
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.timeline-row {
-  border-left: 4px solid var(--crimson-bright);
-  border-radius: 12px;
-  padding: 22px;
-  display: flex;
-  gap: 24px;
-  align-items: flex-start;
-}
-
-.time-badge {
-  font-family: var(--font-display);
-  font-size: 0.82rem;
-  color: #fff;
-  background: var(--card-bg);
-  border: 1px solid var(--border-crimson);
-  padding: 6px 12px;
-  border-radius: 6px;
-  white-space: nowrap;
-}
-
-/* ==========================================================
-   8. JOIN CLAN & SOCIAL MEDIA
-   ========================================================== */
 .connect-banner {
   border: 2px solid var(--border-crimson);
   border-radius: 18px;
@@ -934,9 +916,6 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   color: var(--crimson-bright);
 }
 
-/* ==========================================================
-   9. FOOTER & MOBILE RESPONSIVE
-   ========================================================== */
 .footer {
   border-top: 1.5px solid var(--border);
   padding: 32px 24px;
@@ -948,6 +927,11 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   font-size: 0.78rem;
   color: var(--muted);
   margin-top: 6px;
+}
+
+.last-cta {
+  min-height: auto;
+  padding-top: 0;
 }
 
 @media (max-width: 768px) {
@@ -989,99 +973,11 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
   }
 }
 
-
-
-
-
-
-
-
 /* ==========================================================
-   MASTER COMMAND HUB (SEARCH & FILTER CHIPS)
-   ========================================================== */
-.hub-search-wrapper {
-  max-width: 820px;
-  margin: 0 auto 10px;
-  width: 100%;
-}
+    MASTER COMMAND HUB (SEARCH & FILTER CHIPS)
+    ========================================================== */
 
-.search-box-bar {
-  display: flex;
-  align-items: center;
-  background: rgba(10, 10, 14, 0.45);
-  border: 1.5px solid var(--border-racing);
-  padding: 8px 18px;
-  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
-  box-shadow: 0 0 20px rgba(255, 0, 60, 0.15);
-  margin-bottom: 16px;
-  transition: all 0.25s ease;
-}
-
-.search-box-bar:focus-within {
-  border-color: #ff1f52;
-  box-shadow: 0 0 28px var(--crimson-glow);
-  background: rgba(10, 10, 14, 0.75);
-}
-
-.search-icon {
-  color: var(--crimson);
-  font-size: 1.15rem;
-  margin-right: 12px;
-}
-
-.search-box-bar input {
-  width: 100%;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #ffffff;
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-}
-
-.search-box-bar input::placeholder {
-  color: #94a3b8;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.9rem;
-}
-
-.clear-search-btn {
-  background: transparent;
-  border: none;
-  color: var(--crimson);
-  cursor: pointer;
-  font-size: 1.1rem;
-  padding: 4px 8px;
-}
-
-.filter-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-}
-
-.chip {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--carbon-border);
-  color: var(--muted);
-  font-family: var(--font-racing);
-  font-style: italic;
-  font-weight: 700;
-  font-size: 0.82rem;
-  padding: 6px 14px;
-  clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.chip:hover, .chip.active {
-  background: var(--crimson);
-  color: #fff;
-  border-color: var(--crimson);
-  box-shadow: 0 0 14px var(--crimson-glow);
-  transform: translateY(-1px);
-}
+/* Keep existing structure compatibility, style enhancements only */
 
 
 
@@ -1099,144 +995,6 @@ body:has(.game-card:hover, .edition-card:hover, .arsenal-item:hover, .soc-card:h
 
 
 
-/* ==========================================================
-   CLASSIFIED SECURITY GATE MODAL STYLING
-   ========================================================== */
-body.content-locked {
-  overflow: hidden;
-}
-
-body.content-locked .main-wrapper,
-body.content-locked .nav,
-body.content-locked .footer {
-  filter: blur(14px) brightness(0.4);
-  pointer-events: none;
-  user-select: none;
-}
-
-.gate-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  background: rgba(3, 3, 5, 0.88);
-  backdrop-filter: blur(12px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  transition: opacity 0.3s ease;
-}
-
-.gate-box {
-  max-width: 440px;
-  width: 100%;
-  background: rgba(12, 12, 18, 0.85);
-  border: 2px solid var(--border-racing);
-  padding: 35px 28px;
-  text-align: center;
-  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
-  box-shadow: 0 0 45px rgba(255, 0, 60, 0.3);
-}
-
-.gate-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--crimson);
-  background: rgba(255, 0, 60, 0.12);
-  border: 1px solid var(--border-racing);
-  padding: 5px 12px;
-  margin-bottom: 18px;
-}
-
-.gate-icon {
-  font-size: 3rem;
-  color: var(--crimson);
-  margin-bottom: 15px;
-  filter: drop-shadow(0 0 14px var(--crimson-glow));
-}
-
-.gate-box h2 {
-  font-family: var(--font-racing);
-  font-style: italic;
-  font-size: 1.8rem;
-  margin-bottom: 8px;
-  letter-spacing: 0.05em;
-}
-
-.gate-box p {
-  font-size: 0.88rem;
-  color: var(--muted);
-  margin-bottom: 24px;
-}
-
-.passcode-input-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.passcode-input-wrap .key-icon {
-  position: absolute;
-  left: 14px;
-  color: var(--crimson);
-}
-
-.passcode-input-wrap input {
-  width: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1.5px solid var(--border-racing);
-  color: #fff;
-  padding: 13px 14px 13px 40px;
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  outline: none;
-  transition: all 0.2s ease;
-}
-
-.passcode-input-wrap input:focus {
-  border-color: #ff1f52;
-  box-shadow: 0 0 20px var(--crimson-glow);
-}
-
-.gate-error {
-  margin-top: 15px;
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid rgba(239, 68, 68, 0.4);
-  color: #f87171;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  padding: 9px;
-}
-
-.return-home-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 22px;
-  color: var(--muted);
-  text-decoration: none;
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  transition: color 0.2s;
-}
-
-.return-home-link:hover {
-  color: #fff;
-}
-
-/* Shake Animation on Wrong Password */
-.shake-anim {
-  animation: shake 0.4s ease-in-out;
-}
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-8px); }
-  40%, 80% { transform: translateX(8px); }
-}
 
 
 
@@ -1247,66 +1005,231 @@ body.content-locked .footer {
 
 
 
-/* ==========================================================
-   3-DOTS OPTIONS MENU (⋮) ON CARDS
-   ========================================================== */
-.menu-dropdown {
-  position: relative;
-  display: inline-block;
-}
 
-.dots-btn {
-  background: transparent;
-  border: none;
-  color: var(--muted);
-  font-size: 1.1rem;
-  padding: 4px 8px;
-  cursor: pointer;
-  transition: color 0.2s;
-}
 
-.dots-btn:hover {
-  color: var(--crimson);
-}
 
-.dots-menu {
-  position: absolute;
-  right: 0;
-  top: 100%;
-  background: rgba(10, 10, 14, 0.95);
-  border: 1px solid var(--border-racing);
-  min-width: 140px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
-  border-radius: 4px;
-  display: none;
-  flex-direction: column;
-  z-index: 50;
-  overflow: hidden;
-}
 
-.dots-menu.show {
-  display: flex;
-}
 
-.dots-menu a,
-.dots-menu button {
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  padding: 10px 14px;
-  text-align: left;
-  text-decoration: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: background 0.2s;
-}
 
-.dots-menu a:hover,
-.dots-menu button:hover {
-  background: rgba(255, 0, 60, 0.25);
-  color: var(--crimson);
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"}]} 
