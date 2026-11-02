@@ -9,11 +9,10 @@
 </head>
 <body>
 
-  <!-- Background Stage (Sasori & Itachi Theme) -->
   <div class="bg-stage" id="bgStage">
-    <div class="bg-slide active" style="background-image: url('https://imgs.search.brave.com/Ja78uieouNpEBkatst_oUZjC2qCGWbzOFqNgGz_Y4js/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJhY2Nlc3Mu/Y29tL2Z1bGwvODQ4/ODA3LmpwZw');"></div>
+    <div class="bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&auto=format&fit=crop');"></div>
     <div class="bg-overlay"></div>
-    
+
     <div class="akatsuki-hud">
       <div class="member-indicator">
         <span class="hud-label">JAVA ARCHITECT //</span>
@@ -23,7 +22,6 @@
     </div>
   </div>
 
-  <!-- Navbar -->
   <nav class="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
@@ -34,6 +32,7 @@
         <a href="mods.html">Mods Vault</a>
         <a href="java-mods.html" class="active">Java Mods</a>
         <a href="bedrock-mods.html">Bedrock Mods</a>
+        <a href="index.html#tutorials">Tutorials</a>
         <a href="clan.html" class="cta-nav"><i class="fas fa-dragon"></i> Join Clan</a>
       </div>
       <button class="hamburger" id="mobileMenu" aria-label="Toggle Menu">
@@ -42,11 +41,9 @@
     </div>
   </nav>
 
-  <!-- Main Content: Java Mods List -->
   <main class="main-wrapper">
     <section class="scroll-section" data-index="0" data-name="SASORI" data-quote="True art is eternal performance — zero lag, infinite frames.">
-      
-      <!-- Back Button -->
+
       <a href="mods.html" class="back-pill"><i class="fas fa-arrow-left"></i> Back to Mods Vault</a>
 
       <div class="section-header">
@@ -56,7 +53,6 @@
       </div>
 
       <div class="cards-grid">
-        <!-- Java Pack 1 -->
         <div class="game-card featured-card">
           <div class="card-top">
             <span class="tag-pill crimson">FABRIC 1.20.4 / 1.21</span>
@@ -69,14 +65,12 @@
             <li><i class="fas fa-check"></i> Built-in Zoom, Freelook & Keystrokes</li>
             <li><i class="fas fa-check"></i> Zero Stutter Chunk Loading</li>
           </ul>
-          <div class="card-footer">
-            <button onclick="downloadModpack('Zenvro Java Ultra-FPS v3.4 (.mrpack)')" class="btn-card">
-              <i class="fas fa-download"></i> Download (.mrpack)
-            </button>
+          <div class="card-footer" style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a href="https://modrinth.com/mods?search=fabric%20fps" target="_blank" rel="noreferrer" class="btn-card"><i class="fas fa-download"></i> Download</a>
+            <a href="https://www.youtube.com/results?search_query=minecraft+java+mods+tutorial" target="_blank" rel="noreferrer" class="btn-card"><i class="fas fa-play"></i> Tutorial</a>
           </div>
         </div>
 
-        <!-- Java Pack 2 -->
         <div class="game-card">
           <div class="card-top">
             <span class="tag-pill">1.8.9 & 1.20 PVP TEXTURE</span>
@@ -86,17 +80,15 @@
           <p>Bedwars aur Skywars ke liye custom 16x resource pack. Short swords, low fire, custom red glint aur dark transparent GUI.</p>
           <ul class="spec-list">
             <li><i class="fas fa-check"></i> Sharingan Enderpearls & Crosshair</li>
-            <li><i class="fas fa-check"></i> Clear Water & No-Lag Particles</li>
+            <li><i class="fas fa-check"></i> Clean Water & No-Lag Particles</li>
             <li><i class="fas fa-check"></i> Boosts FPS on Integrated GPUs</li>
           </ul>
-          <div class="card-footer">
-            <button onclick="downloadModpack('Akatsuki Sharingan 16x (.zip)')" class="btn-card">
-              <i class="fas fa-download"></i> Download (.zip)
-            </button>
+          <div class="card-footer" style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a href="https://www.curseforge.com/minecraft/texture-packs" target="_blank" rel="noreferrer" class="btn-card"><i class="fas fa-download"></i> Download</a>
+            <a href="https://www.youtube.com/results?search_query=minecraft+resource+pack+tutorial" target="_blank" rel="noreferrer" class="btn-card"><i class="fas fa-play"></i> Tutorial</a>
           </div>
         </div>
 
-        <!-- Java Pack 3 -->
         <div class="game-card">
           <div class="card-top">
             <span class="tag-pill">ANARCHY & SURVIVAL • 1.20+</span>
@@ -109,10 +101,9 @@
             <li><i class="fas fa-check"></i> Fullbright & Custom Fog Remover</li>
             <li><i class="fas fa-check"></i> 100% Server Safe & Allowed</li>
           </ul>
-          <div class="card-footer">
-            <button onclick="downloadModpack('Zenvro Survival Utility Pack (.zip)')" class="btn-card">
-              <i class="fas fa-download"></i> Download (.zip)
-            </button>
+          <div class="card-footer" style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a href="https://modrinth.com/mods" target="_blank" rel="noreferrer" class="btn-card"><i class="fas fa-download"></i> Download</a>
+            <a href="https://www.youtube.com/results?search_query=modrinth+mod+install+tutorial" target="_blank" rel="noreferrer" class="btn-card"><i class="fas fa-play"></i> Tutorial</a>
           </div>
         </div>
       </div>

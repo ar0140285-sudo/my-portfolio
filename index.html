@@ -4,31 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZENVRO // Akatsuki Gaming Hub — Home</title>
-  <!-- Main Stylesheet aur FontAwesome Icons -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- =========================================================
-       DYNAMIC AKATSUKI FULLSCREEN BACKGROUND
-       Note: Scroll karne par ye slides apne aap change hongi.
-       Apni images lagane ke liye url('...') ke andar link badal dena.
-       ========================================================= -->
   <div class="bg-stage" id="bgStage">
-    <!-- Slide 0: Itachi (Hero Section) -->
     <div class="bg-slide active" style="background-image: url('https://4kwallpapers.com/images/walls/thumbs_3t/25550.jpg');"></div>
-    <!-- Slide 1: Obito (Montages Section) -->
     <div class="bg-slide" style="background-image: url('https://wallpaperaccess.com/full/1346803.jpg');"></div>
-    <!-- Slide 2: Deidara (Gaming Rig Section) -->
     <div class="bg-slide" style="background-image: url('https://wallpapers.com/images/hd/deidara-kcjc05mez0qhzzuy.webp');"></div>
-    <!-- Slide 3: Kisame (Clan Roadmap Section) -->
-    <div class="bg-slide" style="background-image: url('https://imgs.search.brave.com/BD8TyAYZt_cg-i19QRjW4Rb-zJMvJT-zZWnIHoJlv4w/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQva2lz/YW1lLXdhbGxwYXBl/ci0ybXFqYzhiMnpw/bGdtbWVwLmpwZw');"></div>
-    
-    <!-- Dark Vignette Overlay taaki text saaf dikhe -->
+    <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop');"></div>
     <div class="bg-overlay"></div>
-    
-    <!-- Bottom-Right HUD Box (Jo active Akatsuki member ka naam aur quote dikhata hai) -->
+
     <div class="akatsuki-hud">
       <div class="member-indicator">
         <span class="hud-label">CURRENT GUARDIAN //</span>
@@ -38,24 +25,21 @@
     </div>
   </div>
 
-  <!-- =========================================================
-       NAVIGATION BAR (Sabhi pages ke links ke saath)
-       ========================================================= -->
   <nav class="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
         <span class="cloud-icon">☁</span> ZENVRO<span>PLAYZ</span>
       </a>
 
-    <div class="nav-links" id="navLinks">
-  <a href="index.html" class="active">01. Base</a>
-  <a href="mods.html">02. Mods</a>
-  <a href="hub.html">03. Master Hub</a> <!-- 👈 Naya Master Page Link -->
-  <a href="#montages">04. Edits</a>
-  <a href="clan.html" class="cta-nav">Clan</a>
-</div>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="active">01. Base</a>
+        <a href="mods.html">02. Mods</a>
+        <a href="java-mods.html">Java Mods</a>
+        <a href="bedrock-mods.html">Bedrock Mods</a>
+        <a href="#tutorials">Tutorials</a>
+        <a href="clan.html" class="cta-nav">Clan</a>
+      </div>
 
-      <!-- Mobile 3-Lines Hamburger Button -->
       <button class="hamburger" id="mobileMenu" aria-label="Toggle Menu">
         <span></span>
         <span></span>
@@ -64,182 +48,165 @@
     </div>
   </nav>
 
-  <!-- =========================================================
-       MAIN SCROLLABLE CONTENT
-       ========================================================= -->
   <main class="main-wrapper">
 
-    <!-- 01. HERO SECTION (ITACHI UCHIHA) -->
     <section id="home" class="scroll-section" data-index="0" data-name="ITACHI UCHIHA" data-quote="Those who forgive themselves, and accept their true nature... They are the strong ones!">
       <div class="hero-box">
         <div class="akatsuki-badge">
-          <span class="pulse-dot"></span> S-RANK COMPETITIVE GAMER & OPTIMIZER
+          <span class="pulse-dot"></span> GAMING CHANNEL • MODS • TUTORIALS
         </div>
-        <h1 class="glitch-title">DOMINATING FRAMES.<br><span>SHATTERING LIMITS.</span></h1>
+        <h1 class="glitch-title">PLAY HARD.<br><span>BUILD SMART.</span></h1>
         <p class="hero-desc">
-          Main <strong>Akash Rathod (Zenvro)</strong> hu — Minecraft PvP strategist, low-latency optimizer aur high-sync AMV/Gaming editor. Jaha baaki players lag se haarte hain, waha mera custom optimization 200+ FPS deliver karta hai.
+          Main <strong>Zenvro</strong> hu — Minecraft PvP strategist, FPS optimizer, aur gaming content creator. Yahan aapko mods, setup guides, optimization tips, aur latest tutorials milenge jo aapke gameplay ko next level tak le jayenge.
         </p>
-        
-        <!-- Action Buttons (Mods page aur Clan page par jane ke liye) -->
+
         <div class="hero-actions">
           <a href="mods.html" class="btn-primary">
             <i class="fas fa-bolt"></i> Explore Mods Vault
           </a>
-          <a href="clan.html" class="btn-secondary">
-            <i class="fas fa-users"></i> Join Akatsuki Clan
+          <a href="https://www.youtube.com/@zenvroplayz" target="_blank" rel="noreferrer" class="btn-secondary">
+            <i class="fas fa-play"></i> Watch Tutorials
           </a>
         </div>
 
-        <!-- Live Gaming Stats -->
         <div class="live-stats">
           <div class="stat-box">
-            <span class="stat-num">300+</span>
-            <span class="stat-label">Peak Bedwars FPS</span>
+            <span class="stat-num">Java</span>
+            <span class="stat-label">Mod Guides</span>
           </div>
           <div class="stat-box">
-            <span class="stat-num">Java & PE</span>
-            <span class="stat-label">Cross-Edition Mods</span>
+            <span class="stat-num">Bedrock</span>
+            <span class="stat-label">Addon Packs</span>
           </div>
           <div class="stat-box">
-            <span class="stat-num">S-Rank</span>
-            <span class="stat-label">PvP Tier</span>
+            <span class="stat-num">FPS</span>
+            <span class="stat-label">Optimization</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 02. MONTAGES & EDITS SECTION (OBITO UCHIHA) -->
-    <section id="montages" class="scroll-section" data-index="1" data-name="OBITO UCHIHA" data-quote="In the gaming world, those who break the rules are scum... but those who abandon their squad are worse than scum.">
+    <section id="tutorials" class="scroll-section" data-index="1" data-name="OBITO UCHIHA" data-quote="In the gaming world, those who break the rules are scum... but those who abandon their squad are worse.">
       <div class="section-header">
-        <span class="sec-code">// 02. VISUAL GENJUTSU</span>
-        <h2>HIGH-SYNC MONTAGES & AMVs</h2>
-        <p>Frame-perfect velocity edits, sound design, aur intense PikaNetwork / CubeCraft clutches.</p>
+        <span class="sec-code">// 02. MODS & TUTORIALS</span>
+        <h2>START HERE: MODS, LINKS & GUIDES</h2>
+        <p>Har tutorial aur mod pack apke gameplay ko faster, cleaner aur more competitive banane ke liye design kiya gaya hai.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="game-card featured-card">
+          <div class="card-top">
+            <span class="tag-pill crimson">JAVA EDITION</span>
+            <i class="fas fa-desktop card-icon"></i>
+          </div>
+          <h3>Install Java Mods</h3>
+          <p>Fabric/Forge setup, FPS boosts, launch settings, and PvP mod recommendations for smooth competitive play.</p>
+          <ul class="spec-list">
+            <li><i class="fas fa-check"></i> Low-latency optimization</li>
+            <li><i class="fas fa-check"></i> Best FPS mod combos</li>
+            <li><i class="fas fa-check"></i> Java version setup</li>
+          </ul>
+          <div class="card-footer">
+            <a href="java-mods.html" class="btn-card"><i class="fas fa-arrow-right"></i> Open Guide</a>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <div class="card-top">
+            <span class="tag-pill">BEDROCK</span>
+            <i class="fas fa-mobile-alt card-icon"></i>
+          </div>
+          <h3>Bedrock Addons</h3>
+          <p>Mobile aur Windows Bedrock ke liye no-lag shaders, aesthetic packs, and easy one-click install steps.</p>
+          <ul class="spec-list">
+            <li><i class="fas fa-check"></i> MCPE / Win10 install</li>
+            <li><i class="fas fa-check"></i> Optimized visual packs</li>
+            <li><i class="fas fa-check"></i> PvP utility setup</li>
+          </ul>
+          <div class="card-footer">
+            <a href="bedrock-mods.html" class="btn-card"><i class="fas fa-arrow-right"></i> Open Guide</a>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <div class="card-top">
+            <span class="tag-pill">FPS TIPS</span>
+            <i class="fas fa-bolt card-icon"></i>
+          </div>
+          <h3>Boost FPS & Reduce Lag</h3>
+          <p>Windows tweaks, JVM flags, chunk loading improvements, and gameplay settings to get maximum stability.</p>
+          <ul class="spec-list">
+            <li><i class="fas fa-check"></i> Better frame consistency</li>
+            <li><i class="fas fa-check"></i> Lower input delay</li>
+            <li><i class="fas fa-check"></i> Best settings for low-end PCs</li>
+          </ul>
+          <div class="card-footer">
+            <a href="https://www.youtube.com/results?search_query=minecraft+fps+optimization+tutorial" target="_blank" rel="noreferrer" class="btn-card"><i class="fas fa-play"></i> Watch Video</a>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <div class="card-top">
+            <span class="tag-pill">RESOURCES</span>
+            <i class="fas fa-book card-icon"></i>
+          </div>
+          <h3>Quick Tutorials</h3>
+          <p>Install guides, troubleshooting, resource packs, and PvP setups explained step by step with easy visuals.</p>
+          <ul class="spec-list">
+            <li><i class="fas fa-check"></i> Step-by-step install</li>
+            <li><i class="fas fa-check"></i> Fix common errors</li>
+            <li><i class="fas fa-check"></i> Build your loadout</li>
+          </ul>
+          <div class="card-footer">
+            <a href="mods.html" class="btn-card"><i class="fas fa-layer-group"></i> View Vault</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="montages" class="scroll-section" data-index="2" data-name="DEIDARA" data-quote="True optimization is an explosion! Every single frame counts.">
+      <div class="section-header">
+        <span class="sec-code">// 03. FEATURED CONTENT</span>
+        <h2>RECENT GAMING TUTORIALS</h2>
+        <p>Channel ke latest guides aur showcase videos, jahan mod setup aur PvP improvement ko simple step-by-step explain kia jata hai.</p>
       </div>
 
       <div class="video-grid">
-        <!-- Video Card 1 -->
-        <a href="https://www.youtube.com/@zenvroplayz" target="_blank" class="video-card">
+        <a href="https://www.youtube.com/@zenvroplayz" target="_blank" rel="noreferrer" class="video-card">
           <div class="video-thumb" style="background-image: url('https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=800&auto=format&fit=crop');">
             <div class="play-btn"><i class="fas fa-play"></i></div>
-            <span class="vid-duration">02:45</span>
+            <span class="vid-duration">08:42</span>
           </div>
           <div class="video-info">
-            <span class="vid-tag">BEDWARS MONTAGE • 60FPS</span>
-            <h4>"KAMUI" — 1v4 Clutch & Telly Bridge Showcase</h4>
-            <p>Edited in Premiere Pro & CapCut • Beat-synced velocity</p>
+            <span class="vid-tag">INSTALL GUIDE • JAVA MODS</span>
+            <h4>How to install Java mods step by step</h4>
+            <p>Prism Launcher, Fabric, and FPS setup for smoother PvP.</p>
           </div>
         </a>
 
-        <!-- Video Card 2 -->
-        <a href="https://www.youtube.com/@zenvroplayz" target="_blank" class="video-card">
+        <a href="https://www.youtube.com/@zenvroplayz" target="_blank" rel="noreferrer" class="video-card">
           <div class="video-thumb" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop');">
             <div class="play-btn"><i class="fas fa-play"></i></div>
-            <span class="vid-duration">01:30</span>
+            <span class="vid-duration">05:18</span>
           </div>
           <div class="video-info">
-            <span class="vid-tag">ANIME 4K EDIT • JJK & NARUTO</span>
-            <h4>CRIMSON DOMAIN // High-Sync Anime Velocity Edit</h4>
-            <p>3D camera tracking, custom RSMB motion blur & dark color grading</p>
+            <span class="vid-tag">BEDROCK • SHADERS</span>
+            <h4>Bedrock add-ons and shader installation</h4>
+            <p>Low-lag visuals and clean gameplay setup for mobile/Windows.</p>
           </div>
         </a>
-      </div>
-    </section>
-
-    <!-- 03. GAMING RIG & ARSENAL (DEIDARA) -->
-    <section id="arsenal" class="scroll-section" data-index="2" data-name="DEIDARA" data-quote="True optimization is an explosion! Every single frame counts.">
-      <div class="section-header">
-        <span class="sec-code">// 03. WEAPONRY & SETUP</span>
-        <h2>THE GAMING ARSENAL</h2>
-        <p>Hardware, peripherals aur software workflow jo har PvP match aur edit ko power karte hain.</p>
-      </div>
-
-      <div class="arsenal-grid">
-        <div class="arsenal-item">
-          <i class="fas fa-microchip"></i>
-          <div>
-            <span>SYSTEM & OS</span>
-            <h4>Linux (Kali/Ubuntu) & Debloated Windows</h4>
-            <p>Custom kernel & process tuning for zero input latency</p>
-          </div>
-        </div>
-
-        <div class="arsenal-item">
-          <i class="fas fa-mouse"></i>
-          <div>
-            <span>MOUSE & AIM</span>
-            <h4>Gaming Mouse (800 DPI • 1000Hz Polling)</h4>
-            <p>20+ CPS Butterfly / Jitter Clicking • Raw Input ON</p>
-          </div>
-        </div>
-
-        <div class="arsenal-item">
-          <i class="fas fa-keyboard"></i>
-          <div>
-            <span>KEYBOARD</span>
-            <h4>Ant Esports Gaming Keyboard</h4>
-            <p>Fast actuation for W-Tap, S-Tap & speed-bridging</p>
-          </div>
-        </div>
-
-        <div class="arsenal-item">
-          <i class="fas fa-film"></i>
-          <div>
-            <span>CONTENT SUITE</span>
-            <h4>Premiere Pro, CapCut & OBS Studio</h4>
-            <p>120FPS Smooth Recording • Custom Akatsuki Color LUTs</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 04. CLAN ROADMAP & RECORDS (KISAME) -->
-    <section id="records" class="scroll-section" data-index="3" data-name="KISAME HOSHIGAKI" data-quote="Only the strongest sharks survive in the deep waters of competitive PvP.">
-      <div class="section-header">
-        <span class="sec-code">// 04. SHINOBI BINGO BOOK</span>
-        <h2>CLAN RANKINGS & GOALS</h2>
-        <p>Competitive milestones, modpack updates aur upcoming ZenvroPlayz targets.</p>
-      </div>
-
-      <div class="timeline">
-        <div class="timeline-row">
-          <div class="time-badge">PHASE 01</div>
-          <div class="time-content">
-            <h4>Java & Bedrock Dual Modpack Ecosystem</h4>
-            <p>PC aur Mobile dono players ke liye zero-lag custom packs aur PvP textures launch karna.</p>
-          </div>
-        </div>
-
-        <div class="timeline-row">
-          <div class="time-badge">PHASE 02</div>
-          <div class="time-content">
-            <h4>Custom Practice & Duels Server</h4>
-            <p>Low-ping Indian practice server jisme custom knockback profiles aur Bedwars practice arenas honge.</p>
-          </div>
-        </div>
-
-        <div class="timeline-row">
-          <div class="time-badge">PHASE 03</div>
-          <div class="time-content">
-            <h4>ZenvroPlayz Clan Tournaments</h4>
-            <p>YouTube aur Telegram/Discord par subscriber PvP tournaments aur AMV editing battles host karna.</p>
-          </div>
-        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- =========================================================
-       FOOTER
-       ========================================================= -->
   <footer class="footer">
     <div class="footer-inner">
-      <p>☁ <strong>ZENVROPLAYZ</strong> // Designed & Built by Akash Rathod.</p>
-      <p class="footer-sub">Akatsuki Gaming Hub • Home Base</p>
+      <p>☁ <strong>ZENVROPLAYZ</strong> // Gaming Channel • Mods Vault • Tutorials</p>
+      <p class="footer-sub">Built for Minecraft mods, FPS setup guides, and competitive gaming content.</p>
     </div>
   </footer>
 
-  <!-- Main JS File -->
   <script src="script.js"></script>
 </body>
 </html>
